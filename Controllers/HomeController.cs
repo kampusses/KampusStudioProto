@@ -6,7 +6,7 @@ namespace KampusStudioProto.Controllers
     {
         public IActionResult Index()
         {
-            return Content("Solo la index della home");
+            return View();
         }
     }
 }

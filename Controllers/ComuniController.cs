@@ -6,12 +6,12 @@ namespace KampusStudioProto.Controllers
     {
         public IActionResult Index()
         {
-            return Content("Sono Index");
+            return View();
         }
 
         public IActionResult Dettaglio(string id)
         {
-            return Content($"Sono Dettaglio ed ho ricevuto l'id {id}");
+            return View();
         }
     }
 }
