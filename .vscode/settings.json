@@ -5,5 +5,7 @@
     "browserSync.config": {
         "proxy": "localhost:5000",
         "files": ["Views/**/*.cshtml", "wwwroot/**/*"]
-    }
+    },
+    "fontAwesomeAutocomplete.patterns": ["**/*.cshtml"],
+    "fontAwesomeAutocomplete.triggerWord": "f"
 }
