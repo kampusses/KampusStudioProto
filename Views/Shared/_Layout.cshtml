@@ -10,23 +10,28 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand"><img src="logo.gif" height="30"></a>
-            <button class="navbar-toggler" data-target="#navbar" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#"><img src="\logo.gif" height=30></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Pagina 1 <span class="sr-only">(current)</span></a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Pagina 2 </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Pagina 3 </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Pagina 4 </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Geografia
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" asp-controller="Comuni" asp-action="Index">Comuni italiani</a>
+                            <a class="dropdown-item" asp-controller="Province" asp-action="Index">Province</a>
+                            <a class="dropdown-item" asp-controller="Regioni" asp-action="Index">Regioni</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-controller="Nazioni" asp-action="Index">Nazioni</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-controller="Cap" asp-action="Index">Gestione CAP</a>
+                        </div>
                     </li>
                 </ul>
             </div>
