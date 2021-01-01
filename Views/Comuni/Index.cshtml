@@ -1,1 +1,40 @@
-<h1>Sono la view relativa all'action index del controller Comuni</h1>
+<div class="row">
+    <div class="col-md-7">
+        <h1>Comuni italiani</h1>
+    </div>
+    <div class="col-md-5 d-flex align-items-end">
+        <h1>Ricerca</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-searchtype="TipoRicerca" asp-route-orderby="nomeComune" asp-route-ascending="true" asp-route-search="E946" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Comune</a> <i class="fas fa-caret-up"></i></div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-searchtype="TipoRicerca" asp-route-orderby="abitanti" asp-route-ascending="false" asp-route-search="E946" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Abitanti</a> <i class="fas fa-caret-down"></i></div>
+    <div class="col-md-7"></div>
+</div>
+<hr />
+
+@for (int i= 0; i<10; i++)
+{
+<div class="row">
+    <div class="col-md-1">
+        <a href="#"><img src="~/Italia/Sud.jpg" width="50" title="Sud"></a>
+    </div>
+    <div class="col-md-4">
+        <h2><a asp-action="Dettaglio" asp-route-id="E946">Margherita di Savoia</a> <a href="#"><i title="Provincia" class="fab fa-product-hunt"></i></a> <a href="#"><i title="Capoluogo di regione" class="fas fa-registered"></i></a></h2>
+        <abitanti>Abitanti: 11.000</abitanti>
+    </div>
+    <div class="col-md-3">
+        <regione>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="CodiceRegione">Puglia</a></regione><br />
+        <provincia>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="CodiceProvincia">Barletta-Andria-Trani (BT)</a></provincia>
+    </div>
+    <div class="col-md-2">
+        <cap>CAP: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="76016">76016</a></cap><br />
+        <prefisso>Prefisso: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="0883">0883</a></prefisso>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="E946">Visualizza</a>
+    </div>
+</div>
+<hr />
+}
