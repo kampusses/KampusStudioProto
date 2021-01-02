@@ -52,7 +52,7 @@ namespace KampusStudioProto.Models.Services.Application
 
         public List<ComuneViewModel> GetComuni()
         {
-            string query = "SELECT * FROM Comuni WHERE nomeComune LIKE '%Marg%'";
+            string query = "SELECT * FROM Comuni WHERE nomeComune LIKE '%Bar%'";
             DataSet dataSet = db.Query(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();

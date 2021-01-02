@@ -1,9 +1,9 @@
 namespace KampusStudioProto.Models
 {
-    enum RipartizioneGeografica
+    public enum RipartizioneGeografica
     {
-        NordOvest,
         NordEst,
+        NordOvest,
         Centro,
         Sud,
         Isole
