@@ -16,7 +16,9 @@ namespace KampusStudioProto.Controllers
 
         public IActionResult Dettaglio(string id)
         {
-            return View();
+            var comuneService = new ComuneService();
+            ComuneViewModel comune = comuneService.GetComune(id);
+            return View(comune);
         }
     }
 }
