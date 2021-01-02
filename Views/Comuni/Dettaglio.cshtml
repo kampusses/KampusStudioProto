@@ -1,24 +1,24 @@
 @model ComuneViewModel
 <div class="row">
     <div class="col-md-12">
-        <h1>Margherita di Savoia <a href="#"><i title="Provincia" class="fab fa-product-hunt"></i></a> <a href="#"><i title="Capoluogo di regione" class="fas fa-registered"></i></a></h1>
+        <h1>@Model.NomeComune @if(@Model.FlagProvincia){<a href="#"><i title="Provincia" class="fab fa-product-hunt"></i></a>} @if(@Model.FlagRegione){<a href="#"><i title="Capoluogo di regione" class="fas fa-registered"></i></a>}</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-md-9">
-        <h2>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="xxx">Puglia</a></h2>
-        <h2>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="yyy">Barletta-Andria-Trani (BT)</a></h2>
-        <h2>Cap: <a asp-cpntroller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="PerCap">76016</a></h2>
-        <h2>Prefisso: <a asp-cpntroller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="codPrefisso">0883</a></h2>
+        <h2>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="@Model.Regione.CodiceRegione">@Model.Regione.NomeRegione</a></h2>
+        <h2>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="@Model.Provincia.CodiceProvincia">@Model.Provincia.NomeProvincia (@Model.Provincia.SiglaProvincia)</a></h2>
+        <h2>Cap: <a asp-cpntroller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="PerCap">@Model.Cap</a></h2>
+        <h2>Prefisso: <a asp-cpntroller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="codPrefisso">@Model.Prefisso</a></h2>
         <br />
-        <h2>Abitanti: 11.000</h2>
-        <h2>Codice catastale: E946</h2>
-        <h2>Codice ISTAT: 115447</h2>
+        <h2>Abitanti: @Model.Abitanti.ToString("###,###")</h2>
+        <h2>Codice catastale: @Model.CodiceCatastale</h2>
+        <h2>Codice ISTAT: @Model.CodiceIstat</h2>
         <br />
         <a class="btn btn-outline-primary" onClick="history.go(-1);return true;"><i class="fas fa-chevron-left"></i> Torna indietro</a>
     </div>
     <div class="col-md-3">
-        <img src="~/Italia/Sud.jpg" width="200">
-        <h2>Ripartizione geografica<br />Sud</h2>
+        <img src="~/Italia/@(Model.Regione.RipartizioneGeografica).jpg" width="200">
+        <h2>Ripartizione geografica<br />@Model.Regione.RipartizioneGeografica</h2>
     </div>
 </div>

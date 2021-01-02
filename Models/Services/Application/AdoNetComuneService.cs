@@ -15,12 +15,44 @@ namespace KampusStudioProto.Models.Services.Application
         }
         public ComuneViewModel GetComune(string id)
         {
-            throw new System.NotImplementedException();
+            String query = $"SELECT * FROM comuni WHERE codiceCatastale=\"{id}\"";
+            DataSet dataSet = db.Query(query);
+            var comuneTable = dataSet.Tables[0];
+            if (comuneTable.Rows.Count != 1)
+            {
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita solo una riga della tabella {id}");
+            }
+            var comuneRow = comuneTable.Rows[0];
+            var comuneViewModel = ComuneViewModel.FromDataRow(comuneRow);
+
+            String queryReg = $"SELECT * FROM regioni WHERE codiceRegione={comuneRow["codiceRegione"]}";
+            DataSet dataSetReg = db.Query(queryReg);
+            var regioneTable = dataSetReg.Tables[0];
+            if (regioneTable.Rows.Count != 1)
+            {
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita solo una riga della tabella {comuneRow["regione"]}");
+            }
+            var regioneRow = regioneTable.Rows[0];
+            var regioneViewModel = RegioneViewModel.FromDataRow(regioneRow);
+            comuneViewModel.Regione = (RegioneViewModel) regioneViewModel;
+
+            String queryPro = $"SELECT * FROM province WHERE codiceProvincia={comuneRow["codiceProvincia"]}";
+            DataSet dataSetPro = db.Query(queryPro);
+            var provinciaTable = dataSetPro.Tables[0];
+            if (provinciaTable.Rows.Count != 1)
+            {
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita solo una riga della tabella {comuneRow["provincia"]}");
+            }
+            var provinciaRow = provinciaTable.Rows[0];
+            var provinciaViewModel = ProvinciaViewModel.FromDataRow(provinciaRow);
+            comuneViewModel.Provincia = (ProvinciaViewModel) provinciaViewModel;
+
+            return comuneViewModel;
         }
 
         public List<ComuneViewModel> GetComuni()
         {
-            string query = "SELECT * FROM Comuni WHERE nomeComune LIKE '%Bar%'";
+            string query = "SELECT * FROM Comuni WHERE nomeComune LIKE '%Marg%'";
             DataSet dataSet = db.Query(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();
