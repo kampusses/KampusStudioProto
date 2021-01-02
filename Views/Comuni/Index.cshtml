@@ -22,13 +22,14 @@
         <a href="#"><img src="~/Italia/@(comune.Regione.RipartizioneGeografica).jpg" width="50" title="Sud"></a>
     </div>
     <div class="col-md-4">
-        <h2><a asp-action="Dettaglio" asp-route-id="@comune.CodiceCatastale">@comune.NomeComune</a> <a href="#"><i title="Provincia" class="fab fa-product-hunt"></i></a> <a href="#"><i title="Capoluogo di regione" class="fas fa-registered"></i></a></h2>
-        <abitanti>Abitanti: @comune.Abitanti</abitanti>
+        <h2><a asp-action="Dettaglio" asp-route-id="@comune.CodiceCatastale">@comune.NomeComune</a> @if(@comune.FlagProvincia){<a href="#"><i title="Provincia" class="fab fa-product-hunt"></i></a>} @if(@comune.FlagRegione){<a href="#"><i title="Capoluogo di regione" class="fas fa-registered"></i></a>}</h2>
+        <abitanti>Abitanti: @comune.Abitanti.ToString("###,###")</abitanti>
     </div>
     <div class="col-md-3">
         <regione>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="CodiceRegione">@comune.Regione.NomeRegione</a></regione><br />
         <provincia>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="CodiceProvincia">@comune.Provincia.NomeProvincia</a></provincia>
     </div>
+
     <div class="col-md-2">
         <cap>CAP: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="76016">@comune.Cap</a></cap><br />
         <prefisso>Prefisso: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="0883">@comune.Prefisso</a></prefisso>
