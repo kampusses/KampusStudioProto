@@ -1,3 +1,4 @@
+@model List<ComuneViewModel>
 <div class="row">
     <div class="col-md-7">
         <h1>Comuni italiani</h1>
@@ -14,23 +15,23 @@
 </div>
 <hr />
 
-@for (int i= 0; i<10; i++)
+@foreach(ComuneViewModel comune in Model)
 {
 <div class="row">
     <div class="col-md-1">
         <a href="#"><img src="~/Italia/Sud.jpg" width="50" title="Sud"></a>
     </div>
     <div class="col-md-4">
-        <h2><a asp-action="Dettaglio" asp-route-id="E946">Margherita di Savoia</a> <a href="#"><i title="Provincia" class="fab fa-product-hunt"></i></a> <a href="#"><i title="Capoluogo di regione" class="fas fa-registered"></i></a></h2>
-        <abitanti>Abitanti: 11.000</abitanti>
+        <h2><a asp-action="Dettaglio" asp-route-id="E946">@comune.Comune</a> <a href="#"><i title="Provincia" class="fab fa-product-hunt"></i></a> <a href="#"><i title="Capoluogo di regione" class="fas fa-registered"></i></a></h2>
+        <abitanti>Abitanti: @comune.Abitanti</abitanti>
     </div>
     <div class="col-md-3">
-        <regione>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="CodiceRegione">Puglia</a></regione><br />
-        <provincia>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="CodiceProvincia">Barletta-Andria-Trani (BT)</a></provincia>
+        <regione>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="CodiceRegione">@comune.Regione</a></regione><br />
+        <provincia>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="CodiceProvincia">@comune.Provincia</a></provincia>
     </div>
     <div class="col-md-2">
-        <cap>CAP: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="76016">76016</a></cap><br />
-        <prefisso>Prefisso: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="0883">0883</a></prefisso>
+        <cap>CAP: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="76016">@comune.Cap</a></cap><br />
+        <prefisso>Prefisso: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="0883">@comune.Prefisso</a></prefisso>
     </div>
     <div class="col-md-2">
         <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="E946">Visualizza</a>

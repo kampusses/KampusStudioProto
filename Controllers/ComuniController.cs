@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using KampusStudioProto.Models.Services.Application;
+using KampusStudioProto.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KampusStudioProto.Controllers
@@ -6,7 +9,9 @@ namespace KampusStudioProto.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var comuneService = new ComuneService();
+            List<ComuneViewModel> comuni = comuneService.GetComuni();
+            return View(comuni);
         }
 
         public IActionResult Dettaglio(string id)
