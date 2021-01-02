@@ -4,7 +4,7 @@ using KampusStudioProto.Models.ViewModels;
 
 namespace KampusStudioProto.Models.Services.Application
 {
-    public class ComuneService
+    public class ComuneService : IComuneService
     {
         public List<ComuneViewModel> GetComuni()
         {
