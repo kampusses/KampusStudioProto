@@ -1,4 +1,5 @@
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace KampusStudioProto.Models.Services.Infrastructure
 {
@@ -6,7 +7,22 @@ namespace KampusStudioProto.Models.Services.Infrastructure
     {
         public DataSet Query(string query)
         {
-            throw new System.NotImplementedException();
+            using(var conn = new MySqlConnection("Server=localhost;Database=kampus;Uid=root;Pwd=;"))
+            {
+                conn.Open();
+                using(var cmd = new MySqlCommand(query, conn))
+                {
+                    using(var reader = cmd.ExecuteReader())
+                    {
+                        var dataSet = new DataSet();
+                        dataSet.EnforceConstraints = false;
+                        var dataTable = new DataTable();
+                        dataSet.Tables.Add(dataTable);
+                        dataTable.Load(reader);
+                        return dataSet;
+                    }
+                }
+            }
         }
     }
 }
