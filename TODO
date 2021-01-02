@@ -1,4 +1,2 @@
-Nella view dettaglio del controller comuni, inserire il comune visualizzato nel title della pagine
-Nella view index del controller home, inserire la versione del software visualizzata nel title della pagina
 In generale in ogni title di pagina inserire un titolo appropriato
 Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive

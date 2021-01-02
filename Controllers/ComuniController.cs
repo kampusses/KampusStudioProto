@@ -11,6 +11,7 @@ namespace KampusStudioProto.Controllers
         {
             var comuneService = new ComuneService();
             List<ComuneViewModel> comuni = comuneService.GetComuni();
+            ViewBag.Titolo = "Comuni italiani";
             return View(comuni);
         }
 
@@ -18,6 +19,7 @@ namespace KampusStudioProto.Controllers
         {
             var comuneService = new ComuneService();
             ComuneViewModel comune = comuneService.GetComune(id);
+            ViewBag.Titolo = "Comune di " + comune.NomeComune;
             return View(comune);
         }
     }
