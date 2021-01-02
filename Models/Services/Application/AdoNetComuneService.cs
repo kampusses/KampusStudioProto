@@ -15,7 +15,7 @@ namespace KampusStudioProto.Models.Services.Application
         }
         public ComuneViewModel GetComune(string id)
         {
-            String query = $"SELECT * FROM comuni WHERE codiceCatastale=\"{id}\"";
+            FormattableString query = $"SELECT * FROM comuni WHERE codiceCatastale={id}";
             DataSet dataSet = db.Query(query);
             var comuneTable = dataSet.Tables[0];
             if (comuneTable.Rows.Count != 1)
@@ -25,7 +25,7 @@ namespace KampusStudioProto.Models.Services.Application
             var comuneRow = comuneTable.Rows[0];
             var comuneViewModel = ComuneViewModel.FromDataRow(comuneRow);
 
-            String queryReg = $"SELECT * FROM regioni WHERE codiceRegione={comuneRow["codiceRegione"]}";
+            FormattableString queryReg = $"SELECT * FROM regioni WHERE codiceRegione={comuneRow["codiceRegione"]}";
             DataSet dataSetReg = db.Query(queryReg);
             var regioneTable = dataSetReg.Tables[0];
             if (regioneTable.Rows.Count != 1)
@@ -36,7 +36,7 @@ namespace KampusStudioProto.Models.Services.Application
             var regioneViewModel = RegioneViewModel.FromDataRow(regioneRow);
             comuneViewModel.Regione = (RegioneViewModel) regioneViewModel;
 
-            String queryPro = $"SELECT * FROM province WHERE codiceProvincia={comuneRow["codiceProvincia"]}";
+            FormattableString queryPro = $"SELECT * FROM province WHERE codiceProvincia={comuneRow["codiceProvincia"]}";
             DataSet dataSetPro = db.Query(queryPro);
             var provinciaTable = dataSetPro.Tables[0];
             if (provinciaTable.Rows.Count != 1)
@@ -52,14 +52,14 @@ namespace KampusStudioProto.Models.Services.Application
 
         public List<ComuneViewModel> GetComuni()
         {
-            string query = "SELECT * FROM Comuni WHERE nomeComune LIKE '%Bar%'";
+            FormattableString query = $"SELECT * FROM Comuni WHERE nomeComune LIKE '%Bar%'";
             DataSet dataSet = db.Query(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();
             foreach(DataRow comuneRow in dataTable.Rows)
             {
                 ComuneViewModel comune = ComuneViewModel.FromDataRow(comuneRow);
-                String queryReg = $"SELECT * FROM Regioni WHERE codiceRegione={comuneRow["codiceRegione"]}";
+                FormattableString queryReg = $"SELECT * FROM Regioni WHERE codiceRegione={comuneRow["codiceRegione"]}";
                 DataSet dataSetReg = db.Query(queryReg);
                 var regioneTable = dataSetReg.Tables[0];
                 if (regioneTable.Rows.Count != 1)
@@ -70,7 +70,7 @@ namespace KampusStudioProto.Models.Services.Application
                 var regioneViewModel = RegioneViewModel.FromDataRow(regioneRow);
                 comune.Regione = (RegioneViewModel) regioneViewModel;
 
-                String queryPro = $"SELECT * FROM Province WHERE codiceProvincia={comuneRow["codiceProvincia"]}";
+                FormattableString queryPro = $"SELECT * FROM Province WHERE codiceProvincia={comuneRow["codiceProvincia"]}";
                 DataSet dataSetPro = db.Query(queryPro);
                 var provinciaTable = dataSetPro.Tables[0];
                 if (provinciaTable.Rows.Count != 1)
