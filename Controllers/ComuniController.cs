@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using KampusStudioProto.Models.Services.Application;
 using KampusStudioProto.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,16 @@ namespace KampusStudioProto.Controllers
         {
             this.comuneService = comuneService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<ComuneViewModel> comuni = comuneService.GetComuni();
+            List<ComuneViewModel> comuni = await comuneService.GetComuniAsync();
             ViewBag.Titolo = "Comuni italiani";
             return View(comuni);
         }
 
-        public IActionResult Dettaglio(string id)
+        public async Task<IActionResult> Dettaglio(string id)
         {
-            ComuneViewModel comune = comuneService.GetComune(id);
+            ComuneViewModel comune = await comuneService.GetComuneAsync(id);
             ViewBag.Titolo = "Comune di " + comune.NomeComune;
             return View(comune);
         }

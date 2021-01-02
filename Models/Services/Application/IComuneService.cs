@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using KampusStudioProto.Models.ViewModels;
 
 namespace KampusStudioProto.Models.Services.Application
 {
     public interface IComuneService
     {
-         List<ComuneViewModel> GetComuni();
-         ComuneViewModel GetComune(string id);
+         Task<List<ComuneViewModel>> GetComuniAsync();
+         Task<ComuneViewModel> GetComuneAsync(string id);
     }
 }
