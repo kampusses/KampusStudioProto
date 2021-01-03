@@ -1,17 +1,30 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KampusStudioProto.Models.Services.Application;
+using KampusStudioProto.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KampusStudioProto.Controllers
 {
     public class ProvinceController : Controller
     {
-        public IActionResult Index()
+        private readonly IProvinciaService provinciaService;
+        public ProvinceController(IProvinciaService provinciaService)
         {
-            return Content("Elenco province italiane");
+            this.provinciaService = provinciaService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            List<ProvinciaViewModel> province = await provinciaService.GetProvinceAsync();
+            ViewBag.Titolo = "Province italiane";
+            return View(province);
         }
 
-        public IActionResult Dettaglio(string id)
+        public async Task<IActionResult> Dettaglio(int id)
         {
-            return View();
+            ProvinciaViewModel provincia = await provinciaService.GetProvinciaAsync(id);
+            ViewBag.Titolo = "Provincia di " + provincia.NomeProvincia;
+            return View(provincia);
         }
     }
 }

@@ -1,0 +1,32 @@
+@model List<ProvinciaViewModel>
+<div class="row">
+    <div class="col-md-7">
+        <h1>Province italiane</h1>
+    </div>
+    <div class="col-md-5 d-flex align-items-end">
+        <h1>Ricerca</h1>
+    </div>
+</div>
+<hr />
+
+@foreach(ProvinciaViewModel provincia in @Model)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <h2><a asp-action="Dettaglio" asp-route-id="@provincia.CodiceProvincia">@provincia.NomeProvincia (@provincia.SiglaProvincia)</a></h2>
+        </div>
+        <div class="col-md-3">
+            Abitanti:<br />Abitanti
+        </div>
+        <div class="col-md-2">
+            Nr. comuni:<br />Numero
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="@provincia.CodiceProvincia">Vedi Provincia</a>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary" href="#">Seleziona Comuni</a>
+        </div>
+    </div>
+    <hr />
+}

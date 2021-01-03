@@ -26,8 +26,8 @@
         <abitanti>Abitanti: @comune.Abitanti.ToString("###,###")</abitanti>
     </div>
     <div class="col-md-3">
-        <regione>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="CodiceRegione">@comune.Regione.NomeRegione</a></regione><br />
-        <provincia>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="CodiceProvincia">@comune.Provincia.NomeProvincia</a></provincia>
+        <regione>Regione: <a asp-controller = "Regioni" asp-action="Dettaglio" asp-route-id="@comune.Regione.CodiceRegione">@comune.Regione.NomeRegione</a></regione><br />
+        <provincia>Provincia: <a asp-controller = "Province" asp-action="Dettaglio" asp-route-id="@comune.Provincia.CodiceProvincia">@comune.Provincia.NomeProvincia</a></provincia>
     </div>
 
     <div class="col-md-2">

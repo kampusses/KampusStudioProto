@@ -1,0 +1,12 @@
+@model ProvinciaViewModel
+<div class="row">
+    <div class="col-md-12">
+        <h1>@Model.NomeProvincia (@Model.SiglaProvincia)</h1>
+        <h2>Totale abitanti: xxxxx</h2>
+        <h2>Totale comuni: <a href="" title="vedi comuni">xxxxx</a></h2>
+        <br />
+        <h3>Regione: <a title="vedi regione" asp-controller="Regioni" asp-action="Dettaglio" asp-route-id="@Model.Regione.CodiceRegione">@Model.Regione.NomeRegione</a></h3>
+        <br />
+        <a class="btn btn-outline-primary" onClick="history.go(-1);return true;"><i class="fas fa-chevron-left"></i> Torna indietro</a>
+    </div>
+</div>

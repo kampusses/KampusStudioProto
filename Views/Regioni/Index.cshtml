@@ -1,0 +1,32 @@
+@model List<RegioneViewModel>
+<div class="row">
+    <div class="col-md-7">
+        <h1>Regioni italiane</h1>
+    </div>
+    <div class="col-md-5 d-flex align-items-end">
+        <h1>Ricerca</h1>
+    </div>
+</div>
+<hr />
+@foreach(RegioneViewModel regione in Model)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <h2><a asp-action="Dettaglio" asp-route-id="@regione.CodiceRegione">@regione.NomeRegione</a></h2>
+        </div>
+        <div class="col-md-3">
+            Capoluogo di regione:<br /><a asp-controller="Comuni" asp-action="Dettaglio" asp-route-id="@regione.Capoluogo.CodiceCatastale">@regione.Capoluogo.NomeComune</a>
+        </div>
+        <div class="col-md-2">
+            Abitanti: xxxx<br />
+            Numero comuni: <a href="" title="Vedi comuni">1250</a>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="@regione.CodiceRegione">Vedi Regione</a>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary" href="#">Seleziona Comuni</a>
+        </div>
+    </div>
+    <hr />
+}

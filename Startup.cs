@@ -20,6 +20,8 @@ namespace KampusStudioProto
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IComuneService, AdoNetComuneService>();
+            services.AddTransient<IProvinciaService, AdoNetProvinciaService>();
+            services.AddTransient<IRegioneService, AdoNetRegioneService>();
             services.AddTransient<IDatabaseAccessor, MySqlDatabaseAccessor>();
         }
 

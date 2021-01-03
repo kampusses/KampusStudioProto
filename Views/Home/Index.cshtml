@@ -1,6 +1,25 @@
-<h1>Sono la view relativa all'action index del controller Home</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat culpa facere illum corporis est! Doloremque quaerat neque eius! Modi labore quas aliquid unde debitis earum quam facere ut veritatis odit.</p>
-<p>Distinctio mollitia aperiam molestiae obcaecati perspiciatis magnam, error nihil fuga deserunt impedit nobis reiciendis eveniet, harum ducimus nemo, laborum velit quidem sed ipsam ratione reprehenderit vel voluptatem saepe. Officiis, provident!</p>
-<p>Laborum modi alias ipsa at adipisci assumenda iste non quo, consectetur exercitationem fuga? Reiciendis repudiandae nostrum dolorem quo commodi consequatur aliquam nihil beatae quia esse, tenetur praesentium hic consequuntur rerum?</p>
-<p>Fugiat expedita repudiandae quis, veniam, temporibus dolore mollitia illo eveniet cum accusamus error sed neque cupiditate aut natus! Quibusdam deleniti consequatur similique officiis ad? Dolores tempore velit sed laborum voluptate.</p>
-<p>Voluptatem laborum exercitationem autem placeat, quisquam molestiae fugit mollitia architecto. Sapiente, cumque? Amet sequi laudantium sint suscipit laborum atque temporibus recusandae maxime unde! Vel modi dicta quas saepe cum ratione?</p>
+<div class="jumbotron">
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 login-form-1">
+                <h3>@ViewBag.Titolo</h3>
+                <h5>Effettua il login</h5>
+                <form asp-controller="Comuni" asp-action="Index" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Userid *" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password *" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Login" />
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="ForgetPwd">Hai dimenticato la password?</a>
+                    </div>
+                </form>
+            </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
