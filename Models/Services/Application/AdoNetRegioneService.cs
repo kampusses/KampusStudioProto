@@ -26,7 +26,7 @@ namespace KampusStudioProto.Models.Services.Application
             var regioneRow = regioneTable.Rows[0];
             var regioneViewModel = RegioneViewModel.FromDataRow(regioneRow);
 
-            FormattableString queryReg = $"SELECT * FROM comuni WHERE codiceCatastale={regioneRow["codiceCapoluogo"]}";
+            FormattableString queryReg = $"SELECT * FROM comuni WHERE codiceCatastale={regioneRow["codiceCapoluogo"]}; SELECT abitanti FROM Comuni WHERE codiceRegione={regioneRow["codiceRegione"]}";
             DataSet dataSetCom = await db.QueryAsync(queryReg);
             var comuneTable = dataSetCom.Tables[0];
             if (comuneTable.Rows.Count != 1)
@@ -36,20 +36,26 @@ namespace KampusStudioProto.Models.Services.Application
             var comuneRow = comuneTable.Rows[0];
             var comuneViewModel = ComuneViewModel.FromDataRow(comuneRow);
             regioneViewModel.Capoluogo = (ComuneViewModel) comuneViewModel;
-
+            regioneViewModel.NComuni = dataSetCom.Tables[1].Rows.Count;
+            int abitanti = 0;
+            foreach(DataRow riga in dataSetCom.Tables[1].Rows)
+            {
+                abitanti = abitanti + (int) riga["Abitanti"];
+            }
+            regioneViewModel.Abitanti = abitanti;
             return regioneViewModel;
         }
 
         public async Task<List<RegioneViewModel>> GetRegioniAsync()
         {
-            FormattableString query = $"SELECT * FROM Regioni";
+            FormattableString query = $"SELECT * FROM Regioni ORDER BY nomeRegione";
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var regioneList = new List<RegioneViewModel>();
             foreach(DataRow regioneRow in dataTable.Rows)
             {
                 RegioneViewModel regione = RegioneViewModel.FromDataRow(regioneRow);
-                FormattableString queryCom = $"SELECT * FROM Comuni WHERE codiceCatastale={regioneRow["codiceCapoluogo"]}";
+                FormattableString queryCom = $"SELECT * FROM Comuni WHERE codiceCatastale={regioneRow["codiceCapoluogo"]}; SELECT abitanti FROM Comuni WHERE codiceRegione={regioneRow["codiceRegione"]}";
                 DataSet dataSetCom = await db.QueryAsync(queryCom);
                 var comuneTable = dataSetCom.Tables[0];
                 if (comuneTable.Rows.Count != 1)
@@ -59,6 +65,13 @@ namespace KampusStudioProto.Models.Services.Application
                 var comuneRow = comuneTable.Rows[0];
                 var comuneViewModel = ComuneViewModel.FromDataRow(comuneRow);
                 regione.Capoluogo = (ComuneViewModel) comuneViewModel;
+                regione.NComuni = dataSetCom.Tables[1].Rows.Count;
+                int abitanti = 0;
+                foreach(DataRow riga in dataSetCom.Tables[1].Rows)
+                {
+                    abitanti = abitanti + (int) riga["Abitanti"];
+                }
+                regione.Abitanti = abitanti;
                 regioneList.Add(regione);
             }
             return regioneList;
