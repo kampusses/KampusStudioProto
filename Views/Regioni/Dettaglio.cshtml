@@ -7,9 +7,9 @@
         <h2>Totale abitanti: @Model.Abitanti.ToString("#,###,###")</h2>
         <br />
         <h3>Elenco Province:</h3>
-        @for(int i=0;i<5;i++)
+        @foreach(ProvinciaViewModel provincia in Model.Province)
         {
-            <h2><a href="">Provincia @i</a></h2>
+            <h2><a asp-controller="Province" asp-action="Dettaglio" asp-route-id="@provincia.CodiceProvincia">@provincia.NomeProvincia (@provincia.SiglaProvincia)</a></h2>
         }
         <br />
         <a class="btn btn-outline-primary" onClick="history.go(-1);return true;"><i class="fas fa-chevron-left"></i> Torna indietro</a>

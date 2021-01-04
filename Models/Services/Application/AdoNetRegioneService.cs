@@ -43,6 +43,21 @@ namespace KampusStudioProto.Models.Services.Application
                 abitanti = abitanti + (int) riga["Abitanti"];
             }
             regioneViewModel.Abitanti = abitanti;
+
+            FormattableString queryPro = $"SELECT * FROM province WHERE codiceRegione={regioneRow["codiceRegione"]} ORDER BY nomeProvincia";
+            DataSet dataSetPro = await db.QueryAsync(queryPro);
+            var provinciaTable = dataSetPro.Tables[0];
+            if (provinciaTable.Rows.Count < 1)
+            {
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita almeno una riga della tabella {regioneRow["regione"]}");
+            }
+            var provinciaList = new List<ProvinciaViewModel>();
+            foreach(DataRow proviciaRow in provinciaTable.Rows)
+            {
+                var provinciaViewModel = ProvinciaViewModel.FromDataRow(proviciaRow);
+                provinciaList.Add(provinciaViewModel);
+            }
+            regioneViewModel.Province = provinciaList;
             return regioneViewModel;
         }
 

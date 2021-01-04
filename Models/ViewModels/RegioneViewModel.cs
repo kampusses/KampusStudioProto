@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace KampusStudioProto.Models.ViewModels
@@ -11,6 +12,7 @@ namespace KampusStudioProto.Models.ViewModels
         public ComuneViewModel Capoluogo {get; set;}
         public int NComuni {get; set;}
         public int Abitanti {get; set;}
+        public List<ProvinciaViewModel> Province  {get; set;}
         public static RegioneViewModel FromDataRow(DataRow comuneRow)
         {
             var regioneViewModel = new RegioneViewModel
@@ -20,7 +22,8 @@ namespace KampusStudioProto.Models.ViewModels
                 RipartizioneGeografica = (RipartizioneGeografica) comuneRow["ripartizioneGeografica"] - 1,
                 Capoluogo = null,
                 NComuni = 0,
-                Abitanti = 0
+                Abitanti = 0,
+                Province = null
             };
             return regioneViewModel;
         }
