@@ -22,6 +22,7 @@ namespace KampusStudioProto
             services.AddTransient<IComuneService, AdoNetComuneService>();
             services.AddTransient<IProvinciaService, AdoNetProvinciaService>();
             services.AddTransient<IRegioneService, AdoNetRegioneService>();
+            services.AddTransient<INazioneService, AdoNetNazioneService>();
             services.AddTransient<IDatabaseAccessor, MySqlDatabaseAccessor>();
         }
 

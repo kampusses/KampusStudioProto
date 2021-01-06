@@ -1,0 +1,34 @@
+@model List<NazioneViewModel>
+<div class="row">
+    <div class="col-md-7">
+        <h1>Stati esteri</h1>
+    </div>
+    <div class="col-md-5 d-flex align-items-end">
+        <h1>Ricerca</h1>
+    </div>
+</div>
+
+<hr />
+
+@foreach(NazioneViewModel nazione in Model)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <h2><a asp-action="Dettaglio" asp-route-id="@nazione.Codice3">@nazione.DenominazioneIT</a></h2> 
+            <h6>(@nazione.DenominazioneEN)</h6>
+        </div>
+        <div class="col-md-3">
+            @nazione.Continente<br />(@nazione.Area)
+        </div>
+        <div class="col-md-3">Codice Belfiore: @nazione.Belfiore<br />
+        Stato padre: <a asp-action="Dettaglio" asp-route-id="@nazione.Codice3Padre">@nazione.Codice3Padre</a>
+        </div>
+        <div class="col-md-1">
+            @nazione.Codice3<br />@nazione.Codice2
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="@nazione.Codice3">Vedi Nazione</a>
+        </div>
+    </div>
+    <hr />
+}

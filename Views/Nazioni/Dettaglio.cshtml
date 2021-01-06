@@ -1,0 +1,14 @@
+@model NazioneViewModel
+<div class="row">
+    <div class="col-md-12">
+        <h1>@Model.DenominazioneIT (@Model.DenominazioneEN)</h1>
+        <h2>Continente: @Model.Continente</h2>
+        <h2>Area geografica: @Model.Area</h2>
+        <h2>Codici stato: @Model.Codice3 - @Model.Codice2</h2>
+        <h2>Codice Belfiore: @Model.Belfiore</h2>
+        <h2>Stato padre: <a asp-controller="Nazioni" asp-action="Dettaglio" asp-route-id="@Model.Codice3Padre">@Model.Codice3Padre</a></h2>
+        <br /><br />
+ 
+        <a class="btn btn-outline-primary" onClick="history.go(-1);return true;"><i class="fas fa-chevron-left"></i> Torna indietro</a>
+    </div>
+</div>

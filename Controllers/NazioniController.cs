@@ -1,17 +1,30 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KampusStudioProto.Models.Services.Application;
+using KampusStudioProto.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KampusStudioProto.Controllers
 {
     public class NazioniController : Controller
     {
-        public IActionResult Index()
+        private readonly INazioneService nazioneService;
+        public NazioniController(INazioneService nazioneService)
         {
-            return Content("Elenco nazioni estere");
+            this.nazioneService = nazioneService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            List<NazioneViewModel> nazioni = await nazioneService.GetNazioniAsync();
+            ViewBag.Titolo = "Stati esteri";
+            return View(nazioni);
         }
 
-        public IActionResult Dettaglio(string id)
+        public async Task <IActionResult> Dettaglio(string id)
         {
-            return View();
+            NazioneViewModel nazione = await nazioneService.GetNazioneAsync(id);
+            ViewBag.Titolo = "Stato: " + nazione.DenominazioneIT;
+            return View(nazione);
         }
     }
 }
