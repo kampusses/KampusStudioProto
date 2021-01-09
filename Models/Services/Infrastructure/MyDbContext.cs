@@ -18,10 +18,10 @@ namespace KampusStudioProto.Models.Services.Infrastructure
         {
         }
 
-        public virtual DbSet<Comuni> Comunis { get; set; }
-        public virtual DbSet<Nazioni> Nazionis { get; set; }
-        public virtual DbSet<Province> Provinces { get; set; }
-        public virtual DbSet<Regioni> Regionis { get; set; }
+        public virtual DbSet<Comune> Comuni { get; set; }
+        public virtual DbSet<Nazione> Nazioni { get; set; }
+        public virtual DbSet<Provincia> Province { get; set; }
+        public virtual DbSet<Regione> Regioni { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,7 +34,7 @@ namespace KampusStudioProto.Models.Services.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Comuni>(entity =>
+            modelBuilder.Entity<Comune>(entity =>
             {
                 entity.HasKey(e => e.CodiceCatastale)
                     .HasName("PRIMARY");
@@ -110,20 +110,20 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
-                entity.HasOne(d => d.CodiceProvinciaNavigation)
-                    .WithMany(p => p.Comunis)
+                entity.HasOne(d => d.Provincia)
+                    .WithMany(p => p.Comuni)
                     .HasForeignKey(d => d.CodiceProvincia)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("comuni_ibfk_1");
 
-                entity.HasOne(d => d.CodiceRegioneNavigation)
-                    .WithMany(p => p.Comunis)
+                entity.HasOne(d => d.Regione)
+                    .WithMany(p => p.Comuni)
                     .HasForeignKey(d => d.CodiceRegione)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("comuni_ibfk_2");
             });
 
-            modelBuilder.Entity<Nazioni>(entity =>
+            modelBuilder.Entity<Nazione>(entity =>
             {
                 entity.HasKey(e => e.Codice3)
                     .HasName("PRIMARY");
@@ -175,7 +175,7 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasCollation("latin1_swedish_ci");
             });
 
-            modelBuilder.Entity<Province>(entity =>
+            modelBuilder.Entity<Provincia>(entity =>
             {
                 entity.HasKey(e => e.CodiceProvincia)
                     .HasName("PRIMARY");
@@ -207,14 +207,14 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
-                entity.HasOne(d => d.CodiceRegioneNavigation)
-                    .WithMany(p => p.Provinces)
+                entity.HasOne(d => d.Regione)
+                    .WithMany(p => p.Province)
                     .HasForeignKey(d => d.CodiceRegione)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("province_ibfk_1");
             });
 
-            modelBuilder.Entity<Regioni>(entity =>
+            modelBuilder.Entity<Regione>(entity =>
             {
                 entity.HasKey(e => e.CodiceRegione)
                     .HasName("PRIMARY");
@@ -250,12 +250,13 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasColumnType("int(11)")
                     .HasColumnName("ripartizioneGeografica")
                     .HasComment("Ripartizione geografica");
-
+                /*
                 entity.HasOne(d => d.CodiceCapoluogoNavigation)
-                    .WithMany(p => p.Regionis)
+                    .WithMany(p => p.Regioni)
                     .HasForeignKey(d => d.CodiceCapoluogo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("regioni_ibfk_1");
+                */
             });
 
             OnModelCreatingPartial(modelBuilder);

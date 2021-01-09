@@ -5,19 +5,19 @@ using System.Collections.Generic;
 
 namespace KampusStudioProto.Models.Entities
 {
-    public partial class Province
+    public partial class Provincia
     {
-        public Province()
+        public Provincia()
         {
-            Comunis = new HashSet<Comuni>();
+            Comuni = new HashSet<Comune>();
         }
 
-        public int CodiceProvincia { get; set; }
-        public int CodiceRegione { get; set; }
-        public string NomeProvincia { get; set; }
-        public string SiglaProvincia { get; set; }
+        public int CodiceProvincia { get; private set; }
+        public int CodiceRegione { get; private set; }
+        public string NomeProvincia { get; private set; }
+        public string SiglaProvincia { get; private set; }
 
-        public virtual Regioni CodiceRegioneNavigation { get; set; }
-        public virtual ICollection<Comuni> Comunis { get; set; }
+        public virtual Regione Regione { get; private set; }
+        public virtual ICollection<Comune> Comuni { get; private set; }
     }
 }

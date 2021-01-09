@@ -5,21 +5,21 @@ using System.Collections.Generic;
 
 namespace KampusStudioProto.Models.Entities
 {
-    public partial class Regioni
+    public partial class Regione
     {
-        public Regioni()
+        public Regione()
         {
-            Comunis = new HashSet<Comuni>();
-            Provinces = new HashSet<Province>();
+            Comuni = new HashSet<Comune>();
+            Province = new HashSet<Provincia>();
         }
 
-        public int CodiceRegione { get; set; }
-        public string NomeRegione { get; set; }
-        public int RipartizioneGeografica { get; set; }
-        public string CodiceCapoluogo { get; set; }
+        public int CodiceRegione { get; private set; }
+        public string NomeRegione { get; private set; }
+        public int RipartizioneGeografica { get; private set; }
+        public string CodiceCapoluogo { get; private set; }
 
-        public virtual Comuni CodiceCapoluogoNavigation { get; set; }
-        public virtual ICollection<Comuni> Comunis { get; set; }
-        public virtual ICollection<Province> Provinces { get; set; }
+        public virtual Comune Capoluogo { get; private set; }
+        public virtual ICollection<Comune> Comuni { get; private set; }
+        public virtual ICollection<Provincia> Province { get; private set; }
     }
 }

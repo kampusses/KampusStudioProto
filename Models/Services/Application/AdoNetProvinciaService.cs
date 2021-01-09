@@ -65,7 +65,7 @@ namespace KampusStudioProto.Models.Services.Application
 
         public async Task<List<ProvinciaViewModel>> GetProvinceAsync()
         {
-            FormattableString query = $"SELECT * FROM Province";
+            FormattableString query = $"SELECT * FROM Province ORDER BY nomeProvincia";
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var provinciaList = new List<ProvinciaViewModel>();
