@@ -54,7 +54,7 @@ namespace KampusStudioProto.Models.Services.Application
 
         async Task<List<ComuneViewModel>> IComuneService.GetComuniAsync()
         {
-            List<ComuneViewModel> comuni = await dbContext.Comuni.Select(comune =>
+            IQueryable<ComuneViewModel> queryLinq = dbContext.Comuni.Select(comune =>
             new ComuneViewModel {
                 CodiceCatastale = comune.CodiceCatastale,
                 NomeComune = comune.NomeComune,
@@ -81,8 +81,9 @@ namespace KampusStudioProto.Models.Services.Application
                 Cap = comune.Cap,
                 Prefisso = comune.Prefisso,
                 CodiceIstat = comune.CodiceIstat
-            })
-            .ToListAsync();
+            });
+            
+            List<ComuneViewModel> comuni = await queryLinq.ToListAsync();
             return comuni;
         }
     }
