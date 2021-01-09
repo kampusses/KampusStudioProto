@@ -25,11 +25,13 @@ namespace KampusStudioProto
                              #endif
                              ;
 
-            services.AddTransient<IComuneService, AdoNetComuneService>();
+            //services.AddTransient<IComuneService, AdoNetComuneService>();
+            services.AddTransient<IComuneService, EfCoreComuneService>();
             services.AddTransient<IProvinciaService, AdoNetProvinciaService>();
             services.AddTransient<IRegioneService, AdoNetRegioneService>();
             services.AddTransient<INazioneService, AdoNetNazioneService>();
             services.AddTransient<IDatabaseAccessor, MySqlDatabaseAccessor>();
+            services.AddDbContext<MyDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
