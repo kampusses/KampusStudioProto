@@ -19,6 +19,7 @@ namespace KampusStudioProto.Models.Services.Application
         async Task<ComuneViewModel> IComuneService.GetComuneAsync(string id)
         {
             ComuneViewModel viewModel = await dbContext.Comuni
+                .AsNoTracking() // da usare solo per operazioni di sola lettura
                 .Where(comune => comune.CodiceCatastale == id)
                 .Select(comune => new ComuneViewModel
                 {
@@ -54,7 +55,9 @@ namespace KampusStudioProto.Models.Services.Application
 
         async Task<List<ComuneViewModel>> IComuneService.GetComuniAsync()
         {
-            IQueryable<ComuneViewModel> queryLinq = dbContext.Comuni.Select(comune =>
+            IQueryable<ComuneViewModel> queryLinq = dbContext.Comuni
+            .AsNoTracking() // da usare solo per operazioni di sola lettura
+            .Select(comune =>
             new ComuneViewModel {
                 CodiceCatastale = comune.CodiceCatastale,
                 NomeComune = comune.NomeComune,
@@ -81,8 +84,8 @@ namespace KampusStudioProto.Models.Services.Application
                 Cap = comune.Cap,
                 Prefisso = comune.Prefisso,
                 CodiceIstat = comune.CodiceIstat
-            });
-            
+            })
+            .Where(comune => comune.NomeComune.Contains("Bar"));
             List<ComuneViewModel> comuni = await queryLinq.ToListAsync();
             return comuni;
         }
