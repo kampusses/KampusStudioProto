@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using kampus.Models.ValueTypes;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 
 namespace KampusStudioProto.Models.Services.Infrastructure
 {
     public class MySqlDatabaseAccessor : IDatabaseAccessor
     {
+        private readonly IConfiguration configuration;
+        public MySqlDatabaseAccessor(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
         public async Task<DataSet> QueryAsync(FormattableString formattableQuery)
         {
             /* INIZIO codice che serve per evitare la SQL-injection */
@@ -23,7 +29,8 @@ namespace KampusStudioProto.Models.Services.Infrastructure
             string query = formattableQuery.ToString();
             /* FINE codice che serve per evitare la SQL-injection */
 
-            using(var conn = new MySqlConnection("Server=localhost;Database=kampus;Uid=root;Pwd=;"))
+            string connectionString = configuration.GetConnectionString("Default");
+            using(var conn = new MySqlConnection(connectionString))
             {
                 await conn.OpenAsync();
                 using(var cmd = new MySqlCommand(query, conn))
