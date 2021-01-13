@@ -53,8 +53,9 @@ namespace KampusStudioProto.Models.Services.Application
                 return viewModel;
         }
 
-        async Task<List<ComuneViewModel>> IComuneService.GetComuniAsync()
+        async Task<List<ComuneViewModel>> IComuneService.GetComuniAsync(string search)
         {
+            if (search == null) search = "";
             IQueryable<ComuneViewModel> queryLinq = dbContext.Comuni
             .AsNoTracking() // da usare solo per operazioni di sola lettura
             .Select(comune =>
@@ -85,7 +86,7 @@ namespace KampusStudioProto.Models.Services.Application
                 Prefisso = comune.Prefisso,
                 CodiceIstat = comune.CodiceIstat
             })
-            .Where(comune => comune.NomeComune.Contains("Bar"));
+            .Where(comune => comune.NomeComune.Contains(search));
             List<ComuneViewModel> comuni = await queryLinq.ToListAsync();
             return comuni;
         }

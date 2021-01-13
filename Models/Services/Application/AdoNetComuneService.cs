@@ -51,9 +51,9 @@ namespace KampusStudioProto.Models.Services.Application
             return comuneViewModel;
         }
 
-        public async Task<List<ComuneViewModel>> GetComuniAsync()
+        public async Task<List<ComuneViewModel>> GetComuniAsync(string search)
         {
-            FormattableString query = $"SELECT * FROM Comuni WHERE nomeComune LIKE '%Bar%'";
+            FormattableString query = $"SELECT * FROM Comuni WHERE nomeComune LIKE {"%" + search + "%"}";
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();
