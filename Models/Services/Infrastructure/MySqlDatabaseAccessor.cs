@@ -22,6 +22,9 @@ namespace KampusStudioProto.Models.Services.Infrastructure
             var mySqlParameters = new List<MySqlParameter>();
             for (var i = 0; i < queryArguments.Length; i++)
             {
+                if (queryArguments[i] is Sql) {
+                    continue;
+                }
                 var parameter = new MySqlParameter(i.ToString(), queryArguments[i]);
                 mySqlParameters.Add(parameter);
                 queryArguments[i] = "@" + i;
