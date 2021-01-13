@@ -5,16 +5,18 @@ using System.Threading.Tasks;
 using KampusStudioProto.Models.Services.Infrastructure;
 using KampusStudioProto.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace KampusStudioProto.Models.Services.Application
 {
     public class EfCoreComuneService : IComuneService
     {
         private readonly MyDbContext dbContext;
-        public EfCoreComuneService(MyDbContext dbContext)
+        private readonly IConfiguration configuration;
+        public EfCoreComuneService(MyDbContext dbContext, IConfiguration configuration)
         {
             this.dbContext = dbContext;
-
+            this.configuration = configuration;
         }
         async Task<ComuneViewModel> IComuneService.GetComuneAsync(string id)
         {
@@ -53,10 +55,15 @@ namespace KampusStudioProto.Models.Services.Application
                 return viewModel;
         }
 
-        async Task<List<ComuneViewModel>> IComuneService.GetComuniAsync(string search)
+        async Task<List<ComuneViewModel>> IComuneService.GetComuniAsync(string search, int page)
         {
             if (search == null) search = "";
+            page = Math.Max(1, page);
+            int limit = configuration.GetSection("Comuni").GetValue<int>("PerPage");
+            int offset = (page - 1) * limit;
             IQueryable<ComuneViewModel> queryLinq = dbContext.Comuni
+            .Skip(offset)
+            .Take(limit)
             .AsNoTracking() // da usare solo per operazioni di sola lettura
             .Select(comune =>
             new ComuneViewModel {

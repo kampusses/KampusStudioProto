@@ -4,15 +4,18 @@ using System.Data;
 using System.Threading.Tasks;
 using KampusStudioProto.Models.Services.Infrastructure;
 using KampusStudioProto.Models.ViewModels;
+using Microsoft.Extensions.Configuration;
 
 namespace KampusStudioProto.Models.Services.Application
 {
     public class AdoNetComuneService : IComuneService
     {
         private readonly IDatabaseAccessor db;
-        public AdoNetComuneService(IDatabaseAccessor db)
+        private readonly IConfiguration configuration;
+        public AdoNetComuneService(IDatabaseAccessor db, IConfiguration configuration)
         {
             this.db = db;
+            this.configuration = configuration;
         }
         public async Task<ComuneViewModel> GetComuneAsync(string id)
         {
@@ -51,9 +54,12 @@ namespace KampusStudioProto.Models.Services.Application
             return comuneViewModel;
         }
 
-        public async Task<List<ComuneViewModel>> GetComuniAsync(string search)
+        public async Task<List<ComuneViewModel>> GetComuniAsync(string search, int page)
         {
-            FormattableString query = $"SELECT * FROM Comuni WHERE nomeComune LIKE {"%" + search + "%"}";
+            page = Math.Max(1, page);
+            int limit = configuration.GetSection("Comuni").GetValue<int>("PerPage");
+            int offset = (page - 1) * limit;
+            FormattableString query = $"SELECT * FROM Comuni WHERE nomeComune LIKE {"%" + search + "%"} LIMIT {limit} OFFSET {offset}";
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();

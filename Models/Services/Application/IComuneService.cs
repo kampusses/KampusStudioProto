@@ -6,7 +6,7 @@ namespace KampusStudioProto.Models.Services.Application
 {
     public interface IComuneService
     {
-         Task<List<ComuneViewModel>> GetComuniAsync(string search);
+         Task<List<ComuneViewModel>> GetComuniAsync(string search, int page);
          Task<ComuneViewModel> GetComuneAsync(string id);
     }
 }

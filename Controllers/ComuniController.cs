@@ -13,9 +13,9 @@ namespace KampusStudioProto.Controllers
         {
             this.comuneService = comuneService;
         }
-        public async Task<IActionResult> Index(string search)
+        public async Task<IActionResult> Index(string search, int page)
         {
-            List<ComuneViewModel> comuni = await comuneService.GetComuniAsync(search);
+            List<ComuneViewModel> comuni = await comuneService.GetComuniAsync(search, page);
             ViewBag.Titolo = "Comuni italiani";
             return View(comuni);
         }
