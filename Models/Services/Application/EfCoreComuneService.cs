@@ -73,8 +73,7 @@ namespace KampusStudioProto.Models.Services.Application
             }
 
             IQueryable<ComuneViewModel> queryLinq = baseQuery
-            .Skip(model.Offset)
-            .Take(model.Limit)
+            .Where(comune => comune.NomeComune.Contains(model.Search))
             .AsNoTracking() // da usare solo per operazioni di sola lettura
             .Select(comune =>
             new ComuneViewModel {
@@ -104,7 +103,8 @@ namespace KampusStudioProto.Models.Services.Application
                 Prefisso = comune.Prefisso,
                 CodiceIstat = comune.CodiceIstat
             })
-            .Where(comune => comune.NomeComune.Contains(model.Search));
+            .Skip(model.Offset)
+            .Take(model.Limit);
             List<ComuneViewModel> comuni = await queryLinq.ToListAsync();
             return comuni;
         }
