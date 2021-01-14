@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using kampus.Models.ValueTypes;
+using KampusStudioProto.Models.InputModels;
 using KampusStudioProto.Models.Services.Infrastructure;
 using KampusStudioProto.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
@@ -55,22 +56,11 @@ namespace KampusStudioProto.Models.Services.Application
             return comuneViewModel;
         }
 
-        public async Task<List<ComuneViewModel>> GetComuniAsync(string search, int page, string orderby, bool ascending)
+        public async Task<List<ComuneViewModel>> GetComuniAsync(ComuneListInputModel model)
         {
-            if (search == null) search = "";
-            if (orderby == null) orderby = "";
-            page = Math.Max(1, page);
-            int limit = configuration.GetSection("Comuni").GetValue<int>("PerPage");
-            int offset = (page - 1) * limit;
-            IConfigurationSection parametriOrdinamento = configuration.GetSection("Comuni").GetSection("Order");
-            if (orderby.ToLower() != "nomecomune" & orderby.ToLower() != "abitanti")
-            {
-                orderby = parametriOrdinamento.GetValue<string>("By");
-                ascending = parametriOrdinamento.GetValue<bool>("Ascending");
-            }
-            string direction = ascending ? "ASC" : "DESC";
+            string direction = model.Ascending ? "ASC" : "DESC";
 
-            FormattableString query = $"SELECT * FROM Comuni WHERE nomeComune LIKE {"%" + search + "%"} ORDER BY {(Sql) orderby} {(Sql) direction} LIMIT {limit} OFFSET {offset}";
+            FormattableString query = $"SELECT * FROM Comuni WHERE nomeComune LIKE {"%" + model.Search + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}";
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();
