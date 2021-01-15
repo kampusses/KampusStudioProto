@@ -36,8 +36,8 @@
 </div>
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-searchtype="TipoRicerca" asp-route-orderby="nomeComune" asp-route-ascending="true" asp-route-search="" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Comune</a> <i class="fas fa-caret-up"></i></div>
-    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-searchtype="TipoRicerca" asp-route-orderby="abitanti" asp-route-ascending="false" asp-route-search="" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Abitanti</a> <i class="fas fa-caret-down"></i></div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="TipoRicerca" asp-route-orderby="nomeComune" asp-route-ascending="@(Model.Input.OrderBy == "nomeComune" ? !Model.Input.Ascending : true)" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Comune</a> @if(Model.Input.OrderBy == "nomeComune") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="TipoRicerca" asp-route-orderby="abitanti" asp-route-ascending="@(Model.Input.OrderBy == "abitanti" ? !Model.Input.Ascending : false)" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Abitanti</a> @if(Model.Input.OrderBy == "abitanti") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
     <div class="col-md-7"></div>
 </div>
 <hr />
