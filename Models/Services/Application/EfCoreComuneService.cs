@@ -57,7 +57,7 @@ namespace KampusStudioProto.Models.Services.Application
                 return viewModel;
         }
 
-        async Task<List<ComuneViewModel>> IComuneService.GetComuniAsync(ComuneListInputModel model)
+        async Task<ListViewModel<ComuneViewModel>> IComuneService.GetComuniAsync(ComuneListInputModel model)
         {
             IQueryable<Comune> baseQuery = dbContext.Comuni;
             if (model.OrderBy.ToLower() == "nomecomune")
@@ -102,11 +102,21 @@ namespace KampusStudioProto.Models.Services.Application
                 Cap = comune.Cap,
                 Prefisso = comune.Prefisso,
                 CodiceIstat = comune.CodiceIstat
-            })
+            });
+
+            List<ComuneViewModel> comuni = await queryLinq
             .Skip(model.Offset)
-            .Take(model.Limit);
-            List<ComuneViewModel> comuni = await queryLinq.ToListAsync();
-            return comuni;
+            .Take(model.Limit)
+            .ToListAsync();
+
+            int totalCount = await queryLinq.CountAsync();
+
+            ListViewModel<ComuneViewModel> result = new ListViewModel<ComuneViewModel>
+            {
+                Results = comuni,
+                TotalCount = totalCount
+            };
+            return result;
         }
     }
 }

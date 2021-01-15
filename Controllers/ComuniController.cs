@@ -16,7 +16,7 @@ namespace KampusStudioProto.Controllers
         }
         public async Task<IActionResult> Index(ComuneListInputModel input)
         {
-            List<ComuneViewModel> comuni = await comuneService.GetComuniAsync(input);
+            ListViewModel<ComuneViewModel> comuni = await comuneService.GetComuniAsync(input);
             ViewBag.Titolo = "Comuni italiani";
             ComuneListViewModel viewModel = new ComuneListViewModel
             {
