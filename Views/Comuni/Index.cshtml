@@ -1,4 +1,4 @@
-@model List<ComuneViewModel>
+@model ComuneListViewModel
 <div class="row">
     <div class="col-md-7">
         <h1>Comuni italiani</h1>
@@ -18,7 +18,7 @@
                         <input id="searchTypeValue" type="hidden" name="searchtype" value="xxxx"></input>
                     </div>
                 </div>
-                <input type="text" name="search" placeholder="Cerca" id="ricerca" value="xxxx">
+                <input type="text" name="search" placeholder="Cerca" id="ricerca" value="@Model.Input.Search">
                 <div class="input-group-append"><button class="input-group-text" id="search-button"><i class="fas fa-search"></i></button></div>
             </div>
         </form>
@@ -28,7 +28,7 @@
     <div class="col-md-7">
     </div>
     <div style="height: 30px;" class="col-md-5 d-flex align-items-start">
-        @if(true /*@Model.Input.Search!="" || @Model.Input.Cap!=null || @Model.Input.Prefisso!=null || @Model.Input.Belfiore!=null*/ )
+        @if(@Model.Input.Search!="" /*|| @Model.Input.Cap!=null || @Model.Input.Prefisso!=null || @Model.Input.Belfiore!=null*/ )
         {
             <a asp-controller="Comuni" asp-action="Index"><i class="far fa-times-circle"></i> azzera ricerca</a>
         }
@@ -42,7 +42,7 @@
 </div>
 <hr />
 
-@foreach(ComuneViewModel comune in Model)
+@foreach(ComuneViewModel comune in Model.Comuni)
 {
 <div class="row">
     <div class="col-md-1">
