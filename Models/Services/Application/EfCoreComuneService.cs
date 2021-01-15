@@ -72,8 +72,17 @@ namespace KampusStudioProto.Models.Services.Application
                 else baseQuery = baseQuery.OrderByDescending(comune => comune.Abitanti);
             }
 
+            if (model.SearchType == "Nome comune") 
+            baseQuery = baseQuery.Where(comune => comune.NomeComune.Contains(model.Search));
+            if (model.SearchType == "CAP") 
+            baseQuery = baseQuery.Where(comune => comune.Cap.Contains(model.Search));
+            if (model.SearchType == "Prefisso") 
+            baseQuery = baseQuery.Where(comune => comune.Prefisso.Contains(model.Search));
+            if (model.SearchType == "Belfiore") 
+            baseQuery = baseQuery.Where(comune => comune.CodiceCatastale.Contains(model.Search));
+
+
             IQueryable<ComuneViewModel> queryLinq = baseQuery
-            .Where(comune => comune.NomeComune.Contains(model.Search))
             .AsNoTracking() // da usare solo per operazioni di sola lettura
             .Select(comune =>
             new ComuneViewModel {

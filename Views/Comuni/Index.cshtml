@@ -8,14 +8,14 @@
             <div class="input-group">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle piatto-dx" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span id="searchType">xxxx</span>
+                        <span id="searchType">@Model.Input.SearchType</span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Nome Comune'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Nome Comune';">Nome Comune</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'CAP'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'CAP';">CAP</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Prefisso'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Prefisso';">Prefisso</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Belfiore'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Belfiore';">Belfiore</button>
-                        <input id="searchTypeValue" type="hidden" name="searchtype" value="xxxx"></input>
+                        <input id="searchTypeValue" type="hidden" name="searchtype" value="@Model.Input.SearchType"></input>
                     </div>
                 </div>
                 <input type="text" name="search" placeholder="Cerca" id="ricerca" value="@Model.Input.Search">
@@ -28,19 +28,27 @@
     <div class="col-md-7">
     </div>
     <div style="height: 30px;" class="col-md-5 d-flex align-items-start">
-        @if(@Model.Input.Search!="" /*|| @Model.Input.Cap!=null || @Model.Input.Prefisso!=null || @Model.Input.Belfiore!=null*/ )
+        @if(@Model.Input.Search!="" || @Model.Input.Cap!=null || @Model.Input.Prefisso!=null || @Model.Input.Belfiore!=null)
         {
             <a asp-controller="Comuni" asp-action="Index"><i class="far fa-times-circle"></i> azzera ricerca</a>
         }
     </div>
 </div>
+
+@if (Model.Comuni.TotalCount > 0)
+{
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="TipoRicerca" asp-route-orderby="nomeComune" asp-route-ascending="@(Model.Input.OrderBy == "nomeComune" ? !Model.Input.Ascending : true)" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Comune</a> @if(Model.Input.OrderBy == "nomeComune") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
-    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="TipoRicerca" asp-route-orderby="abitanti" asp-route-ascending="@(Model.Input.OrderBy == "abitanti" ? !Model.Input.Ascending : false)" asp-route-cap="76016" asp-route-prefisso="0883" asp-route-belfiore="E946">Abitanti</a> @if(Model.Input.OrderBy == "abitanti") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-orderby="nomeComune" asp-route-ascending="@(Model.Input.OrderBy == "nomeComune" ? !Model.Input.Ascending : true)" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore">Comune</a> @if(Model.Input.OrderBy == "nomeComune") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-orderby="abitanti" asp-route-ascending="@(Model.Input.OrderBy == "abitanti" ? !Model.Input.Ascending : false)" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore">Abitanti</a> @if(Model.Input.OrderBy == "abitanti") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
     <div class="col-md-7"></div>
 </div>
 <hr />
+}
+else
+{
+    <h2>La ricerca non ha prodotto alcun risultato.<br /><a asp-controller="Comuni" asp-action="Index">Azzera ricerca</a></h2>
+}
 
 @foreach(ComuneViewModel comune in Model.Comuni.Results)
 {
@@ -73,34 +81,37 @@
     int currentPage = Model.Input.Page;
     string disabilitato = "disabled";
 }
+@if(totalPages > 1)
+{
 <nav aria-label="Page navigation">
     <ul class="pagination d-flex justify-content-center">
         <li class="page-item @if(currentPage == 1) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="1" asp-route-search="@Model.Input.Search" asp-route-searchtype="Model.Input.SearchType" asp-route-cap="Model.Input.Cap" asp-route-prefisso="Model.Input.Prefisso" asp-route-belfiore="Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-double-left"></i></a>
+            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="1" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-double-left"></i></a>
         </li>
         <li class="page-item @if(currentPage == 1) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@(currentPage-1)" asp-route-search="@Model.Input.Search" asp-route-searchtype="Model.Input.SearchType" asp-route-cap="Model.Input.Cap" asp-route-prefisso="Model.Input.Prefisso" asp-route-belfiore="Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-left"></i></a>
+            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@(currentPage-1)" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-left"></i></a>
         </li>
         @for(int p = Math.Max(1, currentPage-4); p <= Math.Min(totalPages, currentPage+4); p++)
         {
             if (p == currentPage)
             {
                 <li class="page-item active" aria-current="page">
-                    <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@p" asp-route-search="@Model.Input.Search" asp-route-searchtype="Model.Input.SearchType" asp-route-cap="Model.Input.Cap" asp-route-prefisso="Model.Input.Prefisso" asp-route-belfiore="Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending">@p <span class="sr-only">(current)</span></a>
+                    <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@p" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending">@p <span class="sr-only">(current)</span></a>
                 </li>
             }
             else
             {
                 <li class="page-item">
-                    <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@p" asp-route-search="@Model.Input.Search" asp-route-searchtype="Model.Input.SearchType" asp-route-cap="Model.Input.Cap" asp-route-prefisso="Model.Input.Prefisso" asp-route-belfiore="Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending">@p</a>
+                    <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@p" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending">@p</a>
                 </li>
             }
         }
         <li class="page-item @if(currentPage == totalPages || totalPages == 0) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@(currentPage+1)" asp-route-search="@Model.Input.Search" asp-route-searchtype="Model.Input.SearchType" asp-route-cap="Model.Input.Cap" asp-route-prefisso="Model.Input.Prefisso" asp-route-belfiore="Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-right"></i></a>
+            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@(currentPage+1)" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-right"></i></a>
         </li>
         <li class="page-item @if(currentPage == totalPages || totalPages == 0) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@totalPages" asp-route-search="@Model.Input.Search" asp-route-searchtype="Model.Input.SearchType" asp-route-cap="Model.Input.Cap" asp-route-prefisso="Model.Input.Prefisso" asp-route-belfiore="Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-double-right"></i></a>
+            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@totalPages" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-double-right"></i></a>
         </li>
     </ul>
 </nav>
+}
