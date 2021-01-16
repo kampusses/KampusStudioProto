@@ -66,8 +66,8 @@ else
     </div>
 
     <div class="col-md-2">
-        <cap>CAP: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="76016">@comune.Cap</a></cap><br />
-        <prefisso>Prefisso: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="0883">@comune.Prefisso</a></prefisso>
+        <cap>CAP: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="CAP" asp-route-search="@comune.Cap">@comune.Cap</a></cap><br />
+        <prefisso>Prefisso: <a asp-controller="Comuni" asp-action="Index" asp-route-searchType="Prefisso" asp-route-search="@comune.Prefisso">@comune.Prefisso</a></prefisso>
     </div>
     <div class="col-md-2">
         <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="@comune.CodiceCatastale">Visualizza</a>
