@@ -76,42 +76,4 @@ else
 <hr />
 }
 
-@{
-    int totalPages = (int) Math.Ceiling(Model.Comuni.TotalCount / (decimal) Model.Input.Limit);
-    int currentPage = Model.Input.Page;
-    string disabilitato = "disabled";
-}
-@if(totalPages > 1)
-{
-<nav aria-label="Page navigation">
-    <ul class="pagination d-flex justify-content-center">
-        <li class="page-item @if(currentPage == 1) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="1" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-double-left"></i></a>
-        </li>
-        <li class="page-item @if(currentPage == 1) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@(currentPage-1)" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-left"></i></a>
-        </li>
-        @for(int p = Math.Max(1, currentPage-4); p <= Math.Min(totalPages, currentPage+4); p++)
-        {
-            if (p == currentPage)
-            {
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@p" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending">@p <span class="sr-only">(current)</span></a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item">
-                    <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@p" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending">@p</a>
-                </li>
-            }
-        }
-        <li class="page-item @if(currentPage == totalPages || totalPages == 0) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@(currentPage+1)" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-right"></i></a>
-        </li>
-        <li class="page-item @if(currentPage == totalPages || totalPages == 0) @disabilitato" aria-current="page">
-            <a class="page-link" asp-comtroller="Comuni" asp-action="Index" asp-route-page="@totalPages" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-orderby="@Model.Input.OrderBy" asp-route-ascending="@Model.Input.Ascending"><i class="fas fa-angle-double-right"></i></a>
-        </li>
-    </ul>
-</nav>
-}
+<vc:pagination-bar model="@Model"></vc:pagination-bar>
