@@ -169,12 +169,22 @@ namespace KampusStudioProto.Models.Services.Infrastructure
 
                 entity.ToTable("province");
 
+                entity.HasIndex(e => e.CodiceCapoluogo, "CodiceCapoluogo")
+                    .IsUnique();
+
                 entity.HasIndex(e => e.CodiceRegione, "codiceRegione");
 
                 entity.Property(e => e.CodiceProvincia)
                     .HasColumnType("int(11)")
                     .ValueGeneratedNever()
                     .HasColumnName("codiceProvincia");
+
+                entity.Property(e => e.CodiceCapoluogo)
+                    .IsRequired()
+                    .HasColumnType("varchar(4)")
+                    .HasColumnName("codiceCapoluogo")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
 
                 entity.Property(e => e.CodiceRegione)
                     .HasColumnType("int(11)")
@@ -193,7 +203,13 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasColumnName("siglaProvincia")
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
-
+/*
+                entity.HasOne(d => d.Capoluogo)
+                    .WithOne(p => p.Provincia)
+                    .HasForeignKey<Provincia>(d => d.CodiceCapoluogo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("province_ibfk_2");
+*/
                 entity.HasOne(d => d.Regione)
                     .WithMany(p => p.Province)
                     .HasForeignKey(d => d.CodiceRegione)
@@ -238,7 +254,7 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasColumnName("ripartizioneGeografica")
                     .HasComment("Ripartizione geografica");
                 /*
-                entity.HasOne(d => d.CodiceCapoluogoNavigation)
+                entity.HasOne(d => d.Capoluogo)
                     .WithMany(p => p.Regioni)
                     .HasForeignKey(d => d.CodiceCapoluogo)
                     .OnDelete(DeleteBehavior.ClientSetNull)

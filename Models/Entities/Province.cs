@@ -16,7 +16,9 @@ namespace KampusStudioProto.Models.Entities
         public int CodiceRegione { get; private set; }
         public string NomeProvincia { get; private set; }
         public string SiglaProvincia { get; private set; }
+        public string CodiceCapoluogo { get; private set; }
 
+        public virtual Comune Capoluogo { get; private set; }
         public virtual Regione Regione { get; private set; }
         public virtual ICollection<Comune> Comuni { get; private set; }
     }
