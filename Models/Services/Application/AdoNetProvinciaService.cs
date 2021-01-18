@@ -37,18 +37,16 @@ namespace KampusStudioProto.Models.Services.Application
             var regioneViewModel = RegioneViewModel.FromDataRow(regioneRow);
             provinciaViewModel.Regione = (RegioneViewModel) regioneViewModel;
 
-
-
-
-            FormattableString queryCom = $"SELECT * FROM comuni WHERE codiceProvincia={provinciaRow["codiceProvincia"]}; SELECT abitanti FROM Comuni WHERE codiceProvincia={provinciaRow["codiceProvincia"]}";
+            FormattableString queryCom = $"SELECT * FROM comuni WHERE codiceCatastale={provinciaRow["codiceCapoluogo"]}; SELECT abitanti FROM Comuni WHERE codiceProvincia={provinciaRow["codiceProvincia"]}";
             DataSet dataSetCom = await db.QueryAsync(queryCom);
-            var comuneTable = dataSetCom.Tables[0];
-            if (comuneTable.Rows.Count < 1)
+            var capoluogoTable = dataSetCom.Tables[0];
+            if (capoluogoTable.Rows.Count < 1)
             {
-                throw new InvalidOperationException($"Mi aspettavo che venisse restituita almeno una riga della tabella {provinciaRow["regione"]}");
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita almeno una riga della tabella {provinciaRow["codiceCapoluogo"]}");
             }
-            var comuneRow = comuneTable.Rows[0];
-            var comuneViewModel = ComuneViewModel.FromDataRow(comuneRow);
+            var capoluogoRow = capoluogoTable.Rows[0];
+            var comuneViewModel = ComuneViewModel.FromDataRow(capoluogoRow);
+            provinciaViewModel.Capoluogo = comuneViewModel;
             provinciaViewModel.NComuni = dataSetCom.Tables[1].Rows.Count;
             int abitanti = 0;
             foreach(DataRow riga in dataSetCom.Tables[1].Rows)
@@ -56,10 +54,6 @@ namespace KampusStudioProto.Models.Services.Application
                 abitanti = abitanti + (int) riga["Abitanti"];
             }
             provinciaViewModel.Abitanti = abitanti;
-
-
-
-
             return provinciaViewModel;
         }
 
@@ -83,23 +77,15 @@ namespace KampusStudioProto.Models.Services.Application
                 var regioneViewModel = RegioneViewModel.FromDataRow(regioneRow);
                 provincia.Regione = (RegioneViewModel) regioneViewModel;
 
-                FormattableString queryCom = $"SELECT * FROM comuni WHERE codiceProvincia={provinciaRow["codiceProvincia"]}; SELECT abitanti FROM Comuni WHERE codiceProvincia={provinciaRow["codiceProvincia"]}";
+                FormattableString queryCom = $"SELECT abitanti FROM Comuni WHERE codiceProvincia={provinciaRow["codiceProvincia"]}";
                 DataSet dataSetCom = await db.QueryAsync(queryCom);
-                var comuneTable = dataSetCom.Tables[0];
-                if (comuneTable.Rows.Count < 1)
-                {
-                    throw new InvalidOperationException($"Mi aspettavo che venisse restituita almeno una riga della tabella {regioneRow["regione"]}");
-                }
-                var comuneRow = comuneTable.Rows[0];
-                var comuneViewModel = ComuneViewModel.FromDataRow(comuneRow);
-                provincia.NComuni = dataSetCom.Tables[1].Rows.Count;
+                provincia.NComuni = dataSetCom.Tables[0].Rows.Count;
                 int abitanti = 0;
-                foreach(DataRow riga in dataSetCom.Tables[1].Rows)
+                foreach(DataRow riga in dataSetCom.Tables[0].Rows)
                 {
                     abitanti = abitanti + (int) riga["Abitanti"];
                 }
                 provincia.Abitanti = abitanti;
-
                 provinciaList.Add(provincia);
             }
             return provinciaList;

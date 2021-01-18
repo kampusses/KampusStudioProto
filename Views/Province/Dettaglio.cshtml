@@ -5,6 +5,7 @@
         <h2>Totale abitanti: @Model.Abitanti.ToString("#,###,###")</h2>
         <h2>Totale comuni: <a href="" title="vedi comuni">@Model.NComuni</a></h2>
         <br />
+        <h3>Capoluogo di provincia: <a title="vedi capoluogo" asp-controller="Comuni" asp-action="Dettaglio" asp-route-id="@Model.Capoluogo.CodiceCatastale">@Model.Capoluogo.NomeComune</a></h3>
         <h3>Regione: <a title="vedi regione" asp-controller="Regioni" asp-action="Dettaglio" asp-route-id="@Model.Regione.CodiceRegione">@Model.Regione.NomeRegione</a></h3>
         <br />
         <a class="btn btn-outline-primary" onClick="history.go(-1);return true;"><i class="fas fa-chevron-left"></i> Torna indietro</a>
