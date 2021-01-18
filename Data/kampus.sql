@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 18, 2021 alle 19:32
+-- Creato il: Gen 18, 2021 alle 22:08
 -- Versione del server: 5.7.17
 -- Versione PHP: 5.6.30
 
@@ -8375,6 +8375,24 @@ INSERT INTO `regioni` (`codiceRegione`, `nomeRegione`, `ripartizioneGeografica`,
 (19, 'Sicilia', 5, 'G273'),
 (20, 'Sardegna', 5, 'B354');
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `__efmigrationshistory`
+--
+
+CREATE TABLE `__efmigrationshistory` (
+  `MigrationId` varchar(95) NOT NULL,
+  `ProductVersion` varchar(32) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `__efmigrationshistory`
+--
+
+INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
+('20210118204913_InitialMigration', '5.0.2');
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -8407,6 +8425,12 @@ ALTER TABLE `province`
 ALTER TABLE `regioni`
   ADD PRIMARY KEY (`codiceRegione`),
   ADD KEY `codiceCapoluogo` (`codiceCapoluogo`);
+
+--
+-- Indici per le tabelle `__efmigrationshistory`
+--
+ALTER TABLE `__efmigrationshistory`
+  ADD PRIMARY KEY (`MigrationId`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
