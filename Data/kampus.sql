@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 18, 2021 alle 22:08
+-- Creato il: Gen 19, 2021 alle 22:26
 -- Versione del server: 5.7.17
 -- Versione PHP: 5.6.30
 
@@ -21,6 +21,106 @@ SET time_zone = "+00:00";
 --
 -- Database: `kampus`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `aspnetroleclaims`
+--
+
+CREATE TABLE `aspnetroleclaims` (
+  `Id` int(11) NOT NULL,
+  `RoleId` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `ClaimType` longtext CHARACTER SET utf8mb4,
+  `ClaimValue` longtext CHARACTER SET utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `aspnetroles`
+--
+
+CREATE TABLE `aspnetroles` (
+  `Id` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `Name` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `NormalizedName` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `ConcurrencyStamp` longtext CHARACTER SET utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `aspnetuserclaims`
+--
+
+CREATE TABLE `aspnetuserclaims` (
+  `Id` int(11) NOT NULL,
+  `UserId` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `ClaimType` longtext CHARACTER SET utf8mb4,
+  `ClaimValue` longtext CHARACTER SET utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `aspnetuserlogins`
+--
+
+CREATE TABLE `aspnetuserlogins` (
+  `LoginProvider` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
+  `ProviderKey` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
+  `ProviderDisplayName` longtext CHARACTER SET utf8mb4,
+  `UserId` varchar(255) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `aspnetuserroles`
+--
+
+CREATE TABLE `aspnetuserroles` (
+  `UserId` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `RoleId` varchar(255) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `aspnetusers`
+--
+
+CREATE TABLE `aspnetusers` (
+  `Id` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `UserName` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `NormalizedUserName` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `Email` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `NormalizedEmail` varchar(256) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `EmailConfirmed` tinyint(1) NOT NULL,
+  `PasswordHash` longtext CHARACTER SET utf8mb4,
+  `SecurityStamp` longtext CHARACTER SET utf8mb4,
+  `ConcurrencyStamp` longtext CHARACTER SET utf8mb4,
+  `PhoneNumber` longtext CHARACTER SET utf8mb4,
+  `PhoneNumberConfirmed` tinyint(1) NOT NULL,
+  `TwoFactorEnabled` tinyint(1) NOT NULL,
+  `LockoutEnd` datetime(6) DEFAULT NULL,
+  `LockoutEnabled` tinyint(1) NOT NULL,
+  `AccessFailedCount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `aspnetusertokens`
+--
+
+CREATE TABLE `aspnetusertokens` (
+  `UserId` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `LoginProvider` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
+  `Name` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
+  `Value` longtext CHARACTER SET utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -7976,238 +8076,238 @@ CREATE TABLE `nazioni` (
   `codice2` varchar(4) DEFAULT NULL,
   `codice3` varchar(4) NOT NULL,
   `codice3Padre` varchar(3) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dump dei dati per la tabella `nazioni`
 --
 
 INSERT INTO `nazioni` (`codiceContinente`, `codiceArea`, `denominazioneIT`, `denominazioneEN`, `belfiore`, `codice2`, `codice3`, `codice3Padre`) VALUES
-(1, 11, 'Italia', 'Italy', NULL, 'IT', 'ITA', NULL),
+(4, 42, 'Aruba', 'Aruba', 'Z501', 'AW', 'ABW', 'NLD'),
+(3, 32, 'Afghanistan', 'Afghanistan', 'Z200', 'AF', 'AFG', NULL),
+(2, 24, 'Angola', 'Angola', 'Z302', 'AO', 'AGO', NULL),
+(4, 42, 'Anguilla', 'Anguilla', 'Z529', 'AI', 'AIA', 'GBR'),
 (1, 12, 'Albania', 'Albania', 'Z100', 'AL', 'ALB', NULL),
 (1, 13, 'Andorra', 'Andorra', 'Z101', 'AD', 'AND', NULL),
-(1, 11, 'Austria', 'Austria', 'Z102', 'AT', 'AUT', NULL),
-(1, 11, 'Belgio', 'Belgium', 'Z103', 'BE', 'BEL', NULL),
-(1, 11, 'Bulgaria', 'Bulgaria', 'Z104', 'BG', 'BGR', NULL),
-(1, 11, 'Danimarca', 'Denmark', 'Z107', 'DK', 'DNK', NULL),
-(1, 11, 'Finlandia', 'Finland', 'Z109', 'FI', 'FIN', NULL),
-(1, 11, 'Francia', 'France', 'Z110', 'FR', 'FRA', NULL),
-(1, 11, 'Germania', 'Germany', 'Z112', 'DE', 'DEU', NULL),
-(1, 11, 'Regno Unito', 'United Kingdom', 'Z114', 'UK', 'GBR', NULL),
-(1, 11, 'Grecia', 'Greece', 'Z115', 'GR', 'GRC', NULL),
-(1, 11, 'Irlanda', 'Ireland', 'Z116', 'IE', 'IRL', NULL),
-(1, 13, 'Islanda', 'Iceland', 'Z117', 'IS', 'ISL', NULL),
-(1, 13, 'Liechtenstein', 'Liechtenstein', 'Z119', 'LI', 'LIE', NULL),
-(1, 11, 'Lussemburgo', 'Luxembourg', 'Z120', 'LU', 'LUX', NULL),
-(1, 11, 'Malta', 'Malta', 'Z121', 'MT', 'MLT', NULL),
-(1, 13, 'Monaco', 'Monaco', 'Z123', 'MC', 'MCO', NULL),
-(1, 13, 'Norvegia', 'Norway', 'Z125', 'NO', 'NOR', NULL),
-(1, 11, 'Paesi Bassi', 'Netherlands', 'Z126', 'NL', 'NLD', NULL),
-(1, 11, 'Polonia', 'Poland', 'Z127', 'PL', 'POL', NULL),
-(1, 11, 'Portogallo', 'Portugal', 'Z128', 'PT', 'PRT', NULL),
-(1, 11, 'Romania', 'Romania', 'Z129', 'RO', 'ROU', NULL),
-(1, 13, 'San Marino', 'San Marino', 'Z130', 'SM', 'SMR', NULL),
-(1, 11, 'Spagna', 'Spain', 'Z131', 'ES', 'ESP', NULL),
-(1, 11, 'Svezia', 'Sweden', 'Z132', 'SE', 'SWE', NULL),
-(1, 13, 'Svizzera', 'Switzerland', 'Z133', 'CH', 'CHE', NULL),
-(1, 12, 'Ucraina', 'Ukraine', 'Z138', 'UA', 'UKR', NULL),
-(1, 11, 'Ungheria', 'Hungary', 'Z134', 'HU', 'HUN', NULL),
-(1, 12, 'Federazione russa', 'Russian Federation', 'Z154', 'RU', 'RUS', NULL),
-(1, 13, 'Stato della Città del Vaticano', 'Vatican City State', 'Z106', 'VA', 'VAT', NULL),
-(1, 11, 'Estonia', 'Estonia', 'Z144', 'EE', 'EST', NULL),
-(1, 11, 'Lettonia', 'Latvia', 'Z145', 'LV', 'LVA', NULL),
-(1, 11, 'Lituania', 'Lithuania', 'Z146', 'LT', 'LTU', NULL),
-(1, 11, 'Croazia', 'Croatia', 'Z149', 'HR', 'HRV', NULL),
-(1, 11, 'Slovenia', 'Slovenia', 'Z150', 'SI', 'SVN', NULL),
-(1, 12, 'Bosnia-Erzegovina', 'Bosnia and Herzegovina', 'Z153', 'BA', 'BIH', NULL),
-(1, 12, 'Macedonia del Nord', 'North Macedonia', 'Z148', 'MK', 'MKD', NULL),
-(1, 12, 'Moldova', 'Moldova', 'Z140', 'MD', 'MDA', NULL),
-(1, 11, 'Slovacchia', 'Slovakia', 'Z155', 'SK', 'SVK', NULL),
-(1, 12, 'Bielorussia', 'Belarus', 'Z139', 'BY', 'BLR', NULL),
-(1, 11, 'Repubblica ceca', 'Czech Republic', 'Z156', 'CZ', 'CZE', NULL),
-(1, 12, 'Montenegro', 'Montenegro', 'Z159', 'ME', 'MNE', NULL),
-(1, 12, 'Serbia', 'Serbia', 'Z158', 'RS', 'SRB', NULL),
-(1, 12, 'Kosovo', 'Kosovo', 'Z160', 'n.d.', 'KOS', NULL),
-(3, 32, 'Afghanistan', 'Afghanistan', 'Z200', 'AF', 'AFG', NULL),
-(3, 31, 'Arabia Saudita', 'Saudi Arabia', 'Z203', 'SA', 'SAU', NULL),
-(3, 31, 'Bahrein', 'Bahrain', 'Z204', 'BH', 'BHR', NULL),
-(3, 32, 'Bangladesh', 'Bangladesh', 'Z249', 'BD', 'BGD', NULL),
-(3, 32, 'Bhutan', 'Bhutan', 'Z205', 'BT', 'BTN', NULL),
-(3, 33, 'Myanmar/Birmania', 'Myanmar/Burma', 'Z206', 'MM', 'MMR', NULL),
-(3, 33, 'Brunei Darussalam', 'Brunei Darussalam', 'Z207', 'BN', 'BRN', NULL),
-(3, 33, 'Cambogia', 'Cambodia', 'Z208', 'KH', 'KHM', NULL),
-(3, 32, 'Sri Lanka', 'Sri Lanka', 'Z209', 'LK', 'LKA', NULL),
-(3, 33, 'Cina', 'China', 'Z210', 'CN', 'CHN', NULL),
-(1, 11, 'Cipro', 'Cyprus', 'Z211', 'CY', 'CYP', NULL),
-(3, 33, 'Corea del Nord', 'North Korea', 'Z214', 'KP', 'PRK', NULL),
-(3, 33, 'Corea del Sud', 'South Korea', 'Z213', 'KR', 'KOR', NULL),
 (3, 31, 'Emirati Arabi Uniti', 'United Arab Emirates', 'Z215', 'AE', 'ARE', NULL),
-(3, 33, 'Filippine', 'Philippines', 'Z216', 'PH', 'PHL', NULL),
-(3, 31, 'Palestina', 'Palestine', 'Z161', 'PS', 'PSE', NULL),
-(3, 33, 'Giappone', 'Japan', 'Z219', 'JP', 'JPN', NULL),
-(3, 31, 'Giordania', 'Jordan', 'Z220', 'JO', 'JOR', NULL),
-(3, 32, 'India', 'India', 'Z222', 'IN', 'IND', NULL),
+(4, 42, 'Argentina', 'Argentina', 'Z600', 'AR', 'ARG', NULL),
+(3, 31, 'Armenia', 'Armenia', 'Z252', 'AM', 'ARM', NULL),
+(5, 50, 'Terre australi e antartiche francesi', 'French Southern Territories', NULL, 'TF', 'ATF', 'FRA'),
+(4, 42, 'Antigua e Barbuda', 'Antigua and Barbuda', 'Z532', 'AG', 'ATG', NULL),
+(5, 50, 'Australia', 'Australia', 'Z700', 'AU', 'AUS', NULL),
+(1, 11, 'Austria', 'Austria', 'Z102', 'AT', 'AUT', NULL),
+(3, 31, 'Azerbaigian', 'Azerbaijan', 'Z253', 'AZ', 'AZE', NULL),
+(2, 23, 'Burundi', 'Burundi', 'Z305', 'BI', 'BDI', NULL),
+(1, 11, 'Belgio', 'Belgium', 'Z103', 'BE', 'BEL', NULL),
+(2, 22, 'Benin', 'Benin', 'Z314', 'BJ', 'BEN', NULL),
+(2, 22, 'Burkina Faso', 'Burkina Faso', 'Z354', 'BF', 'BFA', NULL),
+(3, 32, 'Bangladesh', 'Bangladesh', 'Z249', 'BD', 'BGD', NULL),
+(1, 11, 'Bulgaria', 'Bulgaria', 'Z104', 'BG', 'BGR', NULL),
+(3, 31, 'Bahrein', 'Bahrain', 'Z204', 'BH', 'BHR', NULL),
+(4, 42, 'Bahamas', 'Bahamas', 'Z502', 'BS', 'BHS', NULL),
+(1, 12, 'Bosnia-Erzegovina', 'Bosnia and Herzegovina', 'Z153', 'BA', 'BIH', NULL),
+(4, 42, 'Saint-Barthélemy', 'Saint Barthelemy', NULL, 'BL', 'BLM', 'FRA'),
+(1, 12, 'Bielorussia', 'Belarus', 'Z139', 'BY', 'BLR', NULL),
+(4, 42, 'Belize', 'Belize', 'Z512', 'BZ', 'BLZ', NULL),
+(4, 41, 'Bermuda', 'Bermuda', 'Z400', 'BM', 'BMU', 'GBR'),
+(4, 42, 'Bolivia', 'Bolivia', 'Z601', 'BO', 'BOL', NULL),
+(4, 42, 'Brasile', 'Brazil', 'Z602', 'BR', 'BRA', NULL),
+(4, 42, 'Barbados', 'Barbados', 'Z522', 'BB', 'BRB', NULL),
+(3, 33, 'Brunei Darussalam', 'Brunei Darussalam', 'Z207', 'BN', 'BRN', NULL),
+(3, 32, 'Bhutan', 'Bhutan', 'Z205', 'BT', 'BTN', NULL),
+(2, 24, 'Botswana', 'Botswana', 'Z358', 'BW', 'BWA', NULL),
+(2, 24, 'Repubblica Centrafricana', 'Central African Republic', 'Z308', 'CF', 'CAF', NULL),
+(4, 41, 'Canada', 'Canada', 'Z401', 'CA', 'CAN', NULL),
+(1, 13, 'Svizzera', 'Switzerland', 'Z133', 'CH', 'CHE', NULL),
+(4, 42, 'Cile', 'Chile', 'Z603', 'CL', 'CHL', NULL),
+(3, 33, 'Cina', 'China', 'Z210', 'CN', 'CHN', NULL),
+(2, 22, 'Costa d\'Avorio', 'C?te d\'Ivoire', 'Z313', 'CI', 'CIV', NULL),
+(2, 24, 'Camerun', 'Cameroon', 'Z306', 'CM', 'CMR', NULL),
+(2, 24, 'Repubblica Democratica del Congo', 'Democratic Republic of the Congo', 'Z312', 'CD', 'COD', NULL),
+(2, 24, 'Congo', 'Congo', 'Z311', 'CG', 'COG', NULL),
+(5, 50, 'Isole Cook (NZ)', 'Cook Islands (NZ)', 'Z703', 'CK', 'COK', 'NZL'),
+(4, 42, 'Colombia', 'Colombia', 'Z604', 'CO', 'COL', NULL),
+(2, 23, 'Comore', 'Comoros', 'Z310', 'KM', 'COM', NULL),
+(2, 22, 'Capo Verde', 'Cape Verde', 'Z307', 'CV', 'CPV', NULL),
+(4, 42, 'Costa Rica', 'Costa Rica', 'Z503', 'CR', 'CRI', NULL),
+(4, 42, 'Cuba', 'Cuba', 'Z504', 'CU', 'CUB', NULL),
+(4, 42, 'Curaçao', 'Curaçao', NULL, 'CW', 'CUW', 'NLD'),
+(4, 42, 'Isole Cayman', 'Cayman Islands', 'Z530', 'KY', 'CYM', 'GBR'),
+(1, 11, 'Cipro', 'Cyprus', 'Z211', 'CY', 'CYP', NULL),
+(1, 11, 'Repubblica ceca', 'Czech Republic', 'Z156', 'CZ', 'CZE', NULL),
+(1, 11, 'Germania', 'Germany', 'Z112', 'DE', 'DEU', NULL),
+(2, 23, 'Gibuti', 'Djibouti', 'Z361', 'DJ', 'DJI', NULL),
+(4, 42, 'Dominica', 'Dominica', 'Z526', 'DM', 'DMA', NULL),
+(1, 11, 'Danimarca', 'Denmark', 'Z107', 'DK', 'DNK', NULL),
+(4, 42, 'Repubblica Dominicana', 'Dominican Republic', 'Z505', 'DO', 'DOM', NULL),
+(2, 21, 'Algeria', 'Algeria', 'Z301', 'DZ', 'DZA', NULL),
+(4, 42, 'Ecuador', 'Ecuador', 'Z605', 'EC', 'ECU', NULL),
+(2, 21, 'Egitto', 'Egypt', 'Z336', 'EG', 'EGY', NULL),
+(2, 23, 'Eritrea', 'Eritrea', 'Z368', 'ER', 'ERI', NULL),
+(2, 21, 'Sahara occidentale', 'Western Sahara', 'Z339', 'EH', 'ESH', NULL),
+(1, 11, 'Spagna', 'Spain', 'Z131', 'ES', 'ESP', NULL),
+(1, 11, 'Estonia', 'Estonia', 'Z144', 'EE', 'EST', NULL),
+(2, 23, 'Etiopia', 'Ethiopia', 'Z315', 'ET', 'ETH', NULL),
+(1, 11, 'Finlandia', 'Finland', 'Z109', 'FI', 'FIN', NULL),
+(5, 50, 'Figi', 'Fiji', 'Z704', 'FJ', 'FJI', NULL),
+(4, 42, 'Isole Falkland (Malvine)', 'Falkland Islands (Malvinas)', 'Z609', 'FK', 'FLK', 'GBR'),
+(1, 11, 'Francia', 'France', 'Z110', 'FR', 'FRA', NULL),
+(1, 13, 'Isole Fær Øer', 'Faroe Islands', 'Z108', 'FO', 'FRO', 'DNK'),
+(5, 50, 'Stati Federati di Micronesia', 'Federated States of Micronesia', 'Z735', 'FM', 'FSM', NULL),
+(2, 24, 'Gabon', 'Gabon', 'Z316', 'GA', 'GAB', NULL),
+(1, 11, 'Regno Unito', 'United Kingdom', 'Z114', 'UK', 'GBR', NULL),
+(3, 31, 'Georgia', 'Georgia', 'Z254', 'GE', 'GEO', NULL),
+(1, 13, 'Guernsey', 'Guernsey', NULL, 'GG', 'GGY', 'GBR'),
+(2, 22, 'Ghana', 'Ghana', 'Z318', 'GH', 'GHA', NULL),
+(1, 13, 'Gibilterra', 'Gibraltar', 'Z113', 'GI', 'GIB', 'GBR'),
+(2, 22, 'Guinea', 'Guinea', 'Z319', 'GN', 'GIN', NULL),
+(2, 22, 'Gambia', 'Gambia', 'Z317', 'GM', 'GMB', NULL),
+(2, 22, 'Guinea-Bissau', 'Guinea-Bissau', 'Z320', 'GW', 'GNB', NULL),
+(2, 24, 'Guinea equatoriale', 'Equatorial Guinea', 'Z321', 'GQ', 'GNQ', NULL),
+(1, 11, 'Grecia', 'Greece', 'Z115', 'GR', 'GRC', NULL),
+(4, 42, 'Grenada', 'Grenada', 'Z524', 'GD', 'GRD', NULL),
+(4, 41, 'Groenlandia', 'Greenland', 'Z402', 'GL', 'GRL', 'DNK'),
+(4, 42, 'Guatemala', 'Guatemala', 'Z509', 'GT', 'GTM', NULL),
+(4, 42, 'Guyana', 'Guyana', 'Z606', 'GY', 'GUY', NULL),
+(4, 42, 'Honduras', 'Honduras', 'Z511', 'HN', 'HND', NULL),
+(1, 11, 'Croazia', 'Croatia', 'Z149', 'HR', 'HRV', NULL),
+(4, 42, 'Haiti', 'Haiti', 'Z510', 'HT', 'HTI', NULL),
+(1, 11, 'Ungheria', 'Hungary', 'Z134', 'HU', 'HUN', NULL),
 (3, 33, 'Indonesia', 'Indonesia', 'Z223', 'ID', 'IDN', NULL),
+(1, 13, 'Isola di Man', 'Isle of Man', 'Z122', 'IM', 'IMN', 'GBR'),
+(3, 32, 'India', 'India', 'Z222', 'IN', 'IND', NULL),
+(1, 11, 'Irlanda', 'Ireland', 'Z116', 'IE', 'IRL', NULL),
 (3, 31, 'Iran', 'Iran', 'Z224', 'IR', 'IRN', NULL),
 (3, 31, 'Iraq', 'Iraq', 'Z225', 'IQ', 'IRQ', NULL),
+(1, 13, 'Islanda', 'Iceland', 'Z117', 'IS', 'ISL', NULL),
 (3, 31, 'Israele', 'Israel', 'Z226', 'IL', 'ISR', NULL),
+(1, 11, 'Italia', 'Italy', NULL, 'IT', 'ITA', NULL),
+(4, 42, 'Giamaica', 'Jamaica', 'Z507', 'JM', 'JAM', NULL),
+(1, 13, 'Jersey', 'Jersey', NULL, 'JE', 'JEY', 'GBR'),
+(3, 31, 'Giordania', 'Jordan', 'Z220', 'JO', 'JOR', NULL),
+(3, 33, 'Giappone', 'Japan', 'Z219', 'JP', 'JPN', NULL),
+(3, 32, 'Kazakhstan', 'Kazakhstan', 'Z255', 'KZ', 'KAZ', NULL),
+(2, 23, 'Kenya', 'Kenya', 'Z322', 'KE', 'KEN', NULL),
+(3, 32, 'Kirghizistan', 'Kyrgyzstan', 'Z256', 'KG', 'KGZ', NULL),
+(3, 33, 'Cambogia', 'Cambodia', 'Z208', 'KH', 'KHM', NULL),
+(5, 50, 'Kiribati', 'Kiribati', 'Z731', 'KI', 'KIR', NULL),
+(4, 42, 'Saint Kitts e Nevis', 'Saint Kitts and Nevis', 'Z533', 'KN', 'KNA', NULL),
+(3, 33, 'Corea del Sud', 'South Korea', 'Z213', 'KR', 'KOR', NULL),
+(1, 12, 'Kosovo', 'Kosovo', 'Z160', 'n.d.', 'KOS', NULL),
 (3, 31, 'Kuwait', 'Kuwait', 'Z227', 'KW', 'KWT', NULL),
 (3, 33, 'Laos', 'Laos', 'Z228', 'LA', 'LAO', NULL),
 (3, 31, 'Libano', 'Lebanon', 'Z229', 'LB', 'LBN', NULL),
-(3, 33, 'Timor Leste', 'Timor Leste', 'Z242', 'TL', 'TLS', NULL),
-(3, 32, 'Maldive', 'Maldives', 'Z232', 'MV', 'MDV', NULL),
-(3, 33, 'Malaysia', 'Malaysia', 'Z247', 'MY', 'MYS', NULL),
-(3, 33, 'Mongolia', 'Mongolia', 'Z233', 'MN', 'MNG', NULL),
-(3, 32, 'Nepal', 'Nepal', 'Z234', 'NP', 'NPL', NULL),
-(3, 31, 'Oman', 'Oman', 'Z235', 'OM', 'OMN', NULL),
-(3, 32, 'Pakistan', 'Pakistan', 'Z236', 'PK', 'PAK', NULL),
-(3, 31, 'Qatar', 'Qatar', 'Z237', 'QA', 'QAT', NULL),
-(3, 33, 'Singapore', 'Singapore', 'Z248', 'SG', 'SGP', NULL),
-(3, 31, 'Siria', 'Syria', 'Z240', 'SY', 'SYR', NULL),
-(3, 33, 'Thailandia', 'Thailand', 'Z241', 'TH', 'THA', NULL),
-(1, 12, 'Turchia', 'Turkey', 'Z243', 'TR', 'TUR', NULL),
-(3, 33, 'Vietnam', 'Vietnam', 'Z251', 'VN', 'VNM', NULL),
-(3, 31, 'Yemen', 'Yemen', 'Z246', 'YE', 'YEM', NULL),
-(3, 32, 'Kazakhstan', 'Kazakhstan', 'Z255', 'KZ', 'KAZ', NULL),
-(3, 32, 'Uzbekistan', 'Uzbekistan', 'Z259', 'UZ', 'UZB', NULL),
-(3, 31, 'Armenia', 'Armenia', 'Z252', 'AM', 'ARM', NULL),
-(3, 31, 'Azerbaigian', 'Azerbaijan', 'Z253', 'AZ', 'AZE', NULL),
-(3, 31, 'Georgia', 'Georgia', 'Z254', 'GE', 'GEO', NULL),
-(3, 32, 'Kirghizistan', 'Kyrgyzstan', 'Z256', 'KG', 'KGZ', NULL),
-(3, 32, 'Tagikistan', 'Tajikistan', 'Z257', 'TJ', 'TJK', NULL),
-(3, 33, 'Taiwan', 'Taiwan', 'Z217', 'TW', 'TWN', NULL),
-(3, 32, 'Turkmenistan', 'Turkmenistan', 'Z258', 'TM', 'TKM', NULL),
-(2, 21, 'Algeria', 'Algeria', 'Z301', 'DZ', 'DZA', NULL),
-(2, 24, 'Angola', 'Angola', 'Z302', 'AO', 'AGO', NULL),
-(2, 22, 'Costa d\'Avorio', 'C?te d\'Ivoire', 'Z313', 'CI', 'CIV', NULL),
-(2, 22, 'Benin', 'Benin', 'Z314', 'BJ', 'BEN', NULL),
-(2, 24, 'Botswana', 'Botswana', 'Z358', 'BW', 'BWA', NULL),
-(2, 22, 'Burkina Faso', 'Burkina Faso', 'Z354', 'BF', 'BFA', NULL),
-(2, 23, 'Burundi', 'Burundi', 'Z305', 'BI', 'BDI', NULL),
-(2, 24, 'Camerun', 'Cameroon', 'Z306', 'CM', 'CMR', NULL),
-(2, 22, 'Capo Verde', 'Cape Verde', 'Z307', 'CV', 'CPV', NULL),
-(2, 24, 'Repubblica Centrafricana', 'Central African Republic', 'Z308', 'CF', 'CAF', NULL),
-(2, 24, 'Ciad', 'Chad', 'Z309', 'TD', 'TCD', NULL),
-(2, 23, 'Comore', 'Comoros', 'Z310', 'KM', 'COM', NULL),
-(2, 24, 'Congo', 'Congo', 'Z311', 'CG', 'COG', NULL),
-(2, 21, 'Egitto', 'Egypt', 'Z336', 'EG', 'EGY', NULL),
-(2, 23, 'Etiopia', 'Ethiopia', 'Z315', 'ET', 'ETH', NULL),
-(2, 24, 'Gabon', 'Gabon', 'Z316', 'GA', 'GAB', NULL),
-(2, 22, 'Gambia', 'Gambia', 'Z317', 'GM', 'GMB', NULL),
-(2, 22, 'Ghana', 'Ghana', 'Z318', 'GH', 'GHA', NULL),
-(2, 23, 'Gibuti', 'Djibouti', 'Z361', 'DJ', 'DJI', NULL),
-(2, 22, 'Guinea', 'Guinea', 'Z319', 'GN', 'GIN', NULL),
-(2, 22, 'Guinea-Bissau', 'Guinea-Bissau', 'Z320', 'GW', 'GNB', NULL),
-(2, 24, 'Guinea equatoriale', 'Equatorial Guinea', 'Z321', 'GQ', 'GNQ', NULL),
-(2, 23, 'Kenya', 'Kenya', 'Z322', 'KE', 'KEN', NULL),
-(2, 24, 'Lesotho', 'Lesotho', 'Z359', 'LS', 'LSO', NULL),
 (2, 22, 'Liberia', 'Liberia', 'Z325', 'LR', 'LBR', NULL),
 (2, 21, 'Libia', 'Libya', 'Z326', 'LY', 'LBY', NULL),
-(2, 23, 'Madagascar', 'Madagascar', 'Z327', 'MG', 'MDG', NULL),
-(2, 23, 'Malawi', 'Malawi', 'Z328', 'MW', 'MWI', NULL),
-(2, 22, 'Mali', 'Mali', 'Z329', 'ML', 'MLI', NULL),
+(4, 42, 'Santa Lucia', 'Saint Lucia', 'Z527', 'LC', 'LCA', NULL),
+(1, 13, 'Liechtenstein', 'Liechtenstein', 'Z119', 'LI', 'LIE', NULL),
+(3, 32, 'Sri Lanka', 'Sri Lanka', 'Z209', 'LK', 'LKA', NULL),
+(2, 24, 'Lesotho', 'Lesotho', 'Z359', 'LS', 'LSO', NULL),
+(1, 11, 'Lituania', 'Lithuania', 'Z146', 'LT', 'LTU', NULL),
+(1, 11, 'Lussemburgo', 'Luxembourg', 'Z120', 'LU', 'LUX', NULL),
+(1, 11, 'Lettonia', 'Latvia', 'Z145', 'LV', 'LVA', NULL),
+(4, 42, 'Saint-Martin (FR)', 'Saint Martin (FR)', NULL, 'MF', 'MAF', 'FRA'),
 (2, 21, 'Marocco', 'Morocco', 'Z330', 'MA', 'MAR', NULL),
-(2, 22, 'Mauritania', 'Mauritania', 'Z331', 'MR', 'MRT', NULL),
-(2, 23, 'Maurizio', 'Mauritius', 'Z332', 'MU', 'MUS', NULL),
+(1, 13, 'Monaco', 'Monaco', 'Z123', 'MC', 'MCO', NULL),
+(1, 12, 'Moldova', 'Moldova', 'Z140', 'MD', 'MDA', NULL),
+(2, 23, 'Madagascar', 'Madagascar', 'Z327', 'MG', 'MDG', NULL),
+(3, 32, 'Maldive', 'Maldives', 'Z232', 'MV', 'MDV', NULL),
+(4, 42, 'Messico', 'Mexico', 'Z514', 'MX', 'MEX', NULL),
+(5, 50, 'Isole Marshall', 'Marshall Islands', 'Z711', 'MH', 'MHL', NULL),
+(1, 12, 'Macedonia del Nord', 'North Macedonia', 'Z148', 'MK', 'MKD', NULL),
+(2, 22, 'Mali', 'Mali', 'Z329', 'ML', 'MLI', NULL),
+(1, 11, 'Malta', 'Malta', 'Z121', 'MT', 'MLT', NULL),
+(3, 33, 'Myanmar/Birmania', 'Myanmar/Burma', 'Z206', 'MM', 'MMR', NULL),
+(1, 12, 'Montenegro', 'Montenegro', 'Z159', 'ME', 'MNE', NULL),
+(3, 33, 'Mongolia', 'Mongolia', 'Z233', 'MN', 'MNG', NULL),
 (2, 23, 'Mozambico', 'Mozambique', 'Z333', 'MZ', 'MOZ', NULL),
+(2, 22, 'Mauritania', 'Mauritania', 'Z331', 'MR', 'MRT', NULL),
+(4, 42, 'Montserrat', 'Montserrat', 'Z531', 'MS', 'MSR', 'GBR'),
+(2, 23, 'Maurizio', 'Mauritius', 'Z332', 'MU', 'MUS', NULL),
+(2, 23, 'Malawi', 'Malawi', 'Z328', 'MW', 'MWI', NULL),
+(3, 33, 'Malaysia', 'Malaysia', 'Z247', 'MY', 'MYS', NULL),
+(1, 13, 'Sark', 'Sark', NULL, 'n.d.', 'n.d.', 'GBR'),
 (2, 24, 'Namibia', 'Namibia', 'Z300', 'NA', 'NAM', NULL),
+(5, 50, 'Nuova Caledonia', 'New Caledonia', 'Z716', 'NC', 'NCL', 'FRA'),
 (2, 22, 'Niger', 'Niger', 'Z334', 'NE', 'NER', NULL),
 (2, 22, 'Nigeria', 'Nigeria', 'Z335', 'NG', 'NGA', NULL),
-(2, 23, 'Ruanda', 'Rwanda', 'Z338', 'RW', 'RWA', NULL),
-(2, 24, 'Sao Tomé e Principe', 'Sao Tome and Principe', 'Z341', 'ST', 'STP', NULL),
-(2, 23, 'Seychelles', 'Seychelles', 'Z342', 'SC', 'SYC', NULL),
-(2, 22, 'Senegal', 'Senegal', 'Z343', 'SN', 'SEN', NULL),
-(2, 22, 'Sierra Leone', 'Sierra Leone', 'Z344', 'SL', 'SLE', NULL),
-(2, 23, 'Somalia', 'Somalia', 'Z345', 'SO', 'SOM', NULL),
-(2, 24, 'Sudafrica', 'South Africa', 'Z347', 'ZA', 'ZAF', NULL),
-(2, 21, 'Sudan', 'Sudan', 'Z348', 'SD', 'SDN', NULL),
-(2, 24, 'Eswatini', 'Eswatini', 'Z349', 'SZ', 'SWZ', NULL),
-(2, 23, 'Tanzania', 'Tanzania', 'Z357', 'TZ', 'TZA', NULL),
-(2, 22, 'Togo', 'Togo', 'Z351', 'TG', 'TGO', NULL),
-(2, 21, 'Tunisia', 'Tunisia', 'Z352', 'TN', 'TUN', NULL),
-(2, 23, 'Uganda', 'Uganda', 'Z353', 'UG', 'UGA', NULL),
-(2, 24, 'Repubblica Democratica del Congo', 'Democratic Republic of the Congo', 'Z312', 'CD', 'COD', NULL),
-(2, 23, 'Zambia', 'Zambia', 'Z355', 'ZM', 'ZMB', NULL),
-(2, 23, 'Zimbabwe', 'Zimbabwe', 'Z337', 'ZW', 'ZWE', NULL),
-(2, 23, 'Eritrea', 'Eritrea', 'Z368', 'ER', 'ERI', NULL),
-(2, 21, 'Sud Sudan', 'South Sudan', 'Z907', 'SS', 'SSD', NULL),
-(4, 42, 'Antigua e Barbuda', 'Antigua and Barbuda', 'Z532', 'AG', 'ATG', NULL),
-(4, 42, 'Bahamas', 'Bahamas', 'Z502', 'BS', 'BHS', NULL),
-(4, 42, 'Barbados', 'Barbados', 'Z522', 'BB', 'BRB', NULL),
-(4, 42, 'Belize', 'Belize', 'Z512', 'BZ', 'BLZ', NULL),
-(4, 41, 'Canada', 'Canada', 'Z401', 'CA', 'CAN', NULL),
-(4, 42, 'Costa Rica', 'Costa Rica', 'Z503', 'CR', 'CRI', NULL),
-(4, 42, 'Cuba', 'Cuba', 'Z504', 'CU', 'CUB', NULL),
-(4, 42, 'Dominica', 'Dominica', 'Z526', 'DM', 'DMA', NULL),
-(4, 42, 'Repubblica Dominicana', 'Dominican Republic', 'Z505', 'DO', 'DOM', NULL),
-(4, 42, 'El Salvador', 'El Salvador', 'Z506', 'SV', 'SLV', NULL),
-(4, 42, 'Giamaica', 'Jamaica', 'Z507', 'JM', 'JAM', NULL),
-(4, 42, 'Grenada', 'Grenada', 'Z524', 'GD', 'GRD', NULL),
-(4, 42, 'Guatemala', 'Guatemala', 'Z509', 'GT', 'GTM', NULL),
-(4, 42, 'Haiti', 'Haiti', 'Z510', 'HT', 'HTI', NULL),
-(4, 42, 'Honduras', 'Honduras', 'Z511', 'HN', 'HND', NULL),
-(4, 42, 'Messico', 'Mexico', 'Z514', 'MX', 'MEX', NULL),
 (4, 42, 'Nicaragua', 'Nicaragua', 'Z515', 'NI', 'NIC', NULL),
-(4, 42, 'Panama', 'Panama', 'Z516', 'PA', 'PAN', NULL),
-(4, 42, 'Santa Lucia', 'Saint Lucia', 'Z527', 'LC', 'LCA', NULL),
-(4, 42, 'Saint Vincent e Grenadine', 'Saint Vincent and the Grenadines', 'Z528', 'VC', 'VCT', NULL),
-(4, 42, 'Saint Kitts e Nevis', 'Saint Kitts and Nevis', 'Z533', 'KN', 'KNA', NULL),
-(4, 41, 'Stati Uniti d\'America', 'United States of America', 'Z404', 'US', 'USA', NULL),
-(4, 42, 'Argentina', 'Argentina', 'Z600', 'AR', 'ARG', NULL),
-(4, 42, 'Bolivia', 'Bolivia', 'Z601', 'BO', 'BOL', NULL),
-(4, 42, 'Brasile', 'Brazil', 'Z602', 'BR', 'BRA', NULL),
-(4, 42, 'Cile', 'Chile', 'Z603', 'CL', 'CHL', NULL),
-(4, 42, 'Colombia', 'Colombia', 'Z604', 'CO', 'COL', NULL),
-(4, 42, 'Ecuador', 'Ecuador', 'Z605', 'EC', 'ECU', NULL),
-(4, 42, 'Guyana', 'Guyana', 'Z606', 'GY', 'GUY', NULL),
-(4, 42, 'Paraguay', 'Paraguay', 'Z610', 'PY', 'PRY', NULL),
-(4, 42, 'Perù', 'Peru', 'Z611', 'PE', 'PER', NULL),
-(4, 42, 'Suriname', 'Suriname', 'Z608', 'SR', 'SUR', NULL),
-(4, 42, 'Trinidad e Tobago', 'Trinidad and Tobago', 'Z612', 'TT', 'TTO', NULL),
-(4, 42, 'Uruguay', 'Uruguay', 'Z613', 'UY', 'URY', NULL),
-(4, 42, 'Venezuela', 'Venezuela', 'Z614', 'VE', 'VEN', NULL),
-(5, 50, 'Australia', 'Australia', 'Z700', 'AU', 'AUS', NULL),
-(5, 50, 'Figi', 'Fiji', 'Z704', 'FJ', 'FJI', NULL),
-(5, 50, 'Kiribati', 'Kiribati', 'Z731', 'KI', 'KIR', NULL),
-(5, 50, 'Isole Marshall', 'Marshall Islands', 'Z711', 'MH', 'MHL', NULL),
-(5, 50, 'Stati Federati di Micronesia', 'Federated States of Micronesia', 'Z735', 'FM', 'FSM', NULL),
+(1, 11, 'Paesi Bassi', 'Netherlands', 'Z126', 'NL', 'NLD', NULL),
+(1, 13, 'Norvegia', 'Norway', 'Z125', 'NO', 'NOR', NULL),
+(3, 32, 'Nepal', 'Nepal', 'Z234', 'NP', 'NPL', NULL),
 (5, 50, 'Nauru', 'Nauru', 'Z713', 'NR', 'NRU', NULL),
 (5, 50, 'Nuova Zelanda', 'New Zealand', 'Z719', 'NZ', 'NZL', NULL),
+(3, 31, 'Oman', 'Oman', 'Z235', 'OM', 'OMN', NULL),
+(3, 32, 'Pakistan', 'Pakistan', 'Z236', 'PK', 'PAK', NULL),
+(4, 42, 'Panama', 'Panama', 'Z516', 'PA', 'PAN', NULL),
+(5, 50, 'Isole Pitcairn', 'Pitcairn', 'Z722', 'PN', 'PCN', 'GBR'),
+(4, 42, 'Perù', 'Peru', 'Z611', 'PE', 'PER', NULL),
+(3, 33, 'Filippine', 'Philippines', 'Z216', 'PH', 'PHL', NULL),
 (5, 50, 'Palau', 'Palau', 'Z734', 'PW', 'PLW', NULL),
 (5, 50, 'Papua Nuova Guinea', 'Papua New Guinea', 'Z730', 'PG', 'PNG', NULL),
-(5, 50, 'Isole Salomone', 'Solomon Islands', 'Z724', 'SB', 'SLB', NULL),
-(5, 50, 'Samoa', 'Samoa', 'Z726', 'WS', 'WSM', NULL),
-(5, 50, 'Tonga', 'Tonga', 'Z728', 'TO', 'TON', NULL),
-(5, 50, 'Tuvalu', 'Tuvalu', 'Z732', 'TV', 'TUV', NULL),
-(5, 50, 'Vanuatu', 'Vanuatu', 'Z733', 'VU', 'VUT', NULL),
-(5, 50, 'Nuova Caledonia', 'New Caledonia', 'Z716', 'NC', 'NCL', 'FRA'),
-(4, 42, 'Saint-Martin (FR)', 'Saint Martin (FR)', NULL, 'MF', 'MAF', 'FRA'),
-(2, 21, 'Sahara occidentale', 'Western Sahara', 'Z339', 'EH', 'ESH', NULL),
-(4, 42, 'Saint-Barthélemy', 'Saint Barthelemy', NULL, 'BL', 'BLM', 'FRA'),
-(4, 41, 'Bermuda', 'Bermuda', 'Z400', 'BM', 'BMU', 'GBR'),
-(5, 50, 'Isole Cook (NZ)', 'Cook Islands (NZ)', 'Z703', 'CK', 'COK', 'NZL'),
-(1, 13, 'Gibilterra', 'Gibraltar', 'Z113', 'GI', 'GIB', 'GBR'),
-(4, 42, 'Isole Cayman', 'Cayman Islands', 'Z530', 'KY', 'CYM', 'GBR'),
-(4, 42, 'Anguilla', 'Anguilla', 'Z529', 'AI', 'AIA', 'GBR'),
+(1, 11, 'Polonia', 'Poland', 'Z127', 'PL', 'POL', NULL),
+(3, 33, 'Corea del Nord', 'North Korea', 'Z214', 'KP', 'PRK', NULL),
+(1, 11, 'Portogallo', 'Portugal', 'Z128', 'PT', 'PRT', NULL),
+(4, 42, 'Paraguay', 'Paraguay', 'Z610', 'PY', 'PRY', NULL),
+(3, 31, 'Palestina', 'Palestine', 'Z161', 'PS', 'PSE', NULL),
 (5, 50, 'Polinesia francese', 'French Polynesia', 'Z723', 'PF', 'PYF', 'FRA'),
-(1, 13, 'Isole Fær Øer', 'Faroe Islands', 'Z108', 'FO', 'FRO', 'DNK'),
-(1, 13, 'Jersey', 'Jersey', NULL, 'JE', 'JEY', 'GBR'),
-(4, 42, 'Aruba', 'Aruba', 'Z501', 'AW', 'ABW', 'NLD'),
-(4, 42, 'Sint Maarten (NL)', 'St Maarten (NL)', NULL, 'SX', 'SXM', 'NLD'),
-(4, 41, 'Groenlandia', 'Greenland', 'Z402', 'GL', 'GRL', 'DNK'),
-(1, 13, 'Sark', 'Sark', NULL, 'n.d.', 'n.d.', 'GBR'),
-(1, 13, 'Guernsey', 'Guernsey', NULL, 'GG', 'GGY', 'GBR'),
-(4, 42, 'Isole Falkland (Malvine)', 'Falkland Islands (Malvinas)', 'Z609', 'FK', 'FLK', 'GBR'),
-(1, 13, 'Isola di Man', 'Isle of Man', 'Z122', 'IM', 'IMN', 'GBR'),
-(4, 42, 'Montserrat', 'Montserrat', 'Z531', 'MS', 'MSR', 'GBR'),
-(4, 42, 'Curaçao', 'Curaçao', NULL, 'CW', 'CUW', 'NLD'),
-(5, 50, 'Isole Pitcairn', 'Pitcairn', 'Z722', 'PN', 'PCN', 'GBR'),
-(4, 41, 'Saint Pierre e Miquelon', 'Saint Pierre and Miquelon', 'Z403', 'PM', 'SPM', 'FRA'),
+(3, 31, 'Qatar', 'Qatar', 'Z237', 'QA', 'QAT', NULL),
+(1, 11, 'Romania', 'Romania', 'Z129', 'RO', 'ROU', NULL),
+(1, 12, 'Federazione russa', 'Russian Federation', 'Z154', 'RU', 'RUS', NULL),
+(2, 23, 'Ruanda', 'Rwanda', 'Z338', 'RW', 'RWA', NULL),
+(3, 31, 'Arabia Saudita', 'Saudi Arabia', 'Z203', 'SA', 'SAU', NULL),
+(2, 21, 'Sudan', 'Sudan', 'Z348', 'SD', 'SDN', NULL),
+(2, 22, 'Senegal', 'Senegal', 'Z343', 'SN', 'SEN', NULL),
+(3, 33, 'Singapore', 'Singapore', 'Z248', 'SG', 'SGP', NULL),
 (2, 24, 'Sant\'Elena', 'Saint Helena', 'Z340', 'SH', 'SHN', 'GBR'),
-(5, 50, 'Terre australi e antartiche francesi', 'French Southern Territories', NULL, 'TF', 'ATF', 'FRA'),
+(5, 50, 'Isole Salomone', 'Solomon Islands', 'Z724', 'SB', 'SLB', NULL),
+(2, 22, 'Sierra Leone', 'Sierra Leone', 'Z344', 'SL', 'SLE', NULL),
+(4, 42, 'El Salvador', 'El Salvador', 'Z506', 'SV', 'SLV', NULL),
+(1, 13, 'San Marino', 'San Marino', 'Z130', 'SM', 'SMR', NULL),
+(2, 23, 'Somalia', 'Somalia', 'Z345', 'SO', 'SOM', NULL),
+(4, 41, 'Saint Pierre e Miquelon', 'Saint Pierre and Miquelon', 'Z403', 'PM', 'SPM', 'FRA'),
+(1, 12, 'Serbia', 'Serbia', 'Z158', 'RS', 'SRB', NULL),
+(2, 21, 'Sud Sudan', 'South Sudan', 'Z907', 'SS', 'SSD', NULL),
+(2, 24, 'Sao Tomé e Principe', 'Sao Tome and Principe', 'Z341', 'ST', 'STP', NULL),
+(4, 42, 'Suriname', 'Suriname', 'Z608', 'SR', 'SUR', NULL),
+(1, 11, 'Slovacchia', 'Slovakia', 'Z155', 'SK', 'SVK', NULL),
+(1, 11, 'Slovenia', 'Slovenia', 'Z150', 'SI', 'SVN', NULL),
+(1, 11, 'Svezia', 'Sweden', 'Z132', 'SE', 'SWE', NULL),
+(2, 24, 'Eswatini', 'Eswatini', 'Z349', 'SZ', 'SWZ', NULL),
+(4, 42, 'Sint Maarten (NL)', 'St Maarten (NL)', NULL, 'SX', 'SXM', 'NLD'),
+(2, 23, 'Seychelles', 'Seychelles', 'Z342', 'SC', 'SYC', NULL),
+(3, 31, 'Siria', 'Syria', 'Z240', 'SY', 'SYR', NULL),
 (4, 42, 'Isole Turks e Caicos', 'Turks and Caicos Islands', 'Z519', 'TC', 'TCA', 'GBR'),
+(2, 24, 'Ciad', 'Chad', 'Z309', 'TD', 'TCD', NULL),
+(2, 22, 'Togo', 'Togo', 'Z351', 'TG', 'TGO', NULL),
+(3, 33, 'Thailandia', 'Thailand', 'Z241', 'TH', 'THA', NULL),
+(3, 32, 'Tagikistan', 'Tajikistan', 'Z257', 'TJ', 'TJK', NULL),
+(3, 32, 'Turkmenistan', 'Turkmenistan', 'Z258', 'TM', 'TKM', NULL),
+(3, 33, 'Timor Leste', 'Timor Leste', 'Z242', 'TL', 'TLS', NULL),
+(5, 50, 'Tonga', 'Tonga', 'Z728', 'TO', 'TON', NULL),
+(4, 42, 'Trinidad e Tobago', 'Trinidad and Tobago', 'Z612', 'TT', 'TTO', NULL),
+(2, 21, 'Tunisia', 'Tunisia', 'Z352', 'TN', 'TUN', NULL),
+(1, 12, 'Turchia', 'Turkey', 'Z243', 'TR', 'TUR', NULL),
+(5, 50, 'Tuvalu', 'Tuvalu', 'Z732', 'TV', 'TUV', NULL),
+(3, 33, 'Taiwan', 'Taiwan', 'Z217', 'TW', 'TWN', NULL),
+(2, 23, 'Tanzania', 'Tanzania', 'Z357', 'TZ', 'TZA', NULL),
+(2, 23, 'Uganda', 'Uganda', 'Z353', 'UG', 'UGA', NULL),
+(1, 12, 'Ucraina', 'Ukraine', 'Z138', 'UA', 'UKR', NULL),
+(4, 42, 'Uruguay', 'Uruguay', 'Z613', 'UY', 'URY', NULL),
+(4, 41, 'Stati Uniti d\'America', 'United States of America', 'Z404', 'US', 'USA', NULL),
+(3, 32, 'Uzbekistan', 'Uzbekistan', 'Z259', 'UZ', 'UZB', NULL),
+(1, 13, 'Stato della Città del Vaticano', 'Vatican City State', 'Z106', 'VA', 'VAT', NULL),
+(4, 42, 'Saint Vincent e Grenadine', 'Saint Vincent and the Grenadines', 'Z528', 'VC', 'VCT', NULL),
+(4, 42, 'Venezuela', 'Venezuela', 'Z614', 'VE', 'VEN', NULL),
 (4, 42, 'Isole Vergini britanniche', 'British Virgin Islands', 'Z525', 'VG', 'VGB', 'GBR'),
-(5, 50, 'Wallis e Futuna', 'Wallis and Futuna Islands', 'Z729', 'WF', 'WLF', 'FRA');
+(3, 33, 'Vietnam', 'Vietnam', 'Z251', 'VN', 'VNM', NULL),
+(5, 50, 'Vanuatu', 'Vanuatu', 'Z733', 'VU', 'VUT', NULL),
+(5, 50, 'Wallis e Futuna', 'Wallis and Futuna Islands', 'Z729', 'WF', 'WLF', 'FRA'),
+(5, 50, 'Samoa', 'Samoa', 'Z726', 'WS', 'WSM', NULL),
+(3, 31, 'Yemen', 'Yemen', 'Z246', 'YE', 'YEM', NULL),
+(2, 24, 'Sudafrica', 'South Africa', 'Z347', 'ZA', 'ZAF', NULL),
+(2, 23, 'Zambia', 'Zambia', 'Z355', 'ZM', 'ZMB', NULL),
+(2, 23, 'Zimbabwe', 'Zimbabwe', 'Z337', 'ZW', 'ZWE', NULL);
 
 -- --------------------------------------------------------
 
@@ -8384,18 +8484,68 @@ INSERT INTO `regioni` (`codiceRegione`, `nomeRegione`, `ripartizioneGeografica`,
 CREATE TABLE `__efmigrationshistory` (
   `MigrationId` varchar(95) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dump dei dati per la tabella `__efmigrationshistory`
 --
 
 INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
-('20210118204913_InitialMigration', '5.0.2');
+('20210118204913_InitialMigration', '5.0.2'),
+('20210119135239_IdentityModel', '5.0.2');
 
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `aspnetroleclaims`
+--
+ALTER TABLE `aspnetroleclaims`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`);
+
+--
+-- Indici per le tabelle `aspnetroles`
+--
+ALTER TABLE `aspnetroles`
+  ADD PRIMARY KEY (`Id`),
+  ADD UNIQUE KEY `RoleNameIndex` (`NormalizedName`);
+
+--
+-- Indici per le tabelle `aspnetuserclaims`
+--
+ALTER TABLE `aspnetuserclaims`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `IX_AspNetUserClaims_UserId` (`UserId`);
+
+--
+-- Indici per le tabelle `aspnetuserlogins`
+--
+ALTER TABLE `aspnetuserlogins`
+  ADD PRIMARY KEY (`LoginProvider`,`ProviderKey`),
+  ADD KEY `IX_AspNetUserLogins_UserId` (`UserId`);
+
+--
+-- Indici per le tabelle `aspnetuserroles`
+--
+ALTER TABLE `aspnetuserroles`
+  ADD PRIMARY KEY (`UserId`,`RoleId`),
+  ADD KEY `IX_AspNetUserRoles_RoleId` (`RoleId`);
+
+--
+-- Indici per le tabelle `aspnetusers`
+--
+ALTER TABLE `aspnetusers`
+  ADD PRIMARY KEY (`Id`),
+  ADD UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
+  ADD KEY `EmailIndex` (`NormalizedEmail`);
+
+--
+-- Indici per le tabelle `aspnetusertokens`
+--
+ALTER TABLE `aspnetusertokens`
+  ADD PRIMARY KEY (`UserId`,`LoginProvider`,`Name`);
 
 --
 -- Indici per le tabelle `comuni`
@@ -8437,6 +8587,16 @@ ALTER TABLE `__efmigrationshistory`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `aspnetroleclaims`
+--
+ALTER TABLE `aspnetroleclaims`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT per la tabella `aspnetuserclaims`
+--
+ALTER TABLE `aspnetuserclaims`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT per la tabella `regioni`
 --
 ALTER TABLE `regioni`
@@ -8444,6 +8604,37 @@ ALTER TABLE `regioni`
 --
 -- Limiti per le tabelle scaricate
 --
+
+--
+-- Limiti per la tabella `aspnetroleclaims`
+--
+ALTER TABLE `aspnetroleclaims`
+  ADD CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE;
+
+--
+-- Limiti per la tabella `aspnetuserclaims`
+--
+ALTER TABLE `aspnetuserclaims`
+  ADD CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Limiti per la tabella `aspnetuserlogins`
+--
+ALTER TABLE `aspnetuserlogins`
+  ADD CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Limiti per la tabella `aspnetuserroles`
+--
+ALTER TABLE `aspnetuserroles`
+  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Limiti per la tabella `aspnetusertokens`
+--
+ALTER TABLE `aspnetusertokens`
+  ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
 --
 -- Limiti per la tabella `comuni`
