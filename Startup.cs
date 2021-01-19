@@ -7,6 +7,7 @@ using KampusStudioProto.Models.Services.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,11 +27,15 @@ namespace KampusStudioProto
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                              #if DEBUG
                              .AddRazorRuntimeCompilation()
                              #endif
                              ;
+
+            services.AddDefaultIdentity<IdentityUser>()
+                    .AddEntityFrameworkStores<MyDbContext>();
 
             //services.AddTransient<IComuneService, AdoNetComuneService>();
             services.AddTransient<IComuneService, EfCoreComuneService>();
@@ -56,8 +61,11 @@ namespace KampusStudioProto
             }
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(routeBuider => {
                 routeBuider.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                routeBuider.MapRazorPages();
             });
             /*
             app.UseMvc(routeBuilder =>

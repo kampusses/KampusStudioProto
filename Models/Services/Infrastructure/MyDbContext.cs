@@ -2,12 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using KampusStudioProto.Models.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 #nullable disable
 
 namespace KampusStudioProto.Models.Services.Infrastructure
 {
-    public partial class MyDbContext : DbContext
+    public partial class MyDbContext : IdentityDbContext
     {
         public MyDbContext(DbContextOptions<MyDbContext> options)
             : base(options)
@@ -21,6 +22,7 @@ namespace KampusStudioProto.Models.Services.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); //ereditiamo il mapping dell'IdentityDbContext
             modelBuilder.Entity<Comune>(entity =>
             {
                 entity.HasKey(e => e.CodiceCatastale)
