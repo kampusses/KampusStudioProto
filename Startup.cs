@@ -34,7 +34,14 @@ namespace KampusStudioProto
                              #endif
                              ;
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<IdentityUser>(options => {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredUniqueChars = 4;
+            })
                     .AddEntityFrameworkStores<MyDbContext>();
 
             //services.AddTransient<IComuneService, AdoNetComuneService>();
