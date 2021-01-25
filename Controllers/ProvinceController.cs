@@ -16,14 +16,14 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> Index()
         {
             List<ProvinciaViewModel> province = await provinciaService.GetProvinceAsync();
-            ViewBag.Titolo = "Province italiane";
+            ViewBag.Title = "Province italiane";
             return View(province);
         }
 
         public async Task<IActionResult> Dettaglio(int id)
         {
             ProvinciaViewModel provincia = await provinciaService.GetProvinciaAsync(id);
-            ViewBag.Titolo = "Provincia di " + provincia.NomeProvincia;
+            ViewBag.Title = "Provincia di " + provincia.NomeProvincia;
             return View(provincia);
         }
     }

@@ -16,14 +16,14 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> Index()
         {
             List<NazioneViewModel> nazioni = await nazioneService.GetNazioniAsync();
-            ViewBag.Titolo = "Stati esteri";
+            ViewBag.Title = "Stati esteri";
             return View(nazioni);
         }
 
         public async Task <IActionResult> Dettaglio(string id)
         {
             NazioneViewModel nazione = await nazioneService.GetNazioneAsync(id);
-            ViewBag.Titolo = "Stato: " + nazione.DenominazioneIT;
+            ViewBag.Title = "Stato: " + nazione.DenominazioneIT;
             return View(nazione);
         }
     }

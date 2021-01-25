@@ -17,7 +17,7 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> Index(ComuneListInputModel input)
         {
             ListViewModel<ComuneViewModel> comuni = await comuneService.GetComuniAsync(input);
-            ViewBag.Titolo = "Comuni italiani";
+            ViewBag.Title = "Comuni italiani";
             ComuneListViewModel viewModel = new ComuneListViewModel
             {
                 Comuni = comuni,
@@ -29,7 +29,7 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> Dettaglio(string id)
         {
             ComuneViewModel comune = await comuneService.GetComuneAsync(id);
-            ViewBag.Titolo = "Comune di " + comune.NomeComune;
+            ViewBag.Title = "Comune di " + comune.NomeComune;
             return View(comune);
         }
     }

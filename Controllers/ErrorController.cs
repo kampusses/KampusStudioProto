@@ -6,7 +6,7 @@ namespace KampusStudioProto.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Titolo = "Errore";
+            ViewBag.Title = "Errore";
             return View();
         }
     }

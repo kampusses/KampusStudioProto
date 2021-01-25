@@ -16,14 +16,14 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> Index()
         {
             List<RegioneViewModel> regioni = await regioneService.GetRegioniAsync();
-            ViewBag.Titolo = "Regioni Italiane";
+            ViewBag.Title = "Regioni Italiane";
             return View(regioni);
         }
 
         public async Task <IActionResult> Dettaglio(int id)
         {
             RegioneViewModel regione = await regioneService.GetRegioneAsync(id);
-            ViewBag.Titolo = "Regione " + regione.NomeRegione;
+            ViewBag.Title = "Regione " + regione.NomeRegione;
             return View(regione);
         }
     }
