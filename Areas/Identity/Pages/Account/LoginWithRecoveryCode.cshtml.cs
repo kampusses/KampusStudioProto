@@ -33,7 +33,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             [BindProperty]
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Recovery Code")]
+            [Display(Name = "Codice di recupero")]
             public string RecoveryCode { get; set; }
         }
 
@@ -43,7 +43,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"Impossibile caricare l'utente con autenticazione a due fattori.");
             }
 
             ReturnUrl = returnUrl;
@@ -61,7 +61,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"Impossibile caricare l'utente con autenticazione a due fattori.");
             }
 
             var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
@@ -70,18 +70,18 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with a recovery code.", user.Id);
+                _logger.LogInformation("L'utente con ID '{UserId}' ha effettuato l'accesso con un codice di ripristino.", user.Id);
                 return LocalRedirect(returnUrl ?? Url.Content("~/"));
             }
             if (result.IsLockedOut)
             {
-                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+                _logger.LogWarning("Utente con account ID '{UserId}' bloccato.", user.Id);
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid recovery code entered for user with ID '{UserId}' ", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid recovery code entered.");
+                _logger.LogWarning("Codice di ripristino non valido inserito per l'utente con ID '{UserId}' ", user.Id);
+                ModelState.AddModelError(string.Empty, "Codice di ripristino inserito non valido.");
                 return Page();
             }
         }
