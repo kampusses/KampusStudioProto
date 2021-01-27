@@ -33,7 +33,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossibile caricare l'utente con ID '{_userManager.GetUserId(User)}'.");
             }
 
             return Page();
@@ -44,15 +44,15 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Impossibile caricare l'utente con ID '{_userManager.GetUserId(User)}'.");
             }
 
             await _userManager.SetTwoFactorEnabledAsync(user, false);
             await _userManager.ResetAuthenticatorKeyAsync(user);
-            _logger.LogInformation("User with ID '{UserId}' has reset their authentication app key.", user.Id);
+            _logger.LogInformation("L'utente con ID '{UserId}' ha reimpostato la chiave dell'app di autenticazione.", user.Id);
             
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your authenticator app key has been reset, you will need to configure your authenticator app using the new key.";
+            StatusMessage = "La tua chiave dell'app di autenticazione è stata reimpostata, dovrai configurare la tua app di autenticazione utilizzando la nuova chiave.";
 
             return RedirectToPage("./EnableAuthenticator");
         }

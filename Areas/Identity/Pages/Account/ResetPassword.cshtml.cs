@@ -32,7 +32,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "La {0} deve contenere almeno {2} e massimo {1} caratteri.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "La {0} deve contenere almeno {2} e massimo {1} caratteri.", MinimumLength = 8)]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
