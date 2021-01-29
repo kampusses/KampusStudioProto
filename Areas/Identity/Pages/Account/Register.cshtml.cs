@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using KampusStudioProto.Models.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -19,14 +20,14 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -45,12 +46,19 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+
+
+            [Required(ErrorMessage="Il nome completo è obbligatorio")]
+            [StringLength(100, MinimumLength = 3, ErrorMessage="Il nome completo deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
+            [Display(Name = "Nome completo")]
+            public string FullName { get; set; }
+
+            [Required(ErrorMessage="L'email è obbligatoria")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage="La password è obbligatoria")]
             [StringLength(100, ErrorMessage = "La {0} deve contenere almeno {2} caratteri e un massimo di {1} caratteri.", MinimumLength = 8)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
@@ -74,7 +82,8 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser {UserName = Input.Email, Email = Input.Email, FullName = Input.FullName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

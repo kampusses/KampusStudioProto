@@ -1,3 +1,4 @@
 In generale in ogni title di pagina inserire un titolo appropriato
 Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
+Tradurre tutti i messaggi di errore di Identity inserendo gli attributi ErrorMessage

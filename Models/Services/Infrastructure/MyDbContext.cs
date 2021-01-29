@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace KampusStudioProto.Models.Services.Infrastructure
 {
-    public partial class MyDbContext : IdentityDbContext
+    public partial class MyDbContext : IdentityDbContext<ApplicationUser>
     {
         public MyDbContext(DbContextOptions<MyDbContext> options)
             : base(options)

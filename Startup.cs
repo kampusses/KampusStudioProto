@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KampusStudioProto.Models.Entities;
 using KampusStudioProto.Models.Services.Application;
 using KampusStudioProto.Models.Services.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -34,7 +35,7 @@ namespace KampusStudioProto
                              #endif
                              ;
 
-            services.AddDefaultIdentity<IdentityUser>(options => {
+            services.AddDefaultIdentity<ApplicationUser>(options => {
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 8;
                 options.Password.RequireUppercase = true;
