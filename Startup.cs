@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KampusStudioProto.Customizations.Identity;
 using KampusStudioProto.Models.Entities;
 using KampusStudioProto.Models.Services.Application;
 using KampusStudioProto.Models.Services.Infrastructure;
@@ -43,7 +44,8 @@ namespace KampusStudioProto
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequiredUniqueChars = 4;
             })
-                    .AddEntityFrameworkStores<MyDbContext>();
+            .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
+            .AddEntityFrameworkStores<MyDbContext>();
 
             //services.AddTransient<IComuneService, AdoNetComuneService>();
             services.AddTransient<IComuneService, EfCoreComuneService>();
