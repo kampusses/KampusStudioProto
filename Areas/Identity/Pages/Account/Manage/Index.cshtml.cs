@@ -33,6 +33,11 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [Required(ErrorMessage="Il nome completo è obbligatorio")]
+            [StringLength(100, MinimumLength = 3, ErrorMessage="Il nome completo deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
+            [Display(Name = "Nome completo")]
+            public string FullName { get; set; }
+
             [Phone]
             [Display(Name = "Numero di telefono")]
             public string PhoneNumber { get; set; }
@@ -47,7 +52,8 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FullName = user.FullName
             };
         }
 
@@ -75,6 +81,15 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
             {
                 await LoadAsync(user);
                 return Page();
+            }
+
+            user.FullName = Input.FullName;
+            IdentityResult result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                StatusMessage = "Errore nel salvataggio del nome, riprova";
+                return RedirectToPage();
             }
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
