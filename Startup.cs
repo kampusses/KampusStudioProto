@@ -46,6 +46,9 @@ namespace KampusStudioProto
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequiredUniqueChars = 4;
                 options.SignIn.RequireConfirmedAccount = true;
+                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             })
             .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
             .AddEntityFrameworkStores<MyDbContext>();
@@ -64,7 +67,6 @@ namespace KampusStudioProto
             });
 
             services.Configure<SmtpOptions>(Configuration.GetSection("Smtp"));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
