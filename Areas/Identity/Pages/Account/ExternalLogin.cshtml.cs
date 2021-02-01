@@ -52,6 +52,9 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Required]
+            public string FullName { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -76,6 +79,16 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
                 return RedirectToPage("./Login", new {ReturnUrl = returnUrl });
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            var fullName = info.Principal.FindFirstValue(ClaimTypes.Name);
+/*
+            Questo codice che sembra dare problemi in esecuzione, evita di doversi loggare dopo essersi registrati
+            var user = new ApplicationUser {Email = email, UserName = email, FullName = fullName};
+            await _userManager.CreateAsync(user);
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            return Redirect("/");
+*/
             if (info == null)
             {
                 ErrorMessage = "Errore durante il caricamento delle informazioni di accesso esterno.";
@@ -102,7 +115,8 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
                 {
                     Input = new InputModel
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        Email = email,
+                        FullName = fullName
                     };
                 }
                 return Page();
@@ -122,7 +136,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FullName = Input.FullName };
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
