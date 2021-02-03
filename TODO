@@ -2,7 +2,7 @@ In generale in ogni title di pagina inserire un titolo appropriato
 Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive
 Tradurre tutti i messaggi di errore di Identity inserendo gli attributi ErrorMessage
 Nel form di registrazione e di modifica del profilo, creare un altro campo per inserire separatamente il nome ed il cognome
-Vai in dettaglio comune, poi vai su privacy. Non funziona!
 
 FATTO
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
+Vai in dettaglio comune, poi vai su privacy. Non funziona!
