@@ -84,6 +84,12 @@ namespace KampusStudioProto.Models.Services.Application
                 SELECT COUNT(*) FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"} AND codiceCatastale LIKE {"%" + model.Belfiore + "%"}";
             }
             
+            if (model.Provincia != 0)
+            {
+                query = $@"SELECT * FROM comuni WHERE codiceProvincia = {model.Provincia} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE codiceProvincia = {model.Provincia}";
+            }
+
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();

@@ -80,6 +80,8 @@ namespace KampusStudioProto.Models.Services.Application
             baseQuery = baseQuery.Where(comune => comune.Prefisso.Contains(model.Search));
             if (model.SearchType == "Belfiore") 
             baseQuery = baseQuery.Where(comune => comune.CodiceCatastale.Contains(model.Search));
+            if (model.Provincia != 0)
+            baseQuery = baseQuery.Where(comune => comune.CodiceProvincia.Equals(model.Provincia));
 
 
             IQueryable<ComuneViewModel> queryLinq = baseQuery

@@ -13,5 +13,6 @@ namespace KampusStudioProto.Models.ViewModels
         string Cap {get;}
         string Prefisso {get;}
         string Belfiore {get;}
+        int Provincia {get;}
     }
 }
