@@ -3,23 +3,11 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4 login-form-1">
-                <h3>@ViewBag.Title</h3>
-                <h5>Effettua il login</h5>
-                <form asp-controller="Comuni" asp-action="Index" method="get">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Userid *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btnSubmit" value="Login" />
-                    </div>
-                    <div class="form-group">
-                        <a href="#" class="ForgetPwd">Hai dimenticato la password?</a>
-                    </div>
-                </form>
+            <p align="center"><em>Ciao @User.FindFirst("FullName").Value</em></p>
+            <p align="center">Usa il menù in alto per utilizzare tutte le funzionalità di KampuStudio Versione Proto</p>
+            <p align="center">Buon lavoro!</p>
             </div>
-        <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
     </div>
 </div>
