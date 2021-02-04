@@ -7,12 +7,14 @@ using KampusStudioProto.Models.Entities;
 using KampusStudioProto.Models.Options;
 using KampusStudioProto.Models.Services.Application;
 using KampusStudioProto.Models.Services.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +39,12 @@ namespace KampusStudioProto
                 facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                 facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            services.AddMvc(options => {
+                AuthorizationPolicyBuilder policyBuilder = new();
+                AuthorizationPolicy policy = policyBuilder.RequireAuthenticatedUser().Build();
+                AuthorizeFilter filter = new(policy);
+                options.Filters.Add(filter);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                              #if DEBUG
                              .AddRazorRuntimeCompilation()
                              #endif

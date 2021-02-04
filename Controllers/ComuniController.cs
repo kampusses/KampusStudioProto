@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using KampusStudioProto.Models.InputModels;
 using KampusStudioProto.Models.Services.Application;
 using KampusStudioProto.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KampusStudioProto.Controllers
@@ -14,6 +15,7 @@ namespace KampusStudioProto.Controllers
         {
             this.comuneService = comuneService;
         }
+        
         public async Task<IActionResult> Index(ComuneListInputModel input)
         {
             ListViewModel<ComuneViewModel> comuni = await comuneService.GetComuniAsync(input);

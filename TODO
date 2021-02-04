@@ -8,6 +8,7 @@ Nella pagina di elemco Regioni, implementare ordinamento alfabetico, per numero 
 Nella pagina di elenco Nazioni, implementare barra di ricerca per nome nazione codice belfiore, per copntinente e stato padre
 Nella pagina di elenco Nazioni, implementare la paginazione
 Implemnentare tutta la gestione cap
+Se non si è ancora autenticati, permettere la visualizzazione della razor page "Privacy"
 
 FATTO
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
