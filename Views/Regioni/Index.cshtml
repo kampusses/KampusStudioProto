@@ -25,7 +25,7 @@
             <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="@regione.CodiceRegione">Vedi Regione</a>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-outline-primary" href="#">Seleziona Comuni</a>
+            <a class="btn btn-outline-primary" asp-controller="Comuni" asp-action="Index" asp-route-regione="@regione.CodiceRegione">Seleziona Comuni</a>
         </div>
     </div>
     <hr />

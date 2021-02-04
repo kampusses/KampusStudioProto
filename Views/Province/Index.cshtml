@@ -20,13 +20,13 @@
             Regione: <a asp-controller="Regioni" asp-action="Dettaglio" asp-route-id="@provincia.Regione.CodiceRegione">@provincia.Regione.NomeRegione</a>
         </div>
         <div class="col-md-2">
-            Nr. comuni:<br /><a asp-controller="Comuni" asp-action="Index" asp-route-provincia=@provincia.CodiceProvincia>@provincia.NComuni</a>
+            Nr. comuni:<br /><a asp-controller="Comuni" asp-action="Index" asp-route-provincia="@provincia.CodiceProvincia">@provincia.NComuni</a>
         </div>
         <div class="col-md-2">
             <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="@provincia.CodiceProvincia">Vedi Provincia</a>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-outline-primary" href="#">Seleziona Comuni</a>
+            <a class="btn btn-outline-primary" asp-controller="Comuni" asp-action="Index" asp-route-provincia="@provincia.CodiceProvincia">Seleziona Comuni</a>
         </div>
     </div>
     <hr />
