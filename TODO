@@ -1,5 +1,5 @@
 In generale in ogni title di pagina inserire un titolo appropriato
-Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive
+Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive in accordo anche con identity
 Tradurre tutti i messaggi di errore di Identity inserendo gli attributi ErrorMessage
 Nel form di registrazione e di modifica del profilo, creare un altro campo per inserire separatamente il nome ed il cognome
 

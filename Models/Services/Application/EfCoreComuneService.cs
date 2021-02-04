@@ -82,6 +82,8 @@ namespace KampusStudioProto.Models.Services.Application
             baseQuery = baseQuery.Where(comune => comune.CodiceCatastale.Contains(model.Search));
             if (model.Provincia != 0)
             baseQuery = baseQuery.Where(comune => comune.CodiceProvincia.Equals(model.Provincia));
+            if (model.Regione != 0)
+            baseQuery = baseQuery.Where(comune => comune.CodiceRegione.Equals(model.Regione));
 
 
             IQueryable<ComuneViewModel> queryLinq = baseQuery

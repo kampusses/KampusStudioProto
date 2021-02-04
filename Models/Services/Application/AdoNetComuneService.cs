@@ -90,6 +90,12 @@ namespace KampusStudioProto.Models.Services.Application
                 SELECT COUNT(*) FROM comuni WHERE codiceProvincia = {model.Provincia}";
             }
 
+            if (model.Regione != 0)
+            {
+                query = $@"SELECT * FROM comuni WHERE codiceRegione = {model.Regione} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE codiceRegione = {model.Regione}";
+            }
+
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var comuneList = new List<ComuneViewModel>();

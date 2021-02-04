@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-2">
             Abitanti: @regione.Abitanti.ToString("#,###,###")<br />
-            Totale comuni: <a href="" title="Vedi comuni">@regione.NComuni.ToString("###,###")</a>
+            Totale comuni: <a asp-controller="Comuni" asp-action="Index" asp-route-regione="@regione.CodiceRegione" title="Vedi comuni">@regione.NComuni.ToString("###,###")</a>
         </div>
         <div class="col-md-2">
             <a class="btn btn-outline-primary" asp-action="Dettaglio" asp-route-id="@regione.CodiceRegione">Vedi Regione</a>

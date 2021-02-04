@@ -25,10 +25,10 @@ namespace KampusStudioProto.Customizations.ModelBinders
             string prefisso = bindingContext.ValueProvider.GetValue("Prefisso").FirstValue;
             string belfiore = bindingContext.ValueProvider.GetValue("Belfiore").FirstValue;
             int provincia = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Provincia").FirstValue);
+            int regione = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Regione").FirstValue);
 
             //creiamo l'istanza del ComuneListInputmodel
-            var inputModel = new ComuneListInputModel(search, searchType, page, orderBy, ascending, cap, prefisso, belfiore, provincia, configuration);
-
+            var inputModel = new ComuneListInputModel(search, searchType, page, orderBy, ascending, cap, prefisso, belfiore, provincia, regione, configuration);
             //impostiamo il risultato per notificare che la creazione è avvenuta con successo
             bindingContext.Result = ModelBindingResult.Success(inputModel);
 

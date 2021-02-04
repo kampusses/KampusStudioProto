@@ -19,5 +19,6 @@ namespace KampusStudioProto.Models.ViewModels
         string IPaginationInfo.Prefisso => Input.Prefisso;
         string IPaginationInfo.Belfiore => Input.Belfiore;
         int IPaginationInfo.Provincia => Input.Provincia;
+        int IPaginationInfo.Regione => Input.Regione;
     }
 }

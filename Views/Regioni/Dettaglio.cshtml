@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <h1>@Model.NomeRegione</h1>
         <h2>Capoluogo di Regione: <a asp-controller="Comuni" asp-action="Dettaglio" asp-route-id="@Model.Capoluogo.CodiceCatastale">@Model.Capoluogo.NomeComune</a></h2>
-        <h2>Totale comuni: <a href="" title="vedi comuni">@Model.NComuni</a></h2>
+        <h2>Totale comuni: <a asp-controller="Comuni" asp-action="Index" asp-route-regione="@Model.CodiceRegione" title="vedi comuni">@Model.NComuni</a></h2>
         <h2>Totale abitanti: @Model.Abitanti.ToString("#,###,###")</h2>
         <br />
         <h3>Elenco Province:</h3>

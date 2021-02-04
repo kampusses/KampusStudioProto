@@ -9,7 +9,7 @@ namespace KampusStudioProto.Models.InputModels
     [ModelBinder(BinderType = typeof(ComuneListInputModelBinder))]
     public class ComuneListInputModel
     {
-        public ComuneListInputModel(string search, string searchtype, int page, string orderby, bool ascending, string cap, string prefisso, string belfiore, int provincia, IConfiguration configuration)
+        public ComuneListInputModel(string search, string searchtype, int page, string orderby, bool ascending, string cap, string prefisso, string belfiore, int provincia, int regione, IConfiguration configuration)
         {
             //sanitizzazione
             if (search == null) Search = "";
@@ -33,6 +33,7 @@ namespace KampusStudioProto.Models.InputModels
             Prefisso = prefisso;
             Belfiore = belfiore;
             Provincia = provincia;
+            Regione = regione;
         }
         public string Search {get;}
         public string SearchType { get; }
@@ -43,6 +44,7 @@ namespace KampusStudioProto.Models.InputModels
         public string Prefisso { get; }
         public string Belfiore { get; }
         public int Provincia { get; }
+        public int Regione { get; }
         public int Limit {get;}
         public int Offset {get;}
     }
