@@ -16,7 +16,8 @@ namespace KampusStudioProto.Customizations.Identity
         protected override async Task<ClaimsIdentity> GenerateClaimsAsync(ApplicationUser user)
         {
             ClaimsIdentity identity = await base.GenerateClaimsAsync(user);
-            identity.AddClaim(new Claim("FullName", user.FullName));
+            identity.AddClaim(new Claim("Cognome", user.Cognome));
+            identity.AddClaim(new Claim("Nome", user.Nome));
             return identity;
         }
     }

@@ -54,7 +54,10 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            public string FullName { get; set; }
+            public string Cognome { get; set; }
+
+            [Required]
+            public string Nome { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -81,7 +84,8 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             var info = await _signInManager.GetExternalLoginInfoAsync();
 
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-            var fullName = info.Principal.FindFirstValue(ClaimTypes.Name);
+            var cognome = info.Principal.FindFirstValue(ClaimTypes.Surname);
+            var nome = info.Principal.FindFirstValue(ClaimTypes.Name);
 /*
             Questo codice che sembra dare problemi in esecuzione, evita di doversi loggare dopo essersi registrati
             var user = new ApplicationUser {Email = email, UserName = email, FullName = fullName};
@@ -116,7 +120,8 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
                     Input = new InputModel
                     {
                         Email = email,
-                        FullName = fullName
+                        Cognome = cognome,
+                        Nome = nome
                     };
                 }
                 return Page();
@@ -136,7 +141,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FullName = Input.FullName };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, Cognome = Input.Cognome, Nome = Input.Nome };
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)

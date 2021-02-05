@@ -46,12 +46,15 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Required(ErrorMessage="Il cognome è obbligatorio")]
+            [StringLength(100, MinimumLength = 3, ErrorMessage="Il cognome deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
+            [Display(Name = "Cognome")]
+            public string Cognome { get; set; }
 
-
-            [Required(ErrorMessage="Il nome completo è obbligatorio")]
-            [StringLength(100, MinimumLength = 3, ErrorMessage="Il nome completo deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
-            [Display(Name = "Nome completo")]
-            public string FullName { get; set; }
+            [Required(ErrorMessage="Il nome è obbligatorio")]
+            [StringLength(100, MinimumLength = 3, ErrorMessage="Il nome deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
+            [Display(Name = "Nome")]
+            public string Nome { get; set; }
 
             [Required(ErrorMessage="L'email è obbligatoria")]
             [EmailAddress]
@@ -83,7 +86,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
-                var user = new ApplicationUser {UserName = Input.Email, Email = Input.Email, FullName = Input.FullName };
+                var user = new ApplicationUser {UserName = Input.Email, Email = Input.Email, Cognome = Input.Cognome, Nome = Input.Nome };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

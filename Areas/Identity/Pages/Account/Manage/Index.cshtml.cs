@@ -33,10 +33,15 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required(ErrorMessage="Il nome completo è obbligatorio")]
-            [StringLength(100, MinimumLength = 3, ErrorMessage="Il nome completo deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
-            [Display(Name = "Nome completo")]
-            public string FullName { get; set; }
+            [Required(ErrorMessage="Il cognome è obbligatorio")]
+            [StringLength(100, MinimumLength = 3, ErrorMessage="Il cognome deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
+            [Display(Name = "Cognome")]
+            public string Cognome { get; set; }
+
+            [Required(ErrorMessage="Il nome è obbligatorio")]
+            [StringLength(100, MinimumLength = 3, ErrorMessage="Il nome deve essere almeno {2} caratteri e un massimo di {1} caratteri")]
+            [Display(Name = "Nome")]
+            public string Nome { get; set; }
 
             [Phone]
             [Display(Name = "Numero di telefono")]
@@ -53,7 +58,8 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                FullName = user.FullName
+                Cognome = user.Cognome,
+                Nome = user.Nome
             };
         }
 
@@ -83,7 +89,8 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            user.FullName = Input.FullName;
+            user.Cognome = Input.Cognome;
+            user.Nome = Input.Nome;
             IdentityResult result = await _userManager.UpdateAsync(user);
 
             if (!result.Succeeded)

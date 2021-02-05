@@ -4,6 +4,7 @@ namespace KampusStudioProto.Models.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        public string FullName {get; set;}
+        public string Cognome {get; set;}
+        public string Nome {get; set;}
     }
 }
