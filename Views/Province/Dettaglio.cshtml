@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <h1>Provincia di<br />@Model.NomeProvincia (@Model.SiglaProvincia)</h1>
         <h2>Totale abitanti: @Model.Abitanti.ToString("#,###,###")</h2>
-        <h2>Totale comuni: <a asp-controller="Comuni" asp-action="Index" asp-route-provincia="@Model.CodiceProvincia" title="vedi comuni">@Model.NComuni</a></h2>
+        <h2>Totale comuni: <a asp-controller="Comuni" asp-action="Index" asp-route-searchtype="Provincia" asp-route-search="@Model.CodiceProvincia" title="vedi comuni">@Model.NComuni</a></h2>
         <br />
         <h3>Capoluogo di provincia: <a title="vedi capoluogo" asp-controller="Comuni" asp-action="Dettaglio" asp-route-id="@Model.Capoluogo.CodiceCatastale">@Model.Capoluogo.NomeComune</a></h3>
         <h3>Regione: <a title="vedi regione" asp-controller="Regioni" asp-action="Dettaglio" asp-route-id="@Model.Regione.CodiceRegione">@Model.Regione.NomeRegione</a></h3>

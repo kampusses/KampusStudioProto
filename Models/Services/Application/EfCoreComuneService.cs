@@ -80,11 +80,12 @@ namespace KampusStudioProto.Models.Services.Application
             baseQuery = baseQuery.Where(comune => comune.Prefisso.Contains(model.Search));
             if (model.SearchType == "Belfiore") 
             baseQuery = baseQuery.Where(comune => comune.CodiceCatastale.Contains(model.Search));
-            if (model.Provincia != 0)
-            baseQuery = baseQuery.Where(comune => comune.CodiceProvincia.Equals(model.Provincia));
-            if (model.Regione != 0)
-            baseQuery = baseQuery.Where(comune => comune.CodiceRegione.Equals(model.Regione));
+            if (model.SearchType == "Provincia")
+            baseQuery = baseQuery.Where(comune => comune.CodiceProvincia == Convert.ToInt32(model.Search));
+            if (model.SearchType == "Regione")
+            baseQuery = baseQuery.Where(comune => comune.CodiceRegione == Convert.ToInt32(model.Search));
 
+            Console.WriteLine(baseQuery);
 
             IQueryable<ComuneViewModel> queryLinq = baseQuery
             .AsNoTracking() // da usare solo per operazioni di sola lettura

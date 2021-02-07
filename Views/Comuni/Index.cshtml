@@ -3,11 +3,11 @@
     <div class="col-md-7">
 
     @{
-        if (@Model.Input.Provincia==0 && @Model.Input.Regione==0) {<h1>Comuni italiani</h1>}
+        if (Model.Input.SearchType != "Provincia" && Model.Input.SearchType != "Regione") {<h1>Comuni italiani</h1>}
         else {
-            if (@Model.Input.Provincia!=0) {<h1>Comuni della provincia<br />di @Model.Comuni.Results[0].Provincia.NomeProvincia</h1>}
+            if (Model.Input.SearchType == "Provincia") {<h1>Comuni della provincia<br />di @Model.Comuni.Results[0].Provincia.NomeProvincia</h1>}
             else {
-                if (@Model.Input.Regione!=0) {<h1>Comuni della<br />regione @Model.Comuni.Results[0].Regione.NomeRegione</h1>}
+                if (Model.Input.SearchType == "Regione") {<h1>Comuni della<br />regione @Model.Comuni.Results[0].Regione.NomeRegione</h1>}
             }
         }
     }
@@ -18,17 +18,17 @@
             <div class="input-group">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle piatto-dx" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span id="searchType">@Model.Input.SearchType</span>
+                        <span id="searchType">@{if (Model.Input.SearchType == "Provincia" || Model.Input.SearchType == "Regione") {<visualizza>Nome comune</visualizza>}else {@Model.Input.SearchType}}</span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Nome Comune'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Nome Comune';">Nome Comune</button>
+                        <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Nome comune'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Nome comune';">Nome comune</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'CAP'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'CAP';">CAP</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Prefisso'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Prefisso';">Prefisso</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Belfiore'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Belfiore';">Belfiore</button>
                         <input id="searchTypeValue" type="hidden" name="searchtype" value="@Model.Input.SearchType"></input>
                     </div>
                 </div>
-                <input type="text" name="search" placeholder="Cerca" id="ricerca" value="@Model.Input.Search">
+                <input type="text" name="search" placeholder="Cerca" id="ricerca" value="@if (Model.Input.SearchType != "Provincia" && Model.Input.SearchType != "Regione") @Model.Input.Search">
                 <div class="input-group-append"><button class="input-group-text" id="search-button"><i class="fas fa-search"></i></button></div>
             </div>
         </form>
@@ -38,7 +38,7 @@
     <div class="col-md-7">
     </div>
     <div style="height: 30px;" class="col-md-5 d-flex align-items-start">
-        @if(@Model.Input.Search!="" || @Model.Input.Cap!=null || @Model.Input.Prefisso!=null || @Model.Input.Belfiore!=null)
+        @if(Model.Input.Search != "" && (Model.Input.SearchType == "Nome comune" || Model.Input.SearchType == "CAP" || Model.Input.SearchType == "Prefisso" || Model.Input.SearchType == "Belfiore"))
         {
             <a asp-controller="Comuni" asp-action="Index"><i class="far fa-times-circle"></i> azzera ricerca</a>
         }
@@ -49,8 +49,8 @@
 {
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-orderby="nomeComune" asp-route-ascending="@(Model.Input.OrderBy == "nomeComune" ? !Model.Input.Ascending : true)" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-provincia="@Model.Input.Provincia" asp-route-regione="@Model.Input.Regione">Comune</a> @if(Model.Input.OrderBy == "nomeComune") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
-    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-orderby="abitanti" asp-route-ascending="@(Model.Input.OrderBy == "abitanti" ? !Model.Input.Ascending : false)" asp-route-cap="@Model.Input.Cap" asp-route-prefisso="@Model.Input.Prefisso" asp-route-belfiore="@Model.Input.Belfiore" asp-route-provincia="@Model.Input.Provincia" asp-route-regione="@Model.Input.Regione">Abitanti</a> @if(Model.Input.OrderBy == "abitanti") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-orderby="nomeComune" asp-route-ascending="@(Model.Input.OrderBy == "nomeComune" ? !Model.Input.Ascending : true)">Comune</a> @if(Model.Input.OrderBy == "nomeComune") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
+    <div class="col-md-2"><a asp-controller="Comuni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-orderby="abitanti" asp-route-ascending="@(Model.Input.OrderBy == "abitanti" ? !Model.Input.Ascending : false)">Abitanti</a> @if(Model.Input.OrderBy == "abitanti") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
     <div class="col-md-7"></div>
 </div>
 <hr />

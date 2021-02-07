@@ -10,10 +10,5 @@ namespace KampusStudioProto.Models.ViewModels
         string SearchType {get;}
         string OrderBy {get;}
         bool Ascending {get;}
-        string Cap {get;}
-        string Prefisso {get;}
-        string Belfiore {get;}
-        int Provincia {get;}
-        int Regione {get;}
     }
 }

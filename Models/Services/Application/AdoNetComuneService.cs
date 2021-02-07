@@ -62,38 +62,38 @@ namespace KampusStudioProto.Models.Services.Application
             FormattableString query = $"";
             if (model.SearchType=="Nome comune")
             {
-                query = $@"SELECT * FROM comuni WHERE nomeComune LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"}  AND codiceCatastale LIKE {"%" + model.Belfiore + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
-                SELECT COUNT(*) FROM comuni WHERE nomeComune LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"} AND codiceCatastale LIKE {"%" + model.Belfiore + "%"}";
+                query = $@"SELECT * FROM comuni WHERE nomeComune LIKE {"%" + model.Search + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE nomeComune LIKE {"%" + model.Search + "%"}";
             }
             
             if (model.SearchType=="CAP")
             {
-                query = $@"SELECT * FROM comuni WHERE cap LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"}  AND codiceCatastale LIKE {"%" + model.Belfiore + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
-                SELECT COUNT(*) FROM comuni WHERE cap LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"} AND codiceCatastale LIKE {"%" + model.Belfiore + "%"}";
+                query = $@"SELECT * FROM comuni WHERE cap LIKE {"%" + model.Search + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE cap LIKE {"%" + model.Search + "%"}";
             }
 
             if (model.SearchType=="Prefisso")
             {
-                query = $@"SELECT * FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"}  AND codiceCatastale LIKE {"%" + model.Belfiore + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
-                SELECT COUNT(*) FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"} AND codiceCatastale LIKE {"%" + model.Belfiore + "%"}";
+                query = $@"SELECT * FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"}";
             }
 
             if (model.SearchType=="Belfiore")
             {
-                query = $@"SELECT * FROM comuni WHERE codiceCatastale LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"}  AND codiceCatastale LIKE {"%" + model.Belfiore + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
-                SELECT COUNT(*) FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"} AND cap LIKE {"%" + model.Cap + "%"} AND prefisso LIKE {"%" + model.Prefisso + "%"} AND codiceCatastale LIKE {"%" + model.Belfiore + "%"}";
+                query = $@"SELECT * FROM comuni WHERE codiceCatastale LIKE {"%" + model.Search + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"}";
             }
             
-            if (model.Provincia != 0)
+            if (model.SearchType=="Provincia")
             {
-                query = $@"SELECT * FROM comuni WHERE codiceProvincia = {model.Provincia} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
-                SELECT COUNT(*) FROM comuni WHERE codiceProvincia = {model.Provincia}";
+                query = $@"SELECT * FROM comuni WHERE codiceProvincia = {model.Search} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE codiceProvincia = {model.Search}";
             }
 
-            if (model.Regione != 0)
+            if (model.SearchType=="Regione")
             {
-                query = $@"SELECT * FROM comuni WHERE codiceRegione = {model.Regione} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
-                SELECT COUNT(*) FROM comuni WHERE codiceRegione = {model.Regione}";
+                query = $@"SELECT * FROM comuni WHERE codiceRegione = {model.Search} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
+                SELECT COUNT(*) FROM comuni WHERE codiceRegione = {model.Search}";
             }
 
             DataSet dataSet = await db.QueryAsync(query);

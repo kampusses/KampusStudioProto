@@ -21,14 +21,9 @@ namespace KampusStudioProto.Customizations.ModelBinders
             int page = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Page").FirstValue);
             string orderBy = bindingContext.ValueProvider.GetValue("OrderBy").FirstValue;
             bool ascending = Convert.ToBoolean(bindingContext.ValueProvider.GetValue("Ascending").FirstValue);
-            string cap = bindingContext.ValueProvider.GetValue("Cap").FirstValue;
-            string prefisso = bindingContext.ValueProvider.GetValue("Prefisso").FirstValue;
-            string belfiore = bindingContext.ValueProvider.GetValue("Belfiore").FirstValue;
-            int provincia = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Provincia").FirstValue);
-            int regione = Convert.ToInt32(bindingContext.ValueProvider.GetValue("Regione").FirstValue);
 
             //creiamo l'istanza del ComuneListInputmodel
-            var inputModel = new ComuneListInputModel(search, searchType, page, orderBy, ascending, cap, prefisso, belfiore, provincia, regione, configuration);
+            var inputModel = new ComuneListInputModel(search, searchType, page, orderBy, ascending, configuration);
             //impostiamo il risultato per notificare che la creazione è avvenuta con successo
             bindingContext.Result = ModelBindingResult.Success(inputModel);
 
