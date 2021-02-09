@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using KampusStudioProto.Models.InputModels;
 using KampusStudioProto.Models.Services.Infrastructure;
 using KampusStudioProto.Models.ViewModels;
 
@@ -57,9 +58,10 @@ namespace KampusStudioProto.Models.Services.Application
             return provinciaViewModel;
         }
 
-        public async Task<List<ProvinciaViewModel>> GetProvinceAsync()
+        public async Task<ListViewModel<ProvinciaViewModel>> GetProvinceAsync(ProvinciaListInputModel model)
         {
-            FormattableString query = $"SELECT * FROM Province ORDER BY nomeProvincia";
+            FormattableString query = $@"SELECT * FROM Province ORDER BY nomeProvincia LIMIT {model.Limit} OFFSET {model.Offset};
+            SELECT COUNT(*) FROM Province";
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];
             var provinciaList = new List<ProvinciaViewModel>();
@@ -88,7 +90,14 @@ namespace KampusStudioProto.Models.Services.Application
                 provincia.Abitanti = abitanti;
                 provinciaList.Add(provincia);
             }
-            return provinciaList;
+
+            ListViewModel<ProvinciaViewModel> result = new ListViewModel<ProvinciaViewModel>
+            {
+                Results = provinciaList,
+                TotalCount = Convert.ToInt32(dataSet.Tables[1].Rows[0][0])
+            };
+
+            return result;
         }
     }
 }

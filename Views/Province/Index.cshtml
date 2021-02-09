@@ -1,4 +1,4 @@
-@model List<ProvinciaViewModel>
+@model ProvinciaListViewModel
 <div class="row">
     <div class="col-md-7">
         <h1>Province italiane</h1>
@@ -9,7 +9,7 @@
 </div>
 <hr />
 
-@foreach(ProvinciaViewModel provincia in @Model)
+@foreach(ProvinciaViewModel provincia in Model.Province.Results)
 {
     <div class="row">
         <div class="col-md-3">
@@ -31,3 +31,5 @@
     </div>
     <hr />
 }
+
+<vc:pagination-bar model="@Model"></vc:pagination-bar>

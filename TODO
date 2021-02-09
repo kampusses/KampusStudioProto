@@ -1,7 +1,6 @@
 Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive in accordo anche con identity
 Tradurre tutti i messaggi di errore di Identity inserendo gli attributi ErrorMessage
 Nella pagina di elenco Province, implementare barra di ricerca per nome provincia e per regione
-Nella pagina di elenco Province, implementare la paginazione
 Nella pagina di elemco Province, implementare ordinamento alfabetico, per numero abitanti e per numero comuni
 Nella pagina di elemco Regioni, implementare ordinamento alfabetico, per numero abitanti e per numero comuni
 Nella pagina di elenco Nazioni, implementare barra di ricerca per nome nazione codice belfiore, per continente e stato padre
@@ -9,6 +8,7 @@ Nella pagina di elenco Nazioni, implementare l'ordinamento per nome nazione
 Implemnentare tutta la gestione cap
 Implementare accesso utente tramite servizio esterno di Google
 Creare un view component per tutte le barre di ricerca e tutte le barre di ordinamento da inserire nelle pagine di elenco (comuni, province, regioni, nazioni e altre nuove)
+BUG: nelle pagine di elenco province e regioni non funzionano i tasti "SELEZIONA COMUNI"
 
 FATTO
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
@@ -17,3 +17,4 @@ In generale in ogni title di pagina inserire un titolo appropriato
 Nel form di registrazione e di modifica del profilo, creare un altro campo per inserire separatamente il nome ed il cognome
 Se non si è ancora autenticati, permettere la visualizzazione della razor page "Privacy"
 Nella pagina di elenco Nazioni, implementare la paginazione
+Nella pagina di elenco Province, implementare la paginazione
