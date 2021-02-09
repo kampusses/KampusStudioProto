@@ -8,7 +8,6 @@ Nella pagina di elenco Nazioni, implementare l'ordinamento per nome nazione
 Implemnentare tutta la gestione cap
 Implementare accesso utente tramite servizio esterno di Google
 Creare un view component per tutte le barre di ricerca e tutte le barre di ordinamento da inserire nelle pagine di elenco (comuni, province, regioni, nazioni e altre nuove)
-BUG: nelle pagine di elenco province e regioni non funzionano i tasti "SELEZIONA COMUNI"
 
 FATTO
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
@@ -18,3 +17,4 @@ Nel form di registrazione e di modifica del profilo, creare un altro campo per i
 Se non si è ancora autenticati, permettere la visualizzazione della razor page "Privacy"
 Nella pagina di elenco Nazioni, implementare la paginazione
 Nella pagina di elenco Province, implementare la paginazione
+BUG: nelle pagine di elenco province e regioni non funzionano i tasti "SELEZIONA COMUNI"
