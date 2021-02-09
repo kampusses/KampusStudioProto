@@ -1,4 +1,4 @@
-@model List<NazioneViewModel>
+@model NazioneListViewModel
 <div class="row">
     <div class="col-md-7">
         <h1>Stati esteri</h1>
@@ -10,7 +10,7 @@
 
 <hr />
 
-@foreach(NazioneViewModel nazione in Model)
+@foreach(NazioneViewModel nazione in Model.Nazioni.Results)
 {
     <div class="row">
         <div class="col-md-3">
@@ -32,3 +32,5 @@
     </div>
     <hr />
 }
+
+<vc:pagination-bar model="@Model"></vc:pagination-bar>

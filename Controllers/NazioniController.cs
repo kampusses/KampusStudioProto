@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KampusStudioProto.Models.InputModels;
 using KampusStudioProto.Models.Services.Application;
 using KampusStudioProto.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,16 @@ namespace KampusStudioProto.Controllers
         {
             this.nazioneService = nazioneService;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(NazioneListInputModel input)
         {
-            List<NazioneViewModel> nazioni = await nazioneService.GetNazioniAsync();
-            ViewBag.Title = "Stati esteri";
-            return View(nazioni);
+            ListViewModel<NazioneViewModel> nazioni = await nazioneService.GetNazioniAsync(input);
+            ViewBag.Title = "Sati esteri";
+            NazioneListViewModel viewModel = new NazioneListViewModel
+            {
+                Nazioni = nazioni,
+                Input = input
+            };
+            return View(viewModel);
         }
 
         public async Task <IActionResult> Dettaglio(string id)
