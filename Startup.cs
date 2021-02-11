@@ -72,6 +72,7 @@ namespace KampusStudioProto
             services.AddTransient<IProvinciaService, AdoNetProvinciaService>();
             services.AddTransient<IRegioneService, AdoNetRegioneService>();
             services.AddTransient<INazioneService, AdoNetNazioneService>();
+            //services.AddTransient<INazioneService, EfCoreNazioneService>();
             services.AddTransient<IDatabaseAccessor, MySqlDatabaseAccessor>();
             services.AddSingleton<IEmailSender, MailKitEmailSender>();
             services.AddDbContextPool<MyDbContext>(optionsBuilder =>

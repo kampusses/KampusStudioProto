@@ -85,8 +85,6 @@ namespace KampusStudioProto.Models.Services.Application
             if (model.SearchType == "Regione")
             baseQuery = baseQuery.Where(comune => comune.CodiceRegione == Convert.ToInt32(model.Search));
 
-            Console.WriteLine(baseQuery);
-
             IQueryable<ComuneViewModel> queryLinq = baseQuery
             .AsNoTracking() // da usare solo per operazioni di sola lettura
             .Select(comune =>
