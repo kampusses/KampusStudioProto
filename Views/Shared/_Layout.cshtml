@@ -6,12 +6,13 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a8715fafc0.js" crossorigin="anonymous"></script>
+    <script src="~/dropdown.js"></script>
     <link rel="stylesheet" href="~/style.css">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#"><img src="~/logo.gif" height="30"></a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/logo.gif" height="30"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,22 +22,30 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Geografia
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" asp-controller="Comuni" asp-action="Index">Comuni italiani</a>
-                            <a class="dropdown-item" asp-controller="Province" asp-action="Index">Province</a>
-                            <a class="dropdown-item" asp-controller="Regioni" asp-action="Index">Regioni</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" asp-controller="Nazioni" asp-action="Index">Nazioni</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" asp-controller="Cap" asp-action="Index">Gestione CAP</a>
-                        </div>
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dati generali </a>
+                        <ul class="dropdown-menu">
+	                        <li><a class="dropdown-item" href="#">Dati geografici <i class="fas fa-caret-right"></i></a>
+		                        <ul class="submenu dropdown-menu">
+		                            <li><a class="dropdown-item" asp-controller="Comuni" asp-action="Index">Comuni italiani</a></li>
+        		                    <li><a class="dropdown-item" asp-controller="Province" asp-action="Index">Province</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Regioni" asp-action="Index">Regioni</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" asp-controller="Nazioni" asp-action="Index">Sati esteri</a>
+                                
+                                        <!-- CODICE PER AGGIUNGERE ALTRI SOTTO MENU'
+                                        <ul class="submenu dropdown-menu">
+			                                <li><a class="dropdown-item" href=""> Fourth level 1</a></li>
+			                                <li><a class="dropdown-item" href=""> Fourth level 2</a></li>
+			                            </ul>
+                                        -->
+
+                                    </li>
+		                        </ul>
+	                        </li>
+        	                <li><a class="dropdown-item" asp-controller="Cap" asp-action="Index">CAP</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/privacy">Privacy</a>
-                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="/privacy">Privacy</a> </li>
                 </ul>
                 <partial name="_LoginPartial"></partial>
             </div>
