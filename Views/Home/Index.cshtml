@@ -17,9 +17,15 @@
         <div class="card" style="width: 18rem;">
             <img src="~/profilo.jpg" class="card-img-top" alt="Profilo utente">
             <div class="card-body">
-                <h5 class="card-title">Impostazioni account</h5>
-                <p class="card-text">Accedi alle informazioni del tuo account per modificarne le impostazioni.</p>
-                <a href="Identity/Account/Manage" class="btn btn-outline-primary">Account</a>
+                <h5 class="card-title">Dati geografici</h5>
+                <p class="card-text">In questa sezione è possibile consultare i seguenti dati geografici:
+                    <ul>
+                        <li><a asp-controller="Comuni" asp-action="Index">Comuni italiani</a></li>
+                        <li><a asp-controller="Province" asp-action="Index">Province</a></li>
+                        <li><a asp-controller="Regioni" asp-action="Index">Regioni</a></li>
+                        <li><a asp-controller="Nazioni" asp-action="Index">Stati esteri</a></li>
+                    </ul>
+                </p>
             </div>
         </div>
     </div>
@@ -30,9 +36,9 @@
         <div class="card" style="width: 18rem;">
             <img src="~/profilo.jpg" class="card-img-top" alt="Profilo utente">
             <div class="card-body">
-                <h5 class="card-title">Impostazioni account</h5>
-                <p class="card-text">Accedi alle informazioni del tuo account per modificarne le impostazioni.</p>
-                <a href="Identity/Account/Manage" class="btn btn-outline-primary">Account</a>
+                <h5 class="card-title">Gestione CAP</h5>
+                <p class="card-text">Sezione non ancora implementata.</p>
+                <a asp-controller="Cap" class="btn btn-outline-primary">Gestione CAP</a>
             </div>
         </div>
     </div>
