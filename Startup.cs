@@ -67,8 +67,8 @@ namespace KampusStudioProto
             .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
             .AddEntityFrameworkStores<MyDbContext>();
 
-            //services.AddTransient<IComuneService, AdoNetComuneService>();
-            services.AddTransient<IComuneService, EfCoreComuneService>();
+            services.AddTransient<IComuneService, AdoNetComuneService>();
+            //services.AddTransient<IComuneService, EfCoreComuneService>();
             services.AddTransient<IProvinciaService, AdoNetProvinciaService>();
             services.AddTransient<IRegioneService, AdoNetRegioneService>();
             services.AddTransient<INazioneService, AdoNetNazioneService>();

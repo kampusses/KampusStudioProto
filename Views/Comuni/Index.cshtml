@@ -25,7 +25,7 @@
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'CAP'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'CAP';">CAP</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Prefisso'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Prefisso';">Prefisso</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Belfiore'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Belfiore';">Belfiore</button>
-                        <input id="searchTypeValue" type="hidden" name="searchtype" value="@Model.Input.SearchType"></input>
+                        <input id="searchTypeValue" type="hidden" name="searchtype" value="Nome comune" value="@Model.Input.SearchType"></input>
                     </div>
                 </div>
                 <input type="text" name="search" placeholder="Cerca" id="ricerca" value="@if (Model.Input.SearchType != "Provincia" && Model.Input.SearchType != "Regione") @Model.Input.Search">

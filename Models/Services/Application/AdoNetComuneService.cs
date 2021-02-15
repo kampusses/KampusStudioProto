@@ -81,7 +81,7 @@ namespace KampusStudioProto.Models.Services.Application
             if (model.SearchType=="Belfiore")
             {
                 query = $@"SELECT * FROM comuni WHERE codiceCatastale LIKE {"%" + model.Search + "%"} ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset}; 
-                SELECT COUNT(*) FROM comuni WHERE prefisso LIKE {"%" + model.Search + "%"}";
+                SELECT COUNT(*) FROM comuni WHERE codiceCatastale LIKE {"%" + model.Search + "%"}";
             }
             
             if (model.SearchType=="Provincia")
