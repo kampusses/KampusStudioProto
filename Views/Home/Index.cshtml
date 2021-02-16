@@ -1,5 +1,62 @@
 <h1>Ciao @User.FindFirst("Nome").Value</h1>
 <div class="row">
+    <div class="col-md-11">
+        <div class="alert alert-primary" role="alert">
+            <h3><i class="fas fa-exclamation-triangle"></i> Prima di effettuare qualsiaisi operazione con KampusStudio, è necessario configurare i dati dell'ente da gestire.</h3>
+            <a asp-controller="Enti" asp-action="Dettaglio" asp-route-id="e946" class="btn btn-outline-primary">Configura Ente</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img src="~/profilo.jpg" class="card-img-top" alt="Profilo utente">
+            <div class="card-body">
+                <h5 class="card-title">Impostazioni account</h5>
+                <p class="card-text">Accedi alle informazioni del tuo account per modificarne le impostazioni.</p>
+                <a href="Identity/Account/Manage" class="btn btn-outline-primary">Account</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img src="~/profilo.jpg" class="card-img-top" alt="Profilo utente">
+            <div class="card-body">
+                <h5 class="card-title">Dati geografici</h5>
+                <p class="card-text">In questa sezione è possibile consultare i seguenti dati geografici:
+                    <ul>
+                        <li><a asp-controller="Comuni" asp-action="Index">Comuni italiani</a></li>
+                        <li><a asp-controller="Province" asp-action="Index">Province</a></li>
+                        <li><a asp-controller="Regioni" asp-action="Index">Regioni</a></li>
+                        <li><a asp-controller="Nazioni" asp-action="Index">Stati esteri</a></li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img src="~/profilo.jpg" class="card-img-top" alt="Profilo utente">
+            <div class="card-body">
+                <h5 class="card-title">Gestione CAP</h5>
+                <p class="card-text">Sezione non ancora implementata.</p>
+                <a asp-controller="Cap" class="btn btn-outline-primary">Gestione CAP</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row bg-primary text-white text-center h-100 d-inline-block" style="width: 120px;"></div>
+
+
+<div class="row">
     <div class="col-md-3">
         <div class="card" style="width: 18rem;">
             <img src="~/profilo.jpg" class="card-img-top" alt="Profilo utente">
