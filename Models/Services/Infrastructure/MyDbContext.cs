@@ -19,6 +19,7 @@ namespace KampusStudioProto.Models.Services.Infrastructure
         public virtual DbSet<Nazione> Nazioni { get; set; }
         public virtual DbSet<Provincia> Province { get; set; }
         public virtual DbSet<Regione> Regioni { get; set; }
+        public virtual DbSet<Regione> Ente { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -110,6 +111,121 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasForeignKey(d => d.CodiceRegione)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("comuni_ibfk_2");
+            });
+
+            modelBuilder.Entity<Ente>(entity =>
+            {
+                entity.HasKey(e => e.CodiceCatastale)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("ente");
+
+                entity.HasComment("Dati ente in gestione");
+
+                entity.HasIndex(e => e.CodiceCatastale, "codiceCatastale");
+
+                entity.Property(e => e.CodiceCatastale)
+                    .IsRequired()
+                    .HasColumnType("varchar(4)")
+                    .HasColumnName("codiceCatastale")
+                    .HasComment("Codice catastale")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.PartitaIva)
+                    .HasColumnType("varchar(11)")
+                    .HasColumnName("partitaIva")
+                    .HasComment("Partita IVA")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.CodiceFiscale)
+                    .HasColumnType("varchar(16)")
+                    .HasColumnName("codiceFiscale")
+                    .HasComment("Codice fiscale")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Toponimo)
+                    .HasColumnType("varchar(20)")
+                    .HasColumnName("toponimo")
+                    .HasComment("Toponimo")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Indirizzo)
+                    .HasColumnType("varchar(30)")
+                    .HasColumnName("indirizzo")
+                    .HasComment("CIndirizzo")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Civico)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("civico")
+                    .HasComment("Civico");
+
+                entity.Property(e => e.Lettera)
+                    .HasColumnType("varchar(5)")
+                    .HasColumnName("lettera")
+                    .HasComment("Lettera")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Localita)
+                    .HasColumnType("varchar(30)")
+                    .HasColumnName("localita")
+                    .HasComment("Località")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Telefono)
+                    .HasColumnType("varchar(15)")
+                    .HasColumnName("telefono")
+                    .HasComment("Telefono")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Email)
+                    .HasColumnType("varchar(30)")
+                    .HasColumnName("email")
+                    .HasComment("Email")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Pec)
+                    .HasColumnType("varchar(30)")
+                    .HasColumnName("pec")
+                    .HasComment("Pec")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.TitoloResponsabile)
+                    .HasColumnType("varchar(30)")
+                    .HasColumnName("titoloResponsabile")
+                    .HasComment("Titolo responsabile")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.CognomeResponsabile)
+                    .HasColumnType("varchar(30)")
+                    .HasColumnName("cognomeResponsabile")
+                    .HasComment("Cognome responsabile")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.NomeResponsabile)
+                    .HasColumnType("varchar(30)")
+                    .HasColumnName("nomeResponsabile")
+                    .HasComment("Nome responsabile")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.HasOne(d => d.Comune)
+                    .WithOne(p => p.Ente)
+                    .HasForeignKey<Ente>(d => d.CodiceCatastale)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("ente_ibfk_1");
             });
 
             modelBuilder.Entity<Nazione>(entity =>

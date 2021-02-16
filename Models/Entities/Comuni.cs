@@ -25,6 +25,7 @@ namespace KampusStudioProto.Models.Entities
 
         public virtual Provincia Provincia { get; private set; }
         public virtual Regione Regione { get; private set; }
+        public virtual Ente Ente { get; private set; }
         //public virtual ICollection<Regione> Regioni { get; private set; }
     }
 }

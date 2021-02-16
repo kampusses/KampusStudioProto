@@ -1,4 +1,3 @@
-Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive in accordo anche con identity
 Tradurre tutti i messaggi di errore di Identity inserendo gli attributi ErrorMessage
 Nella pagina di elenco Province, implementare barra di ricerca per nome provincia e per regione
 Nella pagina di elemco Province, implementare ordinamento alfabetico, per numero abitanti e per numero comuni
@@ -9,6 +8,7 @@ Implemnentare tutta la gestione cap
 Implementare accesso utente tramite servizio esterno di Google
 Creare un view component per tutte le barre di ricerca e tutte le barre di ordinamento da inserire nelle pagine di elenco (comuni, province, regioni, nazioni e altre nuove)
 Uniformare stili dei link del menù relativa alla parte Identity
+Migliorare risoluzione bug ricerca comune dopo aver cercato per provincia o regione (vedi commit del 15/02/2021)
 
 FATTO
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
@@ -19,3 +19,4 @@ Se non si è ancora autenticati, permettere la visualizzazione della razor page 
 Nella pagina di elenco Nazioni, implementare la paginazione
 Nella pagina di elenco Province, implementare la paginazione
 BUG: nelle pagine di elenco province e regioni non funzionano i tasti "SELEZIONA COMUNI"
+Nel menù (_ViewShared.cshml) inserire l'attributo active alle voci attive in accordo anche con identity
