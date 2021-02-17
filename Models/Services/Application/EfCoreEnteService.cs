@@ -21,11 +21,12 @@ namespace KampusStudioProto.Models.Services.Application
             this.dbContext = dbContext;
             this.configuration = configuration;
         }
-        async Task<EnteViewModel> IEnteService.GetEnteAsync(string id)
+        async Task<EnteViewModel> IEnteService.GetEnteAsync()
         {
+            if(dbContext.Enti.Count() != 0)
+            {
             EnteViewModel viewModel = await dbContext.Enti
                 .AsNoTracking() // da usare solo per operazioni di sola lettura
-                .Where(ente => ente.CodiceCatastale == id)
                 .Select(ente => new EnteViewModel
                 {
                     CodiceCatastale = ente.CodiceCatastale,
@@ -59,6 +60,15 @@ namespace KampusStudioProto.Models.Services.Application
                 .SingleAsync();
 
                 return viewModel;
+            }
+            else
+            {
+                EnteViewModel viewModel = new EnteViewModel
+                {
+                    CodiceCatastale = ""
+                };
+                return viewModel;
+            }
         }
     }
 }
