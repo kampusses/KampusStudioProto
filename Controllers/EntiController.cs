@@ -19,7 +19,7 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> Dettaglio()
         {
             EnteViewModel ente = await enteService.GetEnteAsync();
-            ViewBag.Title = "Configura Ente";
+            ViewBag.Title = "Configurazione Ente";
             return View(ente);
         }
     }
