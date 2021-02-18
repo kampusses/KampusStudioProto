@@ -1,4 +1,7 @@
+@model EnteViewModel
 <h1>Ciao @User.FindFirst("Nome").Value</h1>
+@if(Model.CodiceCatastale=="")
+{
 <div class="row">
     <div class="col-md-11">
         <div class="alert alert-primary" role="alert">
@@ -7,6 +10,7 @@
         </div>
     </div>
 </div>
+}
 <div class="row">
     <div class="col-md-3">
         <div class="card" style="width: 18rem;">
