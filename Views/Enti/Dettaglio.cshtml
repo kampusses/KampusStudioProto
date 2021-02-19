@@ -1,50 +1,49 @@
 @model EnteViewModel
+<h1>Configurazione ente</h1>
 @if(Model.CodiceCatastale!="")
 {
-    <h1>@Model.Comune.Cap - @Model.Comune.NomeComune (@Model.Comune.Provincia.SiglaProvincia)</h1>
-    
+
     <div class="card">
-<h5 class="card-header">@Model.Comune.Cap - @Model.Comune.NomeComune (@Model.Comune.Provincia.SiglaProvincia)</h5>        
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">
-        
+        <h5 class="card-header">@Model.Comune.Cap - @Model.Comune.NomeComune (@Model.Comune.Provincia.SiglaProvincia)</h5>
+        <div class="card-body">
+            <h5 class="card-title">Dati fiscali</h5>
+            <p class="card-text">
 
- <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Partita Iva</th>
-                <th scope="col">Codice fiscale</th>
-                <th scope="col">Indirizzo</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Email</th>
-                <th scope="col">Pec</th>
-                <th scope="col">Responsabile</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>@Model.PartitaIva</th>
-                <td>@Model.CodiceFiscale</td>
-                <td>@Model.Toponimo @Model.Indirizzo @Model.Civico @Model.Lettera</td>
-                <td>@Model.Telefono</td>
-                <td>@Model.Email</td>
-                <td>@Model.Pec</td>
-                <td>@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</td>
-            </tr>
-        </tbody>
-    </table>
+                
+                
 
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Partita Iva</th>
+                            <th scope="col">Codice fiscale</th>
+                            <th scope="col">Indirizzo</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Pec</th>
+                            <th scope="col">Responsabile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>@Model.PartitaIva</th>
+                            <td>@Model.CodiceFiscale</td>
+                            <td>@Model.Toponimo @Model.Indirizzo @Model.Civico @Model.Lettera</td>
+                            <td>@Model.Telefono</td>
+                            <td>@Model.Email</td>
+                            <td>@Model.Pec</td>
+                            <td>@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-    </p>
-    <a href="#" class="btn btn-primary">Modifica</a>
-  </div>
-</div>
-
-   
-
+            </p>
+            <a href="#" class="btn btn-primary">Modifica</a>
+            </div>
+    </div>
+                
 }
 else
 {
-    <h1>Comune non trovato</h1>
+    // fai qualcosa
 }
