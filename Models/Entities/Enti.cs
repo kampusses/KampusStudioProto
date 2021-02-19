@@ -17,6 +17,7 @@ namespace KampusStudioProto.Models.Entities
         public string Lettera { get; private set; }
         public string Localita { get; private set; }
         public string Telefono { get; private set; }
+        public string Fax { get; private set; }
         public string Email { get; private set; }
         public string Pec { get; private set; }
         public string TitoloResponsabile { get; private set; }

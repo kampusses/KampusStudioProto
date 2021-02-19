@@ -4,41 +4,40 @@
 {
 
     <div class="card">
-        <h5 class="card-header">@Model.Comune.Cap - @Model.Comune.NomeComune (@Model.Comune.Provincia.SiglaProvincia)</h5>
+        <h5 class="card-header"><i class="fas fa-university"></i> <a asp-controller="Comuni" asp-action="Dettaglio" asp-route-id="@Model.Comune.CodiceCatastale">@Model.Comune.Cap - @Model.Comune.NomeComune (@Model.Comune.Provincia.SiglaProvincia)</a></h5>
         <div class="card-body">
-            <h5 class="card-title">Dati fiscali</h5>
+            <h5 class="card-title"><i class="fas fa-map-marked-alt"></i> Sede legale</h5>
             <p class="card-text">
-
-                
-                
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Partita Iva</th>
-                            <th scope="col">Codice fiscale</th>
-                            <th scope="col">Indirizzo</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Pec</th>
-                            <th scope="col">Responsabile</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>@Model.PartitaIva</th>
-                            <td>@Model.CodiceFiscale</td>
-                            <td>@Model.Toponimo @Model.Indirizzo @Model.Civico @Model.Lettera</td>
-                            <td>@Model.Telefono</td>
-                            <td>@Model.Email</td>
-                            <td>@Model.Pec</td>
-                            <td>@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                <p>Indirizzo: <a href="">@Model.Toponimo @Model.Indirizzo @Model.Civico @Model.Lettera</a><br />
+                Località: <a href="">@Model.Localita</a></p>
+                <p><a href="#" class="btn btn-primary">Modifica</a></p>
             </p>
-            <a href="#" class="btn btn-primary">Modifica</a>
+            <hr />
+                        <h5 class="card-title"><i class="far fa-credit-card"></i> Dati fiscali</h5>
+            <p class="card-text">
+                <p>Partita Iva: <a href="">@Model.PartitaIva</a><br />
+                Codice fiscale: <a href="">@Model.CodiceFiscale</a></p>
+                <p><a href="#" class="btn btn-primary">Modifica</a></p>
+            </p>
+            <hr />
+            <h5 class="card-title"><i class="fas fa-at"></i> Contatti</h5>
+            <p class="card-text">
+                <p>Telefono: <a href="">@Model.Telefono</a><br />
+                Fax: <a href="">@Model.Fax</a><br />
+                Email: <a href="">@Model.Email</a><br />
+                Pec: <a href="">@Model.Pec</a></p>
+                <p><a href="#" class="btn btn-primary">Modifica</a></p>
+            </p>
+            <hr />
+            <h5 class="card-title"><i class="fas fa-user-circle"></i> Funzionario responsabile</h5>
+            <p class="card-text">
+                <p>Nominativo: <a href="">@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</a></p>
+                <p><a href="#" class="btn btn-primary">Modifica</a></p>
+            </p>
+
+
+
+
             </div>
     </div>
                 

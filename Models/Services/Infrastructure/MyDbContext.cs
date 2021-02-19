@@ -186,6 +186,13 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
+                entity.Property(e => e.Fax)
+                    .HasColumnType("varchar(15)")
+                    .HasColumnName("fax")
+                    .HasComment("Fax")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
                 entity.Property(e => e.Email)
                     .HasColumnType("varchar(60)")
                     .HasColumnName("email")

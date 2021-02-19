@@ -51,6 +51,7 @@ namespace KampusStudioProto.Models.Services.Application
                     Lettera = ente.Lettera,
                     Localita = ente.Localita,
                     Telefono = ente.Telefono,
+                    Fax = ente.Fax,
                     Email = ente.Email,
                     Pec = ente.Pec,
                     TitoloResponsabile = ente.TitoloResponsabile,

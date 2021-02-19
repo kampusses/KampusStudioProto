@@ -15,6 +15,7 @@ namespace KampusStudioProto.Models.ViewModels
         public string Lettera {get; set;}
         public string Localita {get; set;}
         public string Telefono {get; set;}
+        public string Fax {get; set;}
         public string Email {get; set;}
         public string Pec {get; set;}
         public string TitoloResponsabile {get; set;}
@@ -35,6 +36,7 @@ namespace KampusStudioProto.Models.ViewModels
                 Lettera = Convert.ToString(enteRow["lettera"]),
                 Localita = Convert.ToString(enteRow["localita"]),
                 Telefono = Convert.ToString(enteRow["telefono"]),
+                Fax = Convert.ToString(enteRow["fax"]),
                 Email = Convert.ToString(enteRow["email"]),
                 Pec = Convert.ToString(enteRow["pec"]),
                 TitoloResponsabile = Convert.ToString(enteRow["titoloResponsabile"]),
