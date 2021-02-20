@@ -28,12 +28,12 @@ namespace KampusStudioProto.Controllers
         {
             EnteViewModel ente = await enteService.GetEnteAsync();
             ViewBag.Title = "Configurazione Ente";
-            if(ente.CodiceCatastale=="") return View();
-            else
+            if(ente.CodiceCatastale=="") 
             {
                 var inputModel= new EnteCreateInputModel();
                 return View(inputModel);
             }
+            else return RedirectToAction(nameof(Dettaglio));
         }
     }
 }
