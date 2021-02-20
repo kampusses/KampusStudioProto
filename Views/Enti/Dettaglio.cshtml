@@ -1,93 +1,86 @@
 @model EnteViewModel
 <h1>Configurazione ente</h1>
-@if(Model.CodiceCatastale!="")
-{
-    <div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingZero">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
-                        <h5 class="card-title"><i class="fas fa-university"></i> @Model.Comune.NomeComune (@Model.Comune.Provincia.SiglaProvincia)</h5>
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordion">
-                <div class="card-body">
-                    <p>Il nome del comune in gestione non è più modificabile!<br />
-                    E' possibile modificare solo i dati riportati nei box riportati di seguito.<br />
-                    Contattare l'assistenza tecnica se è stato inserito un comune errato. </p>
-                    <div class="d-flex justify-content-end"><a asp-controller="Comuni" asp.action="Dettaglio" asp-route-id="@Model.Comune.CodiceCatastale" class="btn btn-primary">Vedi dati geografici</a></div>
-                </div>
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingZero">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                    <h5 class="card-title"><i class="fas fa-university"></i> @Model.Comune.NomeComune (@Model.Comune.Provincia.SiglaProvincia)</h5>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordion">
+            <div class="card-body">
+                <p>Il nome del comune in gestione non è più modificabile!<br />
+                E' possibile modificare solo i dati riportati nei box riportati di seguito.<br />
+                Contattare l'assistenza tecnica se è stato inserito un comune errato. </p>
+                <div class="d-flex justify-content-end"><a asp-controller="Comuni" asp.action="Dettaglio" asp-route-id="@Model.Comune.CodiceCatastale" class="btn btn-primary">Vedi dati geografici</a></div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <h5 class="card-title"><i class="fas fa-map-marked-alt"></i> Sede legale</h5>
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                    <p>Indirizzo: <a href="">@Model.Toponimo @Model.Indirizzo @Model.Civico @Model.Lettera</a><br />
-                    Località: <a href="">@Model.Localita</a></p>
-                    <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h5 class="card-title"><i class="far fa-credit-card"></i> Dati fiscali</h5>
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
-                    <p>Partita Iva: <a href="">@Model.PartitaIva</a><br />
-                    Codice fiscale: <a href="">@Model.CodiceFiscale</a></p>
-                    <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <h5 class="card-title"><i class="fas fa-at"></i> Contatti</h5>
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                    <p>Telefono: <a href="">@Model.Telefono</a><br />
-                    Fax: <a href="">@Model.Fax</a><br />
-                    Email: <a href="">@Model.Email</a><br />
-                    Pec: <a href="">@Model.Pec</a></p>
-                    <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingFour">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        <h5 class="card-title"><i class="fas fa-user-circle"></i> Funzionario responsabile</h5>
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                <div class="card-body">
-                    <p>Nominativo: <a href="">@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</a></p>
-                    <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
-                </div>
-            </div>
-         </div>
     </div>
-}
-else
-{
-    // fai qualcosa
-}
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h5 class="card-title"><i class="fas fa-map-marked-alt"></i> Sede legale</h5>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <p>Indirizzo: <a href="">@Model.Toponimo @Model.Indirizzo @Model.Civico @Model.Lettera</a><br />
+                Località: <a href="">@Model.Localita</a></p>
+                <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h5 class="card-title"><i class="far fa-credit-card"></i> Dati fiscali</h5>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <p>Partita Iva: <a href="">@Model.PartitaIva</a><br />
+                Codice fiscale: <a href="">@Model.CodiceFiscale</a></p>
+                <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h5 class="card-title"><i class="fas fa-at"></i> Contatti</h5>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <p>Telefono: <a href="">@Model.Telefono</a><br />
+                Fax: <a href="">@Model.Fax</a><br />
+                Email: <a href="">@Model.Email</a><br />
+                Pec: <a href="">@Model.Pec</a></p>
+                <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <h5 class="card-title"><i class="fas fa-user-circle"></i> Funzionario responsabile</h5>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div class="card-body">
+                <p>Nominativo: <a href="">@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</a></p>
+                <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
+            </div>
+        </div>
+     </div>
+</div>

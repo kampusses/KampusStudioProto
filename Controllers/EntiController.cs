@@ -20,7 +20,20 @@ namespace KampusStudioProto.Controllers
         {
             EnteViewModel ente = await enteService.GetEnteAsync();
             ViewBag.Title = "Configurazione Ente";
-            return View(ente);
+            if(ente.CodiceCatastale!="") return View(ente);
+            else return RedirectToAction(nameof(Create));
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            EnteViewModel ente = await enteService.GetEnteAsync();
+            ViewBag.Title = "Configurazione Ente";
+            if(ente.CodiceCatastale=="") return View();
+            else
+            {
+                var inputModel= new EnteCreateInputModel();
+                return View(inputModel);
+            }
         }
     }
 }
