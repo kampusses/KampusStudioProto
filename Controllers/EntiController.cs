@@ -35,5 +35,12 @@ namespace KampusStudioProto.Controllers
             }
             else return RedirectToAction(nameof(Dettaglio));
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(EnteCreateInputModel inputModel)
+        {
+            EnteViewModel ente = await enteService.CreaEnteAsync(inputModel);
+            return RedirectToAction(nameof(Dettaglio));
+        }
     }
 }

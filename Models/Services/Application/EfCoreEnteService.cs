@@ -21,6 +21,7 @@ namespace KampusStudioProto.Models.Services.Application
             this.dbContext = dbContext;
             this.configuration = configuration;
         }
+
         async Task<EnteViewModel> IEnteService.GetEnteAsync()
         {
             if(dbContext.Enti.Count() != 0)
@@ -59,7 +60,6 @@ namespace KampusStudioProto.Models.Services.Application
                     NomeResponsabile = ente.NomeResponsabile
                 })
                 .SingleAsync();
-
                 return viewModel;
             }
             else
@@ -70,6 +70,11 @@ namespace KampusStudioProto.Models.Services.Application
                 };
                 return viewModel;
             }
+        }
+
+        public Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
+        {
+            throw new NotImplementedException();
         }
     }
 }
