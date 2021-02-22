@@ -57,6 +57,43 @@ namespace KampusStudioProto.Models.Services.Application
                 return viewModel;
         }
 
+        async Task<ComuneViewModel> IComuneService.GetNomeComuneAsync(string nomeComune)
+        {
+            ComuneViewModel viewModel = await dbContext.Comuni
+                .AsNoTracking() // da usare solo per operazioni di sola lettura
+                .Where(comune => comune.NomeComune == nomeComune)
+                .Select(comune => new ComuneViewModel
+                {
+                    CodiceCatastale = comune.CodiceCatastale,
+                    NomeComune = comune.NomeComune,
+                    Abitanti = comune.Abitanti,
+                    FlagRegione = Convert.ToBoolean(comune.FlagRegione),
+                    FlagProvincia = Convert.ToBoolean(comune.FlagProvincia),
+                    Regione = new RegioneViewModel {
+                        CodiceRegione = comune.Regione.CodiceRegione,
+                        NomeRegione = comune.Regione.NomeRegione,
+                        RipartizioneGeografica = (RipartizioneGeografica) comune.Regione.RipartizioneGeografica - 1,
+                        Capoluogo = null,
+                        NComuni = 0,
+                        Abitanti = 0,
+                        Province = null
+                    },
+                    Provincia = new ProvinciaViewModel {
+                        CodiceProvincia = comune.Provincia.CodiceProvincia,
+                        Regione = null,
+                        NomeProvincia = comune.Provincia.NomeProvincia,
+                        SiglaProvincia = comune.Provincia.SiglaProvincia,
+                        NComuni = 0,
+                        Abitanti = 0
+                    },
+                    Cap = comune.Cap,
+                    Prefisso = comune.Prefisso,
+                    CodiceIstat = comune.CodiceIstat
+                })
+                .SingleAsync();
+                return viewModel;
+        }
+
         async Task<ListViewModel<ComuneViewModel>> IComuneService.GetComuniAsync(ComuneListInputModel model)
         {
             IQueryable<Comune> baseQuery = dbContext.Comuni;

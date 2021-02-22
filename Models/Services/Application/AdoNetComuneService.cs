@@ -56,6 +56,43 @@ namespace KampusStudioProto.Models.Services.Application
             return comuneViewModel;
         }
 
+        public async Task<ComuneViewModel> GetNomeComuneAsync(string nomeComune)
+        {
+            FormattableString query = $"SELECT * FROM comuni WHERE nomeComune={nomeComune}";
+            DataSet dataSet = await db.QueryAsync(query);
+            var comuneTable = dataSet.Tables[0];
+            if (comuneTable.Rows.Count != 1)
+            {
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita solo una riga della tabella {nomeComune}");
+            }
+            var comuneRow = comuneTable.Rows[0];
+            var comuneViewModel = ComuneViewModel.FromDataRow(comuneRow);
+
+            FormattableString queryReg = $"SELECT * FROM regioni WHERE codiceRegione={comuneRow["codiceRegione"]}";
+            DataSet dataSetReg = await db.QueryAsync(queryReg);
+            var regioneTable = dataSetReg.Tables[0];
+            if (regioneTable.Rows.Count != 1)
+            {
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita solo una riga della tabella {comuneRow["regione"]}");
+            }
+            var regioneRow = regioneTable.Rows[0];
+            var regioneViewModel = RegioneViewModel.FromDataRow(regioneRow);
+            comuneViewModel.Regione = (RegioneViewModel) regioneViewModel;
+
+            FormattableString queryPro = $"SELECT * FROM province WHERE codiceProvincia={comuneRow["codiceProvincia"]}";
+            DataSet dataSetPro = await db.QueryAsync(queryPro);
+            var provinciaTable = dataSetPro.Tables[0];
+            if (provinciaTable.Rows.Count != 1)
+            {
+                throw new InvalidOperationException($"Mi aspettavo che venisse restituita solo una riga della tabella {comuneRow["provincia"]}");
+            }
+            var provinciaRow = provinciaTable.Rows[0];
+            var provinciaViewModel = ProvinciaViewModel.FromDataRow(provinciaRow);
+            comuneViewModel.Provincia = (ProvinciaViewModel) provinciaViewModel;
+
+            return comuneViewModel;
+        }
+
         public async Task<ListViewModel<ComuneViewModel>> GetComuniAsync(ComuneListInputModel model)
         {
             string direction = model.Ascending ? "ASC" : "DESC";

@@ -20,7 +20,7 @@ namespace KampusStudioProto.Models.Services.Application
             this.comuneService = comuneService;
         }
     
-        async Task<EnteViewModel> IEnteService.GetEnteAsync()
+        public async Task<EnteViewModel> GetEnteAsync()
         {
             FormattableString query = $"SELECT * FROM ente";
             DataSet dataSet = await db.QueryAsync(query);
@@ -38,9 +38,13 @@ namespace KampusStudioProto.Models.Services.Application
             return enteViewModel;
         }
 
-        public Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
+        public async Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
         {
-            throw new NotImplementedException();
+            string nomeComune = inputModel.Comune;
+            ComuneViewModel comuneViewModel = await comuneService.GetNomeComuneAsync(nomeComune);
+            var dataSet = await db.QueryAsync($@"INSERT INTO Ente (codiceCatastale) VALUE ({comuneViewModel.CodiceCatastale})");
+            var enteViewModel = await GetEnteAsync();
+            return enteViewModel;
         }
     }
 }
