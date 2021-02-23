@@ -26,7 +26,7 @@ namespace KampusStudioProto.Models.Services.Application
             DataSet dataSet = await db.QueryAsync(query);
             var enteTable = dataSet.Tables[0];
             var enteViewModel = new EnteViewModel();
-            if (enteTable.Rows.Count == 1)
+            if (enteTable.Rows.Count != 0)
             {
                 var enteRow = enteTable.Rows[0];
                 enteViewModel = EnteViewModel.FromDataRow(enteRow);
@@ -40,11 +40,16 @@ namespace KampusStudioProto.Models.Services.Application
 
         public async Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
         {
-            string nomeComune = inputModel.Comune;
-            ComuneViewModel comuneViewModel = await comuneService.GetNomeComuneAsync(nomeComune);
-            var dataSet = await db.QueryAsync($@"INSERT INTO Ente (codiceCatastale) VALUE ({comuneViewModel.CodiceCatastale})");
-            var enteViewModel = await GetEnteAsync();
-            return enteViewModel;
+            var enteEsistente = await GetEnteAsync();
+            if (enteEsistente.CodiceCatastale == "")
+            {
+                string nomeComune = inputModel.Comune;
+                ComuneViewModel comuneViewModel = await comuneService.GetNomeComuneAsync(nomeComune);
+                var dataSet = await db.QueryAsync($@"INSERT INTO Ente (codiceCatastale) VALUE ({comuneViewModel.CodiceCatastale})");
+                var enteViewModel = await GetEnteAsync();
+                return enteViewModel;
+            }
+            else throw new InvalidOperationException($"ATTENZIONE! Qualcuno ha già configurato un Ente");
         }
     }
 }

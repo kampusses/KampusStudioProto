@@ -67,14 +67,19 @@ namespace KampusStudioProto.Models.Services.Application
 
         public async Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
         {
-            string nomeComune = inputModel.Comune;
-            ComuneViewModel codiceCatastale = await comuneService.GetNomeComuneAsync(nomeComune);
-            var ente = new Ente(codiceCatastale.CodiceCatastale);
-            dbContext.Add(ente);
-            await dbContext.SaveChangesAsync();
-            var enteViewModel = new EnteViewModel();
-            enteViewModel.CodiceCatastale = ente.CodiceCatastale;
-            return enteViewModel;
+            var enteEsistente = await GetEnteAsync();
+            if (enteEsistente.CodiceCatastale == "")
+            {
+                string nomeComune = inputModel.Comune;
+                ComuneViewModel codiceCatastale = await comuneService.GetNomeComuneAsync(nomeComune);
+                var ente = new Ente(codiceCatastale.CodiceCatastale);
+                dbContext.Add(ente);
+                await dbContext.SaveChangesAsync();
+                var enteViewModel = new EnteViewModel();
+                enteViewModel.CodiceCatastale = ente.CodiceCatastale;
+                return enteViewModel;
+            }
+            else throw new InvalidOperationException($"ATTENZIONE! Qualcuno ha già configurato un Ente");
         }
     }
 }
