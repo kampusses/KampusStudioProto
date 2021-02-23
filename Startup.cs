@@ -67,15 +67,22 @@ namespace KampusStudioProto
             .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
             .AddEntityFrameworkStores<MyDbContext>();
 
+            /****** INIZIO CONFIGURAZIONE SERVIZI APPLICATIVI ******/
             services.AddTransient<IComuneService, AdoNetComuneService>();
             //services.AddTransient<IComuneService, EfCoreComuneService>();
+
             services.AddTransient<IProvinciaService, AdoNetProvinciaService>();
             services.AddTransient<IRegioneService, AdoNetRegioneService>();
+
             services.AddTransient<INazioneService, AdoNetNazioneService>();
+            //services.AddTransient<INazioneService, EfCoreNazioneService>();
+
             services.AddTransient<IEnteService, AdoNetEnteService>();
             //services.AddTransient<IEnteService, EfCoreEnteService>();
-            //services.AddTransient<INazioneService, EfCoreNazioneService>();
+
             services.AddTransient<IDatabaseAccessor, MySqlDatabaseAccessor>();
+            /****** FINE CONFIGURAZIONE SERVIZI APPLICATIVI ******/
+
             services.AddSingleton<IEmailSender, MailKitEmailSender>();
             services.AddDbContextPool<MyDbContext>(optionsBuilder =>
             {
