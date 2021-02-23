@@ -93,6 +93,9 @@ h2 {
     border-bottom-right-radius: 0%;
     width: 150px;
 }
+.field-validation-error {
+    color: red;
+}
 
 @media (min-width: 992px){
 	.dropdown-menu .dropdown-toggle:after{

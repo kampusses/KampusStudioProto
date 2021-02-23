@@ -39,6 +39,10 @@ namespace KampusStudioProto.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(EnteCreateInputModel inputModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(inputModel);
+            }
             EnteViewModel ente = await enteService.CreaEnteAsync(inputModel);
             return RedirectToAction(nameof(Dettaglio));
         }
