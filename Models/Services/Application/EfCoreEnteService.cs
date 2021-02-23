@@ -15,14 +15,14 @@ namespace KampusStudioProto.Models.Services.Application
     public class EfCoreEnteService : IEnteService
     {
         private readonly MyDbContext dbContext;
-        private readonly IConfiguration configuration;
-        public EfCoreEnteService(MyDbContext dbContext, IConfiguration configuration)
+        private readonly IComuneService comuneService;
+        public EfCoreEnteService(MyDbContext dbContext, IComuneService comuneService)
         {
             this.dbContext = dbContext;
-            this.configuration = configuration;
+            this.comuneService = comuneService;
         }
 
-        async Task<EnteViewModel> IEnteService.GetEnteAsync()
+        public async Task<EnteViewModel> GetEnteAsync()
         {
             if(dbContext.Enti.Count() != 0)
             {
@@ -32,18 +32,11 @@ namespace KampusStudioProto.Models.Services.Application
                 {
                     CodiceCatastale = ente.CodiceCatastale,
                     Comune = new ComuneViewModel {
-                        CodiceCatastale = ente.Comune.CodiceCatastale,
                         NomeComune = ente.Comune.NomeComune,
                         Provincia = new ProvinciaViewModel {
-                            CodiceProvincia = ente.Comune.Provincia.CodiceProvincia,
-                            Regione = null,
-                            NomeProvincia = ente.Comune.Provincia.NomeProvincia,
-                            SiglaProvincia = ente.Comune.Provincia.SiglaProvincia,
-                            NComuni = 0,
-                            Abitanti = 0
-                        },
-                        Cap = ente.Comune.Cap
-                    },
+                            SiglaProvincia = ente.Comune.Provincia.SiglaProvincia
+                        }
+                    }, 
                     PartitaIva = ente.PartitaIva,
                     CodiceFiscale = ente.CodiceFiscale,
                     Toponimo = ente.Toponimo,
@@ -72,9 +65,16 @@ namespace KampusStudioProto.Models.Services.Application
             }
         }
 
-        public Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
+        public async Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
         {
-            throw new NotImplementedException();
+            string nomeComune = inputModel.Comune;
+            ComuneViewModel codiceCatastale = await comuneService.GetNomeComuneAsync(nomeComune);
+            var ente = new Ente(codiceCatastale.CodiceCatastale);
+            dbContext.Add(ente);
+            await dbContext.SaveChangesAsync();
+            var enteViewModel = new EnteViewModel();
+            enteViewModel.CodiceCatastale = ente.CodiceCatastale;
+            return enteViewModel;
         }
     }
 }

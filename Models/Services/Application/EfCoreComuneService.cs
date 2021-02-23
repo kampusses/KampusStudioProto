@@ -57,7 +57,7 @@ namespace KampusStudioProto.Models.Services.Application
                 return viewModel;
         }
 
-        async Task<ComuneViewModel> IComuneService.GetNomeComuneAsync(string nomeComune)
+        public async Task<ComuneViewModel> GetNomeComuneAsync(string nomeComune)
         {
             ComuneViewModel viewModel = await dbContext.Comuni
                 .AsNoTracking() // da usare solo per operazioni di sola lettura

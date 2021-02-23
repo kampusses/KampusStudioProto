@@ -7,6 +7,10 @@ namespace KampusStudioProto.Models.Entities
 {
     public partial class Ente
     {
+        public Ente(string codiceCatastale)
+        {
+            CodiceCatastale = codiceCatastale;
+        }
         public string CodiceCatastale { get; private set; }
         public virtual Comune Comune { get; private set; }
         public string PartitaIva { get; private set; }
