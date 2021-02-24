@@ -26,8 +26,8 @@ namespace KampusStudioProto.Controllers
 
         public async Task<IActionResult> Create()
         {
-            EnteViewModel ente = await enteService.GetEnteAsync();
             ViewBag.Title = "Configurazione Ente";
+            EnteViewModel ente = await enteService.GetEnteAsync();
             if(ente.CodiceCatastale=="") 
             {
                 var inputModel= new EnteCreateInputModel();
@@ -39,6 +39,7 @@ namespace KampusStudioProto.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(EnteCreateInputModel inputModel)
         {
+            ViewBag.Title = "Configurazione Ente";
             if (!ModelState.IsValid)
             {
                 return View(inputModel);
@@ -46,5 +47,18 @@ namespace KampusStudioProto.Controllers
             EnteViewModel ente = await enteService.CreaEnteAsync(inputModel);
             return RedirectToAction(nameof(Dettaglio));
         }
+
+        public async Task<IActionResult> ModifySedeLegale()
+        {
+            ViewBag.Title = "Configurazione sede legale";
+            EnteViewModel ente = await enteService.GetEnteAsync();
+            if(ente.CodiceCatastale!="") 
+            {
+                var inputModel= new EnteModifyInputModel();
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
+
     }
 }

@@ -1,0 +1,16 @@
+@model EnteModifyInputModel
+<h1>Configurazione sede legale</h1>
+<form method="post">
+    <div class="row">
+    <div class="col-md-8">
+        <input type="text" asp-for="Toponimo" class="form-control form-control-lg" placeholder="Toponimo">
+        <input type="text" asp-for="Indirizzo" class="form-control form-control-lg" placeholder="Indirizzo">
+        <input type="text" asp-for="Civico" class="form-control form-control-lg" placeholder="999">
+        <input type="text" asp-for="Lettera" class="form-control form-control-lg" placeholder="Lettera">
+        <input type="text" asp-for="Localita" class="form-control form-control-lg" placeholder="Località">
+    </div>
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Modifica sede legale</button>
+    </div>
+    </div>
+</form>
