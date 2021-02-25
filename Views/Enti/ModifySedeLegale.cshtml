@@ -1,16 +1,49 @@
 @model EnteModifyInputModel
-<h1>Configurazione sede legale</h1>
-<form method="post">
-    <div class="row">
-    <div class="col-md-8">
-        <input type="text" asp-for="Toponimo" class="form-control form-control-lg" placeholder="Toponimo">
-        <input type="text" asp-for="Indirizzo" class="form-control form-control-lg" placeholder="Indirizzo">
-        <input type="text" asp-for="Civico" class="form-control form-control-lg" placeholder="999">
-        <input type="text" asp-for="Lettera" class="form-control form-control-lg" placeholder="Lettera">
-        <input type="text" asp-for="Localita" class="form-control form-control-lg" placeholder="Località">
+<h1>Configurazione ente</h1>
+
+
+<div class="row">
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">SEDE LEGALE</h5>
+                <p class="card-text">Per modificare la sede legale del comune è necessario inserire i dati richiesti nel seguente modulo e confermarli premendo il relativo pulsante.</p>
+                <form method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="inputCity">Toponimo</label>
+                            <input type="text" asp-for="Toponimo" class="form-control form-control-lg" placeholder="Toponimo">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Indirizzo</label>
+                            <input type="text" asp-for="Indirizzo" class="form-control form-control-lg" placeholder="Indirizzo">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputCity">Civico</label>
+                            <input type="text" asp-for="Civico" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputCity">Lettera</label>
+                            <input type="text" asp-for="Lettera" class="form-control form-control-lg" placeholder="Lettera">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputCity">Località</label>
+                            <input type="text" asp-for="Localita" class="form-control form-control-lg" placeholder="Località">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8"></div>
+                        <div class="form-group col-md-4">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Modifica sede legale</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Modifica sede legale</button>
-    </div>
-    </div>
-</form>
+</div>
+
+
+
