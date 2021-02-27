@@ -77,8 +77,8 @@ namespace KampusStudioProto
             services.AddTransient<INazioneService, AdoNetNazioneService>();
             //services.AddTransient<INazioneService, EfCoreNazioneService>();
 
-            //services.AddTransient<IEnteService, AdoNetEnteService>();
-            services.AddTransient<IEnteService, EfCoreEnteService>();
+            services.AddTransient<IEnteService, AdoNetEnteService>();
+            //services.AddTransient<IEnteService, EfCoreEnteService>();
 
             services.AddTransient<IDatabaseAccessor, MySqlDatabaseAccessor>();
             /****** FINE CONFIGURAZIONE SERVIZI APPLICATIVI ******/

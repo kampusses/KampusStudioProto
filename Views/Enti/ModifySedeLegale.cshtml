@@ -9,35 +9,36 @@
                 <h5 class="card-title">SEDE LEGALE</h5>
                 <p class="card-text">Per modificare la sede legale del comune è necessario inserire i dati richiesti nel seguente modulo e confermarli premendo il relativo pulsante.</p>
                 <form method="post">
+                    <input type="hidden" id="CodiceCatastale" name="CodiceCatastale" value="@Model.CodiceCatastale">
                     <div class="form-row">
                         <div class="form-group col-md-2">
-                            <label for="inputCity">Toponimo</label>
+                            <label asp-for="Toponimo"></label>
                             <input type="text" asp-for="Toponimo" class="form-control form-control-lg" placeholder="Toponimo">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputCity">Indirizzo</label>
+                            <label asp-for="Indirizzo"></label>
                             <input type="text" asp-for="Indirizzo" class="form-control form-control-lg" placeholder="Indirizzo">
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="inputCity">Civico</label>
+                            <label asp-for="Civico"></label>
                             <input type="text" asp-for="Civico" class="form-control form-control-lg">
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="inputCity">Lettera</label>
+                            <label asp-for="Lettera"></label>
                             <input type="text" asp-for="Lettera" class="form-control form-control-lg" placeholder="Lettera">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="inputCity">Località</label>
+                            <label asp-for="Localita"></label>
                             <input type="text" asp-for="Localita" class="form-control form-control-lg" placeholder="Località">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-8"></div>
                         <div class="form-group col-md-4">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Modifica sede legale</button>
-                    </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Modifica sede legale</button>
+                        </div>
                     </div>
                 </form>
             </div>

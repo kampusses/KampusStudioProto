@@ -65,7 +65,7 @@ namespace KampusStudioProto.Models.Services.Application
             }
         }
 
-        public async Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
+        public async Task<EnteViewModel> CreateEnteAsync(EnteCreateInputModel inputModel)
         {
             var enteEsistente = await GetEnteAsync();
             if (enteEsistente.CodiceCatastale == "")
@@ -80,6 +80,13 @@ namespace KampusStudioProto.Models.Services.Application
                 return enteViewModel;
             }
             else throw new InvalidOperationException($"ATTENZIONE! Qualcuno ha già configurato un Ente");
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel)
+        {
+            var ente = new EnteViewModel();
+            ente = await GetEnteAsync();
+            return ente;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace KampusStudioProto.Models.Services.Application
             return enteViewModel;
         }
 
-        public async Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel)
+        public async Task<EnteViewModel> CreateEnteAsync(EnteCreateInputModel inputModel)
         {
             var enteEsistente = await GetEnteAsync();
             if (enteEsistente.CodiceCatastale == "")
@@ -50,6 +50,13 @@ namespace KampusStudioProto.Models.Services.Application
                 return enteViewModel;
             }
             else throw new InvalidOperationException($"ATTENZIONE! Qualcuno ha già configurato un Ente");
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel)
+        {
+            DataSet dataSet = await db.QueryAsync($"UPDATE Ente SET Toponimo={inputModel.Toponimo}, Indirizzo={inputModel.Indirizzo}, Civico={inputModel.Civico}, Lettera={inputModel.Lettera}, Localita={inputModel.Localita} WHERE codiceCatastale={inputModel.CodiceCatastale}");
+            EnteViewModel ente = await GetEnteAsync();
+            return ente;
         }
     }
 }

@@ -44,7 +44,7 @@ namespace KampusStudioProto.Controllers
             {
                 return View(inputModel);
             }
-            EnteViewModel ente = await enteService.CreaEnteAsync(inputModel);
+            EnteViewModel ente = await enteService.CreateEnteAsync(inputModel);
             return RedirectToAction(nameof(Dettaglio));
         }
 
@@ -54,11 +54,29 @@ namespace KampusStudioProto.Controllers
             EnteViewModel ente = await enteService.GetEnteAsync();
             if(ente.CodiceCatastale!="") 
             {
-                var inputModel= new EnteModifyInputModel();
+                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+                var inputModel = new EnteModifyInputModel();
+                inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
+                inputModel.Toponimo = enteViewModel.Toponimo;
+                inputModel.Indirizzo = enteViewModel.Indirizzo;
+                inputModel.Civico = enteViewModel.Civico;
+                inputModel.Lettera = enteViewModel.Lettera;
+                inputModel.Localita = enteViewModel.Localita;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ModifySedeLegale(EnteModifyInputModel inputModel)
+        {
+            ViewBag.Title = "Configurazione sede legale";
+            if (ModelState.IsValid)
+            {
+                EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
+                return RedirectToAction(nameof(Dettaglio));
+            }
+            return View(inputModel);
+        }
     }
 }

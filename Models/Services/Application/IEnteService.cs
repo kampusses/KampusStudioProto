@@ -8,6 +8,7 @@ namespace KampusStudioProto.Models.Services.Application
     public interface IEnteService
     {
         Task<EnteViewModel> GetEnteAsync();
-        Task<EnteViewModel> CreaEnteAsync(EnteCreateInputModel inputModel);
+        Task<EnteViewModel> CreateEnteAsync(EnteCreateInputModel inputModel);
+        Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel);
     }
 }
