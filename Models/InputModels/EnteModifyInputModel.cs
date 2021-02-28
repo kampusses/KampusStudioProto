@@ -15,5 +15,10 @@ namespace KampusStudioProto.Models.InputModels
         public string Lettera {get; set;}
         [Display(Name="Località")]
         public string Localita {get; set;}
+        [Display(Name="Partita IVA")]
+        public string PartitaIva {get; set;}
+        [Display(Name="Codice fiscale")]
+        public string CodiceFiscale {get; set;}
+
     }
 }

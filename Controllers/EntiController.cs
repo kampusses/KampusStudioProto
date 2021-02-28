@@ -62,6 +62,8 @@ namespace KampusStudioProto.Controllers
                 inputModel.Civico = enteViewModel.Civico;
                 inputModel.Lettera = enteViewModel.Lettera;
                 inputModel.Localita = enteViewModel.Localita;
+                inputModel.PartitaIva = enteViewModel.PartitaIva;
+                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
@@ -71,6 +73,39 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifySedeLegale(EnteModifyInputModel inputModel)
         {
             ViewBag.Title = "Configurazione sede legale";
+            if (ModelState.IsValid)
+            {
+                EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
+                return RedirectToAction(nameof(Dettaglio));
+            }
+            return View(inputModel);
+        }
+
+        public async Task<IActionResult> ModifyDatiFiscali()
+        {
+            ViewBag.Title = "Configurazione dati fiscali";
+            EnteViewModel ente = await enteService.GetEnteAsync();
+            if(ente.CodiceCatastale!="") 
+            {
+                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+                var inputModel = new EnteModifyInputModel();
+                inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
+                inputModel.Toponimo = enteViewModel.Toponimo;
+                inputModel.Indirizzo = enteViewModel.Indirizzo;
+                inputModel.Civico = enteViewModel.Civico;
+                inputModel.Lettera = enteViewModel.Lettera;
+                inputModel.Localita = enteViewModel.Localita;
+                inputModel.PartitaIva = enteViewModel.PartitaIva;
+                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ModifyDatiFiscali(EnteModifyInputModel inputModel)
+        {
+            ViewBag.Title = "Configurazione dati fiscali";
             if (ModelState.IsValid)
             {
                 EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
