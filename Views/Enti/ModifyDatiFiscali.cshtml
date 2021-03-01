@@ -6,7 +6,7 @@
     <div class="col-sm-10">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">DATI FISCALI</h5>
+                <h5 class="card-title"><i class="far fa-credit-card"></i> DATI FISCALI</h5>
                 <p class="card-text">Per modificare i dati fiscali del comune è necessario inserire le informazioni richieste di seguito e confermare premendo il relativo pulsante.</p>
                 <form method="post">
                     <input type="hidden" id="CodiceCatastale" name="CodiceCatastale" value="@Model.CodiceCatastale">
@@ -16,19 +16,19 @@
                     <input type="hidden" id="Lettera" name="Lettera" value="@Model.Lettera">
                     <input type="hidden" id="Localita" name="Localita" value="@Model.Localita">
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label asp-for="PartitaIva"></label>
                             <input type="text" asp-for="PartitaIva" class="form-control form-control-lg" placeholder="Partita IVA">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label asp-for="CodiceFiscale"></label>
                             <input type="text" asp-for="CodiceFiscale" class="form-control form-control-lg" placeholder="Codice fiscale">
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Modifica dati fiscali</button>
+                        <!--div class="form-group col-md-4"></div-->
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Modifica dati fiscali</button>
                         </div>
                     </div>
                 </form>
