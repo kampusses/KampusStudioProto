@@ -9,7 +9,7 @@
                 </button>
             </h5>
         </div>
-        <div id="collapseZero" class="collapse show" aria-labelledby="headingZero" data-parent="#accordion">
+        <div id="collapseZero" class="collapse @if(Model.Card == null || (Model.Card!="One" && Model.Card!="Two" && Model.Card!="Three" && Model.Card!="Four")) {<text>show</text>}" aria-labelledby="headingZero" data-parent="#accordion">
             <div class="card-body">
                 <p>Il nome del comune in gestione non è più modificabile!<br />
                 E' possibile modificare solo i dati presenti nei box riportati di seguito.<br />
@@ -26,7 +26,7 @@
                 </button>
             </h5>
         </div>
-        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div id="collapseOne" class="collapse @if(Model.Card=="One") {<text>show</text>}" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
                 <p>Indirizzo: <a href="">@Model.Toponimo @Model.Indirizzo @Model.Civico.ToString("#####") @Model.Lettera</a><br />
                 Località: <a href="">@Model.Localita</a></p>
@@ -42,7 +42,7 @@
                 </button>
             </h5>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div id="collapseTwo" class="collapse @if(Model.Card=="Two") {<text>show</text>}" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
                 <p>Partita Iva: <a href="">@Model.PartitaIva</a><br />
                 Codice fiscale: <a href="">@Model.CodiceFiscale</a></p>
@@ -58,7 +58,7 @@
                 </button>
             </h5>
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div id="collapseThree" class="collapse @if(Model.Card=="Three") {<text>show</text>}" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
                 <p>Telefono: <a href="">@Model.Telefono</a><br />
                 Fax: <a href="">@Model.Fax</a><br />
@@ -76,7 +76,7 @@
                 </button>
             </h5>
         </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+        <div id="collapseFour" class="collapse @if(Model.Card=="Four") {<text>show</text>}" aria-labelledby="headingFour" data-parent="#accordion">
             <div class="card-body">
                 <p>Nominativo: <a href="">@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</a></p>
                 <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>

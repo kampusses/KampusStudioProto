@@ -16,11 +16,15 @@ namespace KampusStudioProto.Controllers
             this.enteService = enteService;
         }
         
-        public async Task<IActionResult> Dettaglio()
+        public async Task<IActionResult> Dettaglio(string card)
         {
             EnteViewModel ente = await enteService.GetEnteAsync();
             ViewBag.Title = "Configurazione Ente";
-            if(ente.CodiceCatastale!="") return View(ente);
+            if(ente.CodiceCatastale!="")
+            {
+                ente.Card = card;
+                return View(ente);
+            }
             else return RedirectToAction(nameof(Create));
         }
 
@@ -76,7 +80,7 @@ namespace KampusStudioProto.Controllers
             if (ModelState.IsValid)
             {
                 EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
-                return RedirectToAction(nameof(Dettaglio));
+                return RedirectToAction("Dettaglio", new {card="One"});
             }
             return View(inputModel);
         }
@@ -109,7 +113,7 @@ namespace KampusStudioProto.Controllers
             if (ModelState.IsValid)
             {
                 EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
-                return RedirectToAction(nameof(Dettaglio));
+                return RedirectToAction("Dettaglio", new {card="Two"});
             }
             return View(inputModel);
         }

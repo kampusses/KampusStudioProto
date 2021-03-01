@@ -21,7 +21,7 @@ namespace KampusStudioProto.Models.ViewModels
         public string TitoloResponsabile {get; set;}
         public string CognomeResponsabile {get; set;}
         public string NomeResponsabile {get; set;}
-
+        public string Card {get; set;}
         public static EnteViewModel FromDataRow(DataRow enteRow)
         {
             var enteViewModel = new EnteViewModel
@@ -41,7 +41,8 @@ namespace KampusStudioProto.Models.ViewModels
                 Pec = Convert.ToString(enteRow["pec"]),
                 TitoloResponsabile = Convert.ToString(enteRow["titoloResponsabile"]),
                 CognomeResponsabile = Convert.ToString(enteRow["cognomeResponsabile"]),
-                NomeResponsabile = Convert.ToString(enteRow["nomeResponsabile"])
+                NomeResponsabile = Convert.ToString(enteRow["nomeResponsabile"]),
+                Card = ""
             };
             return enteViewModel;
         }
