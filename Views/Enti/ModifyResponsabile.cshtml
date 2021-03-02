@@ -1,0 +1,50 @@
+@model EnteModifyInputModel
+<h1>Configurazione ente</h1>
+
+
+<div class="row">
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-user-circle"></i> CONTATTI</h5>
+                <p class="card-text">Inserisci di seguito i dati riferiti al funzionario responsabile dell'Ufficio Tributi. Se ci sono funzionari responsabili diversi per ogni gestione, è possibile inserire le loro generalità all'interno delle gestioni specifiche di ogni singolo tributo.</p>
+                <form method="post">
+                    <input type="hidden" id="CodiceCatastale" name="CodiceCatastale" value="@Model.CodiceCatastale">
+                    <input type="hidden" id="Toponimo" name="Toponimo" value="@Model.Toponimo">
+                    <input type="hidden" id="Indirizzo" name="Indirizzo" value="@Model.Indirizzo">
+                    <input type="hidden" id="Civico" name="Civico" value="@Model.Civico">
+                    <input type="hidden" id="Lettera" name="Lettera" value="@Model.Lettera">
+                    <input type="hidden" id="Localita" name="Localita" value="@Model.Localita">
+                    <input type="hidden" id="PartitaIva" name="PartitaIva" value="@Model.PartitaIva">
+                    <input type="hidden" id="CodiceFiscale" name="CodiceFiscale" value="@Model.CodiceFiscale">
+                    <input type="hidden" id="Telefono" name="Telefono" value="@Model.Telefono">
+                    <input type="hidden" id="Fax" name="Fax" value="@Model.Fax">
+                    <input type="hidden" id="Email" name="Email" value="@Model.Email">
+                    <input type="hidden" id="Pec" name="Pec" value="@Model.Pec">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label asp-for="TitoloResponsabile"></label>
+                            <input type="text" asp-for="TitoloResponsabile" class="form-control form-control-lg" placeholder="Titolo">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label asp-for="CognomeResponsabile"></label>
+                            <input type="text" asp-for="CognomeResponsabile" class="form-control form-control-lg" placeholder="Cognome Funzionario">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label asp-for="NomeResponsabile"></label>
+                            <input type="text" asp-for="NomeResponsabile" class="form-control form-control-lg" placeholder="Nome funzionario">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Modifica funzionario responsabile</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

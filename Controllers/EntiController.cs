@@ -72,6 +72,9 @@ namespace KampusStudioProto.Controllers
                 inputModel.Fax = enteViewModel.Fax;
                 inputModel.Email = enteViewModel.Email;
                 inputModel.Pec = enteViewModel.Pec;
+                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
+                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
+                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
@@ -109,6 +112,9 @@ namespace KampusStudioProto.Controllers
                 inputModel.Fax = enteViewModel.Fax;
                 inputModel.Email = enteViewModel.Email;
                 inputModel.Pec = enteViewModel.Pec;
+                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
+                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
+                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
@@ -125,7 +131,6 @@ namespace KampusStudioProto.Controllers
             }
             return View(inputModel);
         }
-
 
         public async Task<IActionResult> ModifyContatti()
         {
@@ -147,6 +152,9 @@ namespace KampusStudioProto.Controllers
                 inputModel.Fax = enteViewModel.Fax;
                 inputModel.Email = enteViewModel.Email;
                 inputModel.Pec = enteViewModel.Pec;
+                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
+                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
+                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
@@ -164,7 +172,44 @@ namespace KampusStudioProto.Controllers
             return View(inputModel);
         }
 
+        public async Task<IActionResult> ModifyResponsabile()
+        {
+            ViewBag.Title = "Configurazione funzionario responsabile";
+            EnteViewModel ente = await enteService.GetEnteAsync();
+            if(ente.CodiceCatastale!="") 
+            {
+                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+                var inputModel = new EnteModifyInputModel();
+                inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
+                inputModel.Toponimo = enteViewModel.Toponimo;
+                inputModel.Indirizzo = enteViewModel.Indirizzo;
+                inputModel.Civico = enteViewModel.Civico;
+                inputModel.Lettera = enteViewModel.Lettera;
+                inputModel.Localita = enteViewModel.Localita;
+                inputModel.PartitaIva = enteViewModel.PartitaIva;
+                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
+                inputModel.Telefono = enteViewModel.Telefono;
+                inputModel.Fax = enteViewModel.Fax;
+                inputModel.Email = enteViewModel.Email;
+                inputModel.Pec = enteViewModel.Pec;
+                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
+                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
+                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
 
-
+        [HttpPost]
+        public async Task<IActionResult> ModifyResponsabile(EnteModifyInputModel inputModel)
+        {
+            ViewBag.Title = "Configurazione funzionario responsabile";
+            if (ModelState.IsValid)
+            {
+                EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
+                return RedirectToAction("Dettaglio", new {card="Four"});
+            }
+            return View(inputModel);
+        }
     }
 }

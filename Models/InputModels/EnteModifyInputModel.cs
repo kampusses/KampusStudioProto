@@ -27,6 +27,11 @@ namespace KampusStudioProto.Models.InputModels
         public string Email {get; set;}
         [Display(Name="Pec")]
         public string Pec {get; set;}
-
+        [Display(Name="Titolo funzionario")]
+        public string TitoloResponsabile {get; set;}
+        [Display(Name="Cognome funzionario")]
+        public string CognomeResponsabile {get; set;}
+        [Display(Name="Nome funzionario")]
+        public string NomeResponsabile {get; set;}
     }
 }
