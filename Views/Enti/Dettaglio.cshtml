@@ -64,7 +64,7 @@
                 Fax: <a href="">@Model.Fax</a><br />
                 Email: <a href="">@Model.Email</a><br />
                 Pec: <a href="">@Model.Pec</a></p>
-                <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
+                <div class="d-flex justify-content-end"><a asp-controller="Enti" asp-action="ModifyContatti" class="btn btn-primary">Modifica</a></div>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
         <div id="collapseFour" class="collapse @if(Model.Card=="Four") {<text>show</text>}" aria-labelledby="headingFour" data-parent="#accordion">
             <div class="card-body">
                 <p>Nominativo: <a href="">@Model.TitoloResponsabile @Model.CognomeResponsabile @Model.NomeResponsabile</a></p>
-                <div class="d-flex justify-content-end"><a href="#" class="btn btn-primary">Modifica</a></div>
+                <div class="d-flex justify-content-end"><a asp-controller="Enti" asp-action="ModifyDatiFunzionario" class="btn btn-primary">Modifica</a></div>
             </div>
         </div>
      </div>

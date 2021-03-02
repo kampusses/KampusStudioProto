@@ -68,6 +68,10 @@ namespace KampusStudioProto.Controllers
                 inputModel.Localita = enteViewModel.Localita;
                 inputModel.PartitaIva = enteViewModel.PartitaIva;
                 inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
+                inputModel.Telefono = enteViewModel.Telefono;
+                inputModel.Fax = enteViewModel.Fax;
+                inputModel.Email = enteViewModel.Email;
+                inputModel.Pec = enteViewModel.Pec;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
@@ -101,6 +105,10 @@ namespace KampusStudioProto.Controllers
                 inputModel.Localita = enteViewModel.Localita;
                 inputModel.PartitaIva = enteViewModel.PartitaIva;
                 inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
+                inputModel.Telefono = enteViewModel.Telefono;
+                inputModel.Fax = enteViewModel.Fax;
+                inputModel.Email = enteViewModel.Email;
+                inputModel.Pec = enteViewModel.Pec;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
@@ -117,5 +125,46 @@ namespace KampusStudioProto.Controllers
             }
             return View(inputModel);
         }
+
+
+        public async Task<IActionResult> ModifyContatti()
+        {
+            ViewBag.Title = "Configurazione contatti ente";
+            EnteViewModel ente = await enteService.GetEnteAsync();
+            if(ente.CodiceCatastale!="") 
+            {
+                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+                var inputModel = new EnteModifyInputModel();
+                inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
+                inputModel.Toponimo = enteViewModel.Toponimo;
+                inputModel.Indirizzo = enteViewModel.Indirizzo;
+                inputModel.Civico = enteViewModel.Civico;
+                inputModel.Lettera = enteViewModel.Lettera;
+                inputModel.Localita = enteViewModel.Localita;
+                inputModel.PartitaIva = enteViewModel.PartitaIva;
+                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
+                inputModel.Telefono = enteViewModel.Telefono;
+                inputModel.Fax = enteViewModel.Fax;
+                inputModel.Email = enteViewModel.Email;
+                inputModel.Pec = enteViewModel.Pec;
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ModifyContatti(EnteModifyInputModel inputModel)
+        {
+            ViewBag.Title = "Configurazione contatti ente";
+            if (ModelState.IsValid)
+            {
+                EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
+                return RedirectToAction("Dettaglio", new {card="Three"});
+            }
+            return View(inputModel);
+        }
+
+
+
     }
 }
