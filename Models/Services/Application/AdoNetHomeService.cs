@@ -22,6 +22,7 @@ namespace KampusStudioProto.Models.Services.Application
         {
             var homeViewModel = new HomeViewModel();
             homeViewModel.Ente = await enteService.GetEnteAsync();
+            homeViewModel.Azienda = "";
             return homeViewModel;
         }
     }

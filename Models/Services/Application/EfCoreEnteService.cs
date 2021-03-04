@@ -57,10 +57,8 @@ namespace KampusStudioProto.Models.Services.Application
             }
             else
             {
-                EnteViewModel viewModel = new EnteViewModel
-                {
-                    CodiceCatastale = ""
-                };
+                EnteViewModel viewModel = new EnteViewModel();
+                viewModel = null;
                 return viewModel;
             }
         }
@@ -68,7 +66,7 @@ namespace KampusStudioProto.Models.Services.Application
         public async Task<EnteViewModel> CreateEnteAsync(EnteCreateInputModel inputModel)
         {
             var enteEsistente = await GetEnteAsync();
-            if (enteEsistente.CodiceCatastale == "")
+            if (enteEsistente == null)
             {
                 string nomeComune = inputModel.Comune;
                 ComuneViewModel codiceCatastale = await comuneService.GetNomeComuneAsync(nomeComune);

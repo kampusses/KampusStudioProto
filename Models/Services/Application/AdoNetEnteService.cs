@@ -34,14 +34,14 @@ namespace KampusStudioProto.Models.Services.Application
                 comuneViewModel = await comuneService.GetComuneAsync(enteViewModel.CodiceCatastale);
                 enteViewModel.Comune = comuneViewModel;
             }
-            else enteViewModel.CodiceCatastale = "";
+            else enteViewModel = null;
             return enteViewModel;
         }
 
         public async Task<EnteViewModel> CreateEnteAsync(EnteCreateInputModel inputModel)
         {
             var enteEsistente = await GetEnteAsync();
-            if (enteEsistente.CodiceCatastale == "")
+            if (enteEsistente == null)
             {
                 string nomeComune = inputModel.Comune;
                 ComuneViewModel comuneViewModel = await comuneService.GetNomeComuneAsync(nomeComune);

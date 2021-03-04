@@ -20,7 +20,7 @@ namespace KampusStudioProto.Controllers
         {
             EnteViewModel ente = await enteService.GetEnteAsync();
             ViewBag.Title = "Configurazione Ente";
-            if(ente.CodiceCatastale!="")
+            if(ente != null)
             {
                 ente.Card = card;
                 return View(ente);
@@ -32,7 +32,7 @@ namespace KampusStudioProto.Controllers
         {
             ViewBag.Title = "Configurazione Ente";
             EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente.CodiceCatastale=="") 
+            if(ente==null) 
             {
                 var inputModel= new EnteCreateInputModel();
                 return View(inputModel);
@@ -56,7 +56,7 @@ namespace KampusStudioProto.Controllers
         {
             ViewBag.Title = "Configurazione sede legale";
             EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente.CodiceCatastale!="") 
+            if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifyInputModel();
@@ -96,7 +96,7 @@ namespace KampusStudioProto.Controllers
         {
             ViewBag.Title = "Configurazione dati fiscali";
             EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente.CodiceCatastale!="") 
+            if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifyInputModel();
@@ -136,7 +136,7 @@ namespace KampusStudioProto.Controllers
         {
             ViewBag.Title = "Configurazione contatti ente";
             EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente.CodiceCatastale!="") 
+            if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifyInputModel();
@@ -176,7 +176,7 @@ namespace KampusStudioProto.Controllers
         {
             ViewBag.Title = "Configurazione funzionario responsabile";
             EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente.CodiceCatastale!="") 
+            if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifyInputModel();
