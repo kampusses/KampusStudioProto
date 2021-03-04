@@ -7,11 +7,13 @@ namespace KampusStudioProto.Models.Entities
 {
     public partial class Regione
     {
+        /*
         public Regione()
         {
             Comuni = new HashSet<Comune>();
             Province = new HashSet<Provincia>();
         }
+        */
 
         public int CodiceRegione { get; private set; }
         public string NomeRegione { get; private set; }
