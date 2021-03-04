@@ -113,6 +113,23 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasConstraintName("comuni_ibfk_2");
             });
 
+            modelBuilder.Entity<Azienda>(entity =>
+            {
+                entity.ToTable("azienda");
+
+                entity.HasComment("Azienda concessionaria");
+
+                entity.HasNoKey();
+
+                entity.Property(e => e.NomeAzienda)
+                    .IsRequired()
+                    .HasColumnType("varchar(40)")
+                    .HasColumnName("nomeAzienda")
+                    .HasComment("Nome azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+            });
+
             modelBuilder.Entity<Ente>(entity =>
             {
                 entity.HasKey(e => e.CodiceCatastale)
