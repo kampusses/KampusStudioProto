@@ -68,6 +68,8 @@ namespace KampusStudioProto
             .AddEntityFrameworkStores<MyDbContext>();
 
             /****** INIZIO CONFIGURAZIONE SERVIZI APPLICATIVI ******/
+            services.AddTransient<IHomeService, AdoNetHomeService>();
+
             services.AddTransient<IComuneService, AdoNetComuneService>();
             //services.AddTransient<IComuneService, EfCoreComuneService>();
 

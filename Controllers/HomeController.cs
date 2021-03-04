@@ -8,16 +8,16 @@ namespace KampusStudioProto.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEnteService enteService;
-        public HomeController(IEnteService enteService)
+        private readonly IHomeService homeService;
+        public HomeController(IHomeService homeService)
         {
-            this.enteService = enteService;
+            this.homeService = homeService;
         }
         public async Task<IActionResult> Index()
         {
-            EnteViewModel ente = await enteService.GetEnteAsync();
+            HomeViewModel home = await homeService.GetParametriGestioneAsync();
             ViewBag.Title = "Kampus Studio - Ver. Proto";
-            return View(ente);
+            return View(home);
         }
     }
 }

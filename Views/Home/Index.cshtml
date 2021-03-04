@@ -1,6 +1,17 @@
-@model EnteViewModel
+@model HomeViewModel
 <h1>Ciao @User.FindFirst("Nome").Value</h1>
-@if(Model.CodiceCatastale=="")
+@if(Model.Azienda=="")
+{
+<div class="row">
+    <div class="col-md-11">
+        <div class="alert alert-primary" role="alert">
+            <h3><i class="fas fa-exclamation-triangle"></i> ATTENZIONE: Prima di effettuare qualsiasi operazione con Kampus Studio, è necessario configurare i dati dell'azienda che gestisce il servizio.</h3>
+            <a asp-controller="Aziende" asp-action="Create" class="btn btn-outline-primary">Configura Azienda</a>
+        </div>
+    </div>
+</div>
+}
+@if(Model.Ente.CodiceCatastale=="")
 {
 <div class="row">
     <div class="col-md-11">
