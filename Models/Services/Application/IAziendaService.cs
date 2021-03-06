@@ -8,9 +8,9 @@ namespace KampusStudioProto.Models.Services.Application
     public interface IAziendaService
     {
         Task<AziendaViewModel> GetAziendaAsync();
+        Task<AziendaViewModel> CreateAziendaAsync(AziendaCreateInputModel inputModel);
         /*
-        Task<EnteViewModel> CreateEnteAsync(EnteCreateInputModel inputModel);
-        Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel);
+        Task<AziendaViewModel> ModifyAziendaAsync(AziendaModifyInputModel inputModel);
         */
     }
 }

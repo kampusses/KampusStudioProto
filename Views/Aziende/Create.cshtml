@@ -1,0 +1,13 @@
+@model AziendaCreateInputModel
+<h1>Azienda concessionaria</h1>
+<form method="post">
+    <div class="row">
+        <div class="col-md-8">
+            <input type="text" asp-for="Azienda" class="form-control form-control-lg" placeholder="Inserisci il nome dell'azienda concessionaria">
+            <span asp-validation-for="Azienda"></span>
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fas fa-rocket"></i> Crea azienda</button>
+        </div>
+    </div>
+</form>

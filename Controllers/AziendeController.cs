@@ -19,38 +19,38 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> Dettaglio()
         {
             AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            ViewBag.Title = "Configurazione società concessionaria";
+            ViewBag.Title = "Azienda concessionaria";
             if(azienda != null)
             {
                 return View(azienda);
             }
-            else return null; //RedirectToAction(nameof(Create));
+            else return RedirectToAction(nameof(Create));
         }
-/*
+
         public async Task<IActionResult> Create()
         {
-            ViewBag.Title = "Configurazione Ente";
-            EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente==null) 
+            ViewBag.Title = "Azienda concessionaria";
+            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
+            if(azienda==null) 
             {
-                var inputModel= new EnteCreateInputModel();
+                var inputModel= new AziendaCreateInputModel();
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(EnteCreateInputModel inputModel)
+        public async Task<IActionResult> Create(AziendaCreateInputModel inputModel)
         {
-            ViewBag.Title = "Configurazione Ente";
+            ViewBag.Title = "Azienda concessionaria";
             if (!ModelState.IsValid)
             {
                 return View(inputModel);
             }
-            EnteViewModel ente = await enteService.CreateEnteAsync(inputModel);
+            AziendaViewModel azienda = await aziendaService.CreateAziendaAsync(inputModel);
             return RedirectToAction(nameof(Dettaglio));
         }
-
+/*
         public async Task<IActionResult> ModifySedeLegale()
         {
             ViewBag.Title = "Configurazione sede legale";
