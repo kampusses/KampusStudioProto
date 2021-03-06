@@ -20,6 +20,7 @@ namespace KampusStudioProto.Models.Services.Infrastructure
         public virtual DbSet<Provincia> Province { get; set; }
         public virtual DbSet<Regione> Regioni { get; set; }
         public virtual DbSet<Ente> Enti { get; set; }
+        public virtual DbSet<Azienda> Aziende { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

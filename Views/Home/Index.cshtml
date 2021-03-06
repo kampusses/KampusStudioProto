@@ -1,6 +1,6 @@
 @model HomeViewModel
 <h1>Ciao @User.FindFirst("Nome").Value</h1>
-@if(Model.Azienda=="")
+@if(Model.Azienda==null)
 {
 <div class="row">
     <div class="col-md-11">

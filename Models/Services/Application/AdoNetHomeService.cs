@@ -13,16 +13,18 @@ namespace KampusStudioProto.Models.Services.Application
     public class AdoNetHomeService : IHomeService
     {
         private readonly IEnteService enteService;
-        public AdoNetHomeService(IEnteService enteService)
+        private readonly IAziendaService aziendaService;
+        public AdoNetHomeService(IEnteService enteService, IAziendaService aziendaService)
         {
             this.enteService = enteService;
+            this.aziendaService = aziendaService;
         }
     
         public async Task<HomeViewModel> GetParametriGestioneAsync()
         {
             var homeViewModel = new HomeViewModel();
             homeViewModel.Ente = await enteService.GetEnteAsync();
-            homeViewModel.Azienda = "";
+            homeViewModel.Azienda = await aziendaService.GetAziendaAsync();
             return homeViewModel;
         }
     }

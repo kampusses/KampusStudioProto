@@ -69,6 +69,7 @@ namespace KampusStudioProto
 
             /****** INIZIO CONFIGURAZIONE SERVIZI APPLICATIVI ******/
             services.AddTransient<IHomeService, AdoNetHomeService>();
+            services.AddTransient<IAziendaService, AdoNetAziendaService>();
 
             services.AddTransient<IComuneService, AdoNetComuneService>();
             //services.AddTransient<IComuneService, EfCoreComuneService>();
