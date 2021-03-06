@@ -59,29 +59,20 @@ namespace KampusStudioProto.Controllers
             if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
-                var inputModel = new EnteModifyInputModel();
+                var inputModel = new EnteModifySedeLegaleInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
                 inputModel.Toponimo = enteViewModel.Toponimo;
                 inputModel.Indirizzo = enteViewModel.Indirizzo;
                 inputModel.Civico = enteViewModel.Civico;
                 inputModel.Lettera = enteViewModel.Lettera;
                 inputModel.Localita = enteViewModel.Localita;
-                inputModel.PartitaIva = enteViewModel.PartitaIva;
-                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
-                inputModel.Telefono = enteViewModel.Telefono;
-                inputModel.Fax = enteViewModel.Fax;
-                inputModel.Email = enteViewModel.Email;
-                inputModel.Pec = enteViewModel.Pec;
-                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
-                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
-                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
         }
 
         [HttpPost]
-        public async Task<IActionResult> ModifySedeLegale(EnteModifyInputModel inputModel)
+        public async Task<IActionResult> ModifySedeLegale(EnteModifySedeLegaleInputModel inputModel)
         {
             ViewBag.Title = "Configurazione sede legale";
             if (ModelState.IsValid)
@@ -99,29 +90,17 @@ namespace KampusStudioProto.Controllers
             if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
-                var inputModel = new EnteModifyInputModel();
+                var inputModel = new EnteModifyDatiFiscaliInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
-                inputModel.Toponimo = enteViewModel.Toponimo;
-                inputModel.Indirizzo = enteViewModel.Indirizzo;
-                inputModel.Civico = enteViewModel.Civico;
-                inputModel.Lettera = enteViewModel.Lettera;
-                inputModel.Localita = enteViewModel.Localita;
                 inputModel.PartitaIva = enteViewModel.PartitaIva;
                 inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
-                inputModel.Telefono = enteViewModel.Telefono;
-                inputModel.Fax = enteViewModel.Fax;
-                inputModel.Email = enteViewModel.Email;
-                inputModel.Pec = enteViewModel.Pec;
-                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
-                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
-                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
         }
 
         [HttpPost]
-        public async Task<IActionResult> ModifyDatiFiscali(EnteModifyInputModel inputModel)
+        public async Task<IActionResult> ModifyDatiFiscali(EnteModifyDatiFiscaliInputModel inputModel)
         {
             ViewBag.Title = "Configurazione dati fiscali";
             if (ModelState.IsValid)
@@ -139,29 +118,19 @@ namespace KampusStudioProto.Controllers
             if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
-                var inputModel = new EnteModifyInputModel();
+                var inputModel = new EnteModifyContattiInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
-                inputModel.Toponimo = enteViewModel.Toponimo;
-                inputModel.Indirizzo = enteViewModel.Indirizzo;
-                inputModel.Civico = enteViewModel.Civico;
-                inputModel.Lettera = enteViewModel.Lettera;
-                inputModel.Localita = enteViewModel.Localita;
-                inputModel.PartitaIva = enteViewModel.PartitaIva;
-                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
                 inputModel.Telefono = enteViewModel.Telefono;
                 inputModel.Fax = enteViewModel.Fax;
                 inputModel.Email = enteViewModel.Email;
                 inputModel.Pec = enteViewModel.Pec;
-                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
-                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
-                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
         }
 
         [HttpPost]
-        public async Task<IActionResult> ModifyContatti(EnteModifyInputModel inputModel)
+        public async Task<IActionResult> ModifyContatti(EnteModifyContattiInputModel inputModel)
         {
             ViewBag.Title = "Configurazione contatti ente";
             if (ModelState.IsValid)
@@ -179,19 +148,8 @@ namespace KampusStudioProto.Controllers
             if(ente!=null) 
             {
                 EnteViewModel enteViewModel = await enteService.GetEnteAsync();
-                var inputModel = new EnteModifyInputModel();
+                var inputModel = new EnteModifyResponsabileInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
-                inputModel.Toponimo = enteViewModel.Toponimo;
-                inputModel.Indirizzo = enteViewModel.Indirizzo;
-                inputModel.Civico = enteViewModel.Civico;
-                inputModel.Lettera = enteViewModel.Lettera;
-                inputModel.Localita = enteViewModel.Localita;
-                inputModel.PartitaIva = enteViewModel.PartitaIva;
-                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
-                inputModel.Telefono = enteViewModel.Telefono;
-                inputModel.Fax = enteViewModel.Fax;
-                inputModel.Email = enteViewModel.Email;
-                inputModel.Pec = enteViewModel.Pec;
                 inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
                 inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
                 inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
@@ -201,7 +159,7 @@ namespace KampusStudioProto.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ModifyResponsabile(EnteModifyInputModel inputModel)
+        public async Task<IActionResult> ModifyResponsabile(EnteModifyResponsabileInputModel inputModel)
         {
             ViewBag.Title = "Configurazione funzionario responsabile";
             if (ModelState.IsValid)

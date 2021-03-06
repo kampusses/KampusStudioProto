@@ -52,9 +52,30 @@ namespace KampusStudioProto.Models.Services.Application
             else throw new InvalidOperationException($"ATTENZIONE! Qualcuno ha già configurato un Ente");
         }
 
-        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel)
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifySedeLegaleInputModel inputModel)
         {
-            DataSet dataSet = await db.QueryAsync($"UPDATE Ente SET Toponimo={inputModel.Toponimo}, Indirizzo={inputModel.Indirizzo}, Civico={inputModel.Civico}, Lettera={inputModel.Lettera}, Localita={inputModel.Localita}, PartitaIva={inputModel.PartitaIva}, CodiceFiscale={inputModel.CodiceFiscale}, Telefono={inputModel.Telefono}, Fax={inputModel.Fax}, Email={inputModel.Email}, Pec={inputModel.Pec}, TitoloResponsabile={inputModel.TitoloResponsabile}, CognomeResponsabile={inputModel.CognomeResponsabile}, NomeResponsabile={inputModel.NomeResponsabile} WHERE codiceCatastale={inputModel.CodiceCatastale}");
+            DataSet dataSet = await db.QueryAsync($"UPDATE Ente SET Toponimo={inputModel.Toponimo}, Indirizzo={inputModel.Indirizzo}, Civico={inputModel.Civico}, Lettera={inputModel.Lettera}, Localita={inputModel.Localita} WHERE codiceCatastale={inputModel.CodiceCatastale}");
+            EnteViewModel ente = await GetEnteAsync();
+            return ente;
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyDatiFiscaliInputModel inputModel)
+        {
+            DataSet dataSet = await db.QueryAsync($"UPDATE Ente SET PartitaIva={inputModel.PartitaIva}, CodiceFiscale={inputModel.CodiceFiscale} WHERE codiceCatastale={inputModel.CodiceCatastale}");
+            EnteViewModel ente = await GetEnteAsync();
+            return ente;
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyContattiInputModel inputModel)
+        {
+            DataSet dataSet = await db.QueryAsync($"UPDATE Ente SET Telefono={inputModel.Telefono}, Fax={inputModel.Fax}, Email={inputModel.Email}, Pec={inputModel.Pec} WHERE codiceCatastale={inputModel.CodiceCatastale}");
+            EnteViewModel ente = await GetEnteAsync();
+            return ente;
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyResponsabileInputModel inputModel)
+        {
+            DataSet dataSet = await db.QueryAsync($"UPDATE Ente SET TitoloResponsabile={inputModel.TitoloResponsabile}, CognomeResponsabile={inputModel.CognomeResponsabile}, NomeResponsabile={inputModel.NomeResponsabile} WHERE codiceCatastale={inputModel.CodiceCatastale}");
             EnteViewModel ente = await GetEnteAsync();
             return ente;
         }

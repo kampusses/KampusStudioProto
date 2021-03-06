@@ -80,7 +80,28 @@ namespace KampusStudioProto.Models.Services.Application
             else throw new InvalidOperationException($"ATTENZIONE! Qualcuno ha già configurato un Ente");
         }
 
-        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel)
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifySedeLegaleInputModel inputModel)
+        {
+            var ente = new EnteViewModel();
+            ente = await GetEnteAsync();
+            return ente;
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyDatiFiscaliInputModel inputModel)
+        {
+            var ente = new EnteViewModel();
+            ente = await GetEnteAsync();
+            return ente;
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyContattiInputModel inputModel)
+        {
+            var ente = new EnteViewModel();
+            ente = await GetEnteAsync();
+            return ente;
+        }
+
+        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyResponsabileInputModel inputModel)
         {
             var ente = new EnteViewModel();
             ente = await GetEnteAsync();

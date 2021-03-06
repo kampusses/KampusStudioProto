@@ -1,7 +1,5 @@
-@model EnteModifyInputModel
+@model EnteModifySedeLegaleInputModel
 <h1>Configurazione ente</h1>
-
-
 <div class="row">
     <div class="col-sm-10">
         <div class="card">
@@ -12,15 +10,6 @@
                 <hr />
                 <form method="post">
                     <input type="hidden" id="CodiceCatastale" name="CodiceCatastale" value="@Model.CodiceCatastale">
-                    <input type="hidden" id="PartitaIva" name="PartitaIva" value="@Model.PartitaIva">
-                    <input type="hidden" id="CodiceFiscale" name="CodiceFiscale" value="@Model.CodiceFiscale">
-                    <input type="hidden" id="Telefono" name="Telefono" value="@Model.Telefono">
-                    <input type="hidden" id="Fax" name="Fax" value="@Model.Fax">
-                    <input type="hidden" id="Email" name="Email" value="@Model.Email">
-                    <input type="hidden" id="Pec" name="Pec" value="@Model.Pec">
-                    <input type="hidden" id="TitoloResponsabile" name="TitoloResponsabile" value="@Model.TitoloResponsabile">
-                    <input type="hidden" id="CognomeResponsabile" name="CognomeResponsabile" value="@Model.CognomeResponsabile">
-                    <input type="hidden" id="NomeResponsabile" name="NomeResponsabile" value="@Model.NomeResponsabile">
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label asp-for="Toponimo"></label>

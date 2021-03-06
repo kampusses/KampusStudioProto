@@ -9,6 +9,9 @@ namespace KampusStudioProto.Models.Services.Application
     {
         Task<EnteViewModel> GetEnteAsync();
         Task<EnteViewModel> CreateEnteAsync(EnteCreateInputModel inputModel);
-        Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel);
+        Task<EnteViewModel> ModifyEnteAsync(EnteModifySedeLegaleInputModel inputModel);
+        Task<EnteViewModel> ModifyEnteAsync(EnteModifyDatiFiscaliInputModel inputModel);
+        Task<EnteViewModel> ModifyEnteAsync(EnteModifyContattiInputModel inputModel);
+        Task<EnteViewModel> ModifyEnteAsync(EnteModifyResponsabileInputModel inputModel);
     }
 }
