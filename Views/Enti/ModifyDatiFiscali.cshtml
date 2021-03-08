@@ -14,10 +14,12 @@
                         <div class="form-group col-md-6">
                             <label asp-for="PartitaIva"></label>
                             <input type="text" asp-for="PartitaIva" class="form-control form-control-lg" placeholder="Partita IVA">
+                            <span asp-validation-for="PartitaIva"></span>
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="CodiceFiscale"></label>
                             <input type="text" asp-for="CodiceFiscale" class="form-control form-control-lg" placeholder="Codice fiscale">
+                            <span asp-validation-for="CodiceFiscale"></span>
                         </div>
                     </div>
                     <div class="form-row">
