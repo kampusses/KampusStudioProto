@@ -129,6 +129,142 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasComment("Nome azienda")
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.ToponimoAzienda)
+                    .HasColumnType("varchar(20)")
+                    .HasColumnName("toponimoAzienda")
+                    .HasComment("Toponimo azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.IndirizzoAzienda)
+                    .HasColumnType("varchar(40)")
+                    .HasColumnName("indirizzoAzienda")
+                    .HasComment("Indirizzo azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.CivicoAzienda)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("civicoAzienda")
+                    .HasComment("Civico Azienda");
+
+                entity.Property(e => e.LetteraAzienda)
+                    .HasColumnType("varchar(10)")
+                    .HasColumnName("letteraAzienda")
+                    .HasComment("Lettera azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.LocalitaAzienda)
+                    .HasColumnType("varchar(40)")
+                    .HasColumnName("localitaAzienda")
+                    .HasComment("Località azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.PartitaIvaAzienda)
+                    .HasColumnType("varchar(11)")
+                    .HasColumnName("partitaIvaAzienda")
+                    .HasComment("Partita IVA azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.CodiceFiscaleAzienda)
+                    .HasColumnType("varchar(11)")
+                    .HasColumnName("codiceFiscaleAzienda")
+                    .HasComment("Codice fiscale azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.TelefonoAzienda)
+                    .HasColumnType("varchar(15)")
+                    .HasColumnName("telefonoAzienda")
+                    .HasComment("Telefono azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.FaxAzienda)
+                    .HasColumnType("varchar(15)")
+                    .HasColumnName("faxAzienda")
+                    .HasComment("Fax azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.EmailAzienda)
+                    .HasColumnType("varchar(60)")
+                    .HasColumnName("emailAzienda")
+                    .HasComment("Email azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.PecAzienda)
+                    .HasColumnType("varchar(60)")
+                    .HasColumnName("pecAzienda")
+                    .HasComment("Pec azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.ToponimoAgenzia)
+                    .HasColumnType("varchar(20)")
+                    .HasColumnName("toponimoAgenzia")
+                    .HasComment("Toponimo agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.IndirizzoAgenzia)
+                    .HasColumnType("varchar(40)")
+                    .HasColumnName("indirizzoAgenzia")
+                    .HasComment("Indirizzo agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.CivicoAgenzia)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("civicoAgenzia")
+                    .HasComment("Civico Agenzia");
+
+                entity.Property(e => e.LetteraAgenzia)
+                    .HasColumnType("varchar(10)")
+                    .HasColumnName("letteraAgenzia")
+                    .HasComment("Lettera agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.LocalitaAgenzia)
+                    .HasColumnType("varchar(40)")
+                    .HasColumnName("localitaAgenzia")
+                    .HasComment("Località agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.TelefonoAgenzia)
+                    .HasColumnType("varchar(15)")
+                    .HasColumnName("telefonoAgenzia")
+                    .HasComment("Telefono agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.FaxAgenzia)
+                    .HasColumnType("varchar(15)")
+                    .HasColumnName("faxAgenzia")
+                    .HasComment("Fax agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.EmailAgenzia)
+                    .HasColumnType("varchar(60)")
+                    .HasColumnName("emailAgenzia")
+                    .HasComment("Email agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.PecAgenzia)
+                    .HasColumnType("varchar(60)")
+                    .HasColumnName("pecAgenzia")
+                    .HasComment("Pec agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
             });
 
             modelBuilder.Entity<Ente>(entity =>
