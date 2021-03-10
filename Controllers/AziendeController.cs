@@ -16,12 +16,13 @@ namespace KampusStudioProto.Controllers
             this.aziendaService = aziendaService;
         }
         
-        public async Task<IActionResult> Dettaglio()
+        public async Task<IActionResult> Dettaglio(string card)
         {
             AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
             ViewBag.Title = "Azienda concessionaria";
             if(azienda != null)
             {
+                azienda.Card = card;
                 return View(azienda);
             }
             else return RedirectToAction(nameof(Create));

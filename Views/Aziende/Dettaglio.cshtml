@@ -1,3 +1,90 @@
 @model AziendaViewModel
 <h1>Azienda concessionaria</h1>
-<h1>@Model.NomeAzienda</h1>
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingZero">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                    <h5 class="card-title"><i class="fas fa-globe"></i> @Model.NomeAzienda</h5>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseZero" class="collapse @if(Model.Card == null || (Model.Card!="One" && Model.Card!="Two" && Model.Card!="Three" && Model.Card!="Four")) {<text>show</text>}" aria-labelledby="headingZero" data-parent="#accordion">
+            <div class="card-body">
+                <p>In questa sezione vengono riportate le informazioni relative alla società concessionaria che è possibile inserire/modificare cliccando sul pulsante di modifica.</p>
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"><div class="d-flex justify-content-center">Inserisci / Modifica</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Nome azienda:</strong> I.P.E. Srl</td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indirizzo:</strong> <i>Via Calamandrei n. 5 - 76016 Margherita di Savoia (BT)</i></td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partita IVA / Codice Fiscale:</strong> <i>01868450717 - 01868450717</i></td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Telefono / Fax:</strong> <i>0883 656555 - 0883 656555</i></td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email / Pec:</strong> <i>gesap@interfree.it - gesapsrl@pec.it</i></td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h5 class="card-title"><i class="fas fa-building"></i> Agenzia locale</h5>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse @if(Model.Card=="One") {<text>show</text>}" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                
+<p>In questa sezione vengono riportate le informazioni relative alla società concessionaria che è possibile inserire/modificare cliccando sul pulsante di modifica.</p>
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"><div class="d-flex justify-content-center">Inserisci / Modifica</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Indirizzo:</strong> <i>Via Calamandrei n. 5 - 76016 Margherita di Savoia (BT)</i></td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Telefono / Fax:</strong> <i>0883 656555 - 0883 656555</i></td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email / Pec:</strong> <i>gesap@interfree.it - gesapsrl@pec.it</i></td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr><td></td><td></td></tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

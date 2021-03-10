@@ -7,10 +7,6 @@ namespace KampusStudioProto.Models.Entities
 {
     public partial class Azienda
     {
-        public Azienda(string nomeAzienda)
-        {
-            NomeAzienda = nomeAzienda;
-        }
         public string NomeAzienda { get; private set; }
         public string ToponimoAzienda { get; private set; }
         public string IndirizzoAzienda { get; private set; }
