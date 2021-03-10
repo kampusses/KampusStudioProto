@@ -9,7 +9,7 @@
                 </button>
             </h5>
         </div>
-        <div id="collapseZero" class="collapse @if(Model.Card == null || (Model.Card!="One" && Model.Card!="Two" && Model.Card!="Three" && Model.Card!="Four")) {<text>show</text>}" aria-labelledby="headingZero" data-parent="#accordion">
+        <div id="collapseZero" class="collapse @if(Model.Card == null || Model.Card!="One") {<text>show</text>}" aria-labelledby="headingZero" data-parent="#accordion">
             <div class="card-body">
                 <p>In questa sezione vengono riportate le informazioni relative alla società concessionaria che è possibile inserire/modificare cliccando sul pulsante di modifica.</p>
                 <table class="table table-hover table-sm">
@@ -21,23 +21,23 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Nome azienda:</strong> I.P.E. Srl</td>
+                            <td><strong>Nome azienda:</strong> @Model.NomeAzienda</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Indirizzo:</strong> <i>Via Calamandrei n. 5 - 76016 Margherita di Savoia (BT)</i></td>
+                            <td><strong>Indirizzo:</strong> <i>@Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - 76016 Margherita di Savoia (BT) <--- questi dati devo recuperarli nel DB</i></td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Partita IVA / Codice Fiscale:</strong> <i>01868450717 - 01868450717</i></td>
+                            <td><strong>Partita IVA / Codice Fiscale:</strong> <i>@Model.CodiceFiscaleAzienda - @Model.PartitaIvaAzienda</i></td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Telefono / Fax:</strong> <i>0883 656555 - 0883 656555</i></td>
+                            <td><strong>Telefono / Fax:</strong> <i>@Model.TelefonoAzienda - @Model.FaxAzienda</i></td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Email / Pec:</strong> <i>gesap@interfree.it - gesapsrl@pec.it</i></td>
+                            <td><strong>Email / Pec:</strong> <i>@Model.EmailAzienda - @Model.PecAzienda</i></td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr><td></td><td></td></tr>
@@ -57,8 +57,7 @@
         </div>
         <div id="collapseOne" class="collapse @if(Model.Card=="One") {<text>show</text>}" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-                
-<p>In questa sezione vengono riportate le informazioni relative alla società concessionaria che è possibile inserire/modificare cliccando sul pulsante di modifica.</p>
+                <p>In questa sezione è possibile inserire/modificare le informazioni relative ad una agenzia periferica.</p>
                 <table class="table table-hover table-sm">
                     <thead>
                         <tr>
@@ -68,22 +67,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Indirizzo:</strong> <i>Via Calamandrei n. 5 - 76016 Margherita di Savoia (BT)</i></td>
+                            <td><strong>Indirizzo:</strong> <i>@Model.ToponimoAgenzia @Model.IndirizzoAgenzia @Model.CivicoAgenzia - 76016 Margherita di Savoia (BT) <--- questi dati devo recuperarli nel DB</i></td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Telefono / Fax:</strong> <i>0883 656555 - 0883 656555</i></td>
+                            <td><strong>Telefono / Fax:</strong> <i>@Model.TelefonoAgenzia - @Model.FaxAgenzia</i></td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Email / Pec:</strong> <i>gesap@interfree.it - gesapsrl@pec.it</i></td>
+                            <td><strong>Email / Pec:</strong> <i>@Model.EmailAgenzia - @Model.PecAgenzia</i></td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp.action="" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr><td></td><td></td></tr>
                     </tbody>
                 </table>
-
-
             </div>
         </div>
     </div>
