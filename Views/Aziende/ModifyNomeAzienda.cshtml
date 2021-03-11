@@ -1,0 +1,28 @@
+@model AziendaModifyNomeAziendaInputModel
+<h1>Azienda concessionaria</h1>
+<div class="row">
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="NomeAzienda"></label>
+                            <input type="text" asp-for="NomeAzienda" class="form-control form-control-lg" placeholder="Nome azienda">
+                            <span asp-validation-for="NomeAzienda"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Modifica nome azienda</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

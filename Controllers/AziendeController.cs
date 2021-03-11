@@ -51,46 +51,31 @@ namespace KampusStudioProto.Controllers
             AziendaViewModel azienda = await aziendaService.CreateAziendaAsync(inputModel);
             return RedirectToAction(nameof(Dettaglio));
         }
-/*
-        public async Task<IActionResult> ModifySedeLegale()
+
+        public async Task<IActionResult> ModifyNomeAzienda()
         {
-            ViewBag.Title = "Configurazione sede legale";
-            EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente!=null) 
+            ViewBag.Title = "Azienda condessionaria";
+            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
+            if(azienda!=null) 
             {
-                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
-                var inputModel = new EnteModifyInputModel();
-                inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
-                inputModel.Toponimo = enteViewModel.Toponimo;
-                inputModel.Indirizzo = enteViewModel.Indirizzo;
-                inputModel.Civico = enteViewModel.Civico;
-                inputModel.Lettera = enteViewModel.Lettera;
-                inputModel.Localita = enteViewModel.Localita;
-                inputModel.PartitaIva = enteViewModel.PartitaIva;
-                inputModel.CodiceFiscale = enteViewModel.CodiceFiscale;
-                inputModel.Telefono = enteViewModel.Telefono;
-                inputModel.Fax = enteViewModel.Fax;
-                inputModel.Email = enteViewModel.Email;
-                inputModel.Pec = enteViewModel.Pec;
-                inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;
-                inputModel.CognomeResponsabile = enteViewModel.CognomeResponsabile;
-                inputModel.NomeResponsabile = enteViewModel.NomeResponsabile;
+                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+                var inputModel = new AziendaModifyNomeAziendaInputModel();
+                inputModel.NomeAzienda = aziendaViewModel.NomeAzienda;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
         }
 
         [HttpPost]
-        public async Task<IActionResult> ModifySedeLegale(EnteModifyInputModel inputModel)
+        public async Task<IActionResult> ModifyNomeAzienda(AziendaModifyNomeAziendaInputModel inputModel)
         {
-            ViewBag.Title = "Configurazione sede legale";
+            ViewBag.Title = "Azienda concessionaria";
             if (ModelState.IsValid)
             {
-                EnteViewModel ente = await enteService.ModifyEnteAsync(inputModel);
-                return RedirectToAction("Dettaglio", new {card="One"});
+                AziendaViewModel azienda = await aziendaService.ModifyNomeAziendaAsync(inputModel);
+                return RedirectToAction("Dettaglio", new {card="Zero"});
             }
             return View(inputModel);
         }
-*/
     }
 }

@@ -44,13 +44,12 @@ namespace KampusStudioProto.Models.Services.Application
             }
             else throw new InvalidOperationException($"ATTENZIONE! Qualcuno ha già configurato l'azienda");
         }
-/*
-        public async Task<EnteViewModel> ModifyEnteAsync(EnteModifyInputModel inputModel)
+
+        public async Task<AziendaViewModel> ModifyNomeAziendaAsync(AziendaModifyNomeAziendaInputModel inputModel)
         {
-            DataSet dataSet = await db.QueryAsync($"UPDATE Ente SET Toponimo={inputModel.Toponimo}, Indirizzo={inputModel.Indirizzo}, Civico={inputModel.Civico}, Lettera={inputModel.Lettera}, Localita={inputModel.Localita}, PartitaIva={inputModel.PartitaIva}, CodiceFiscale={inputModel.CodiceFiscale}, Telefono={inputModel.Telefono}, Fax={inputModel.Fax}, Email={inputModel.Email}, Pec={inputModel.Pec}, TitoloResponsabile={inputModel.TitoloResponsabile}, CognomeResponsabile={inputModel.CognomeResponsabile}, NomeResponsabile={inputModel.NomeResponsabile} WHERE codiceCatastale={inputModel.CodiceCatastale}");
-            EnteViewModel ente = await GetEnteAsync();
-            return ente;
+            DataSet dataSet = await db.QueryAsync($"UPDATE Azienda SET nomeAzienda={inputModel.NomeAzienda}");
+            AziendaViewModel azienda = await GetAziendaAsync();
+            return azienda;
         }
-        */
     }
 }

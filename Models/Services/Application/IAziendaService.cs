@@ -9,8 +9,6 @@ namespace KampusStudioProto.Models.Services.Application
     {
         Task<AziendaViewModel> GetAziendaAsync();
         Task<AziendaViewModel> CreateAziendaAsync(AziendaCreateInputModel inputModel);
-        /*
-        Task<AziendaViewModel> ModifyAziendaAsync(AziendaModifyInputModel inputModel);
-        */
+        Task<AziendaViewModel> ModifyNomeAziendaAsync(AziendaModifyNomeAziendaInputModel inputModel);
     }
 }
