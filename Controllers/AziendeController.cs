@@ -77,5 +77,35 @@ namespace KampusStudioProto.Controllers
             }
             return View(inputModel);
         }
+
+        public async Task<IActionResult> ModifyIndirizzoAzienda()
+        {
+            ViewBag.Title = "Azienda condessionaria";
+            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
+            if(azienda!=null) 
+            {
+                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+                var inputModel = new AziendaModifyIndirizzoAziendaInputModel();
+                inputModel.ToponimoAzienda = aziendaViewModel.ToponimoAzienda;
+                inputModel.IndirizzoAzienda = aziendaViewModel.IndirizzoAzienda;
+                inputModel.CivicoAzienda = aziendaViewModel.CivicoAzienda;
+                inputModel.LetteraAzienda = aziendaViewModel.LetteraAzienda;
+                inputModel.LocalitaAzienda = aziendaViewModel.LocalitaAzienda;
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ModifyIndirizzoAzienda(AziendaModifyIndirizzoAziendaInputModel inputModel)
+        {
+            ViewBag.Title = "Azienda concessionaria";
+            if (ModelState.IsValid)
+            {
+                AziendaViewModel azienda = await aziendaService.ModifyIndirizzoAziendaAsync(inputModel);
+                return RedirectToAction("Dettaglio", new {card="Zero"});
+            }
+            return View(inputModel);
+        }
     }
 }

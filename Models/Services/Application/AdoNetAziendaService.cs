@@ -51,5 +51,12 @@ namespace KampusStudioProto.Models.Services.Application
             AziendaViewModel azienda = await GetAziendaAsync();
             return azienda;
         }
+
+        public async Task<AziendaViewModel> ModifyIndirizzoAziendaAsync(AziendaModifyIndirizzoAziendaInputModel inputModel)
+        {
+            DataSet dataSet = await db.QueryAsync($"UPDATE Azienda SET toponimoAzienda={inputModel.ToponimoAzienda}, indirizzoAzienda={inputModel.IndirizzoAzienda}, civicoAzienda={inputModel.CivicoAzienda}, letteraAzienda={inputModel.LetteraAzienda}, localitaAzienda={inputModel.LocalitaAzienda}");
+            AziendaViewModel azienda = await GetAziendaAsync();
+            return azienda;
+        }
     }
 }
