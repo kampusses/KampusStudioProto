@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCore.ReCaptcha;
 using KampusStudioProto.Customizations.Identity;
 using KampusStudioProto.Models.Entities;
 using KampusStudioProto.Models.Options;
@@ -33,6 +34,7 @@ namespace KampusStudioProto
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddReCaptcha(Configuration.GetSection("ReCaptcha"));
             services.AddRazorPages(options =>{
                 options.Conventions.AllowAnonymousToPage("/Privacy");
             });

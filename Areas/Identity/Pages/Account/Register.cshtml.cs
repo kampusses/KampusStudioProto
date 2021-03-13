@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using AspNetCore.ReCaptcha;
 using KampusStudioProto.Models.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Logging;
 namespace KampusStudioProto.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
+    [ValidateReCaptcha]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
