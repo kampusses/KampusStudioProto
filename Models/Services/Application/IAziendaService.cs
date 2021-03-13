@@ -11,5 +11,6 @@ namespace KampusStudioProto.Models.Services.Application
         Task<AziendaViewModel> CreateAziendaAsync(AziendaCreateInputModel inputModel);
         Task<AziendaViewModel> ModifyNomeAziendaAsync(AziendaModifyNomeAziendaInputModel inputModel);
         Task<AziendaViewModel> ModifyIndirizzoAziendaAsync(AziendaModifyIndirizzoAziendaInputModel inputModel);
+        Task<AziendaViewModel> ModifyCfPivaAziendaAsync(AziendaModifyCfPivaAziendaInputModel inputModel);
     }
 }

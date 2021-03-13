@@ -25,19 +25,19 @@
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyNomeAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Indirizzo:</strong> <i>@Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - 76016 Margherita di Savoia (BT) <--- questi dati devo recuperarli nel DB</i></td>
+                            <td><strong>Indirizzo:</strong> @Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - 76016 Margherita di Savoia (BT) <--- questi dati devo recuperarli nel DB</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyIndirizzoAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Partita IVA / Codice Fiscale:</strong> <i>@Model.CodiceFiscaleAzienda - @Model.PartitaIvaAzienda</i></td>
+                            <td><strong>Partita IVA / Codice Fiscale:</strong> @Model.PartitaIvaAzienda - @Model.CodiceFiscaleAzienda</td>
+                            <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyCfPivaAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Telefono / Fax:</strong> @Model.TelefonoAzienda - @Model.FaxAzienda</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp-action="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Telefono / Fax:</strong> <i>@Model.TelefonoAzienda - @Model.FaxAzienda</i></td>
-                            <td><div class="d-flex justify-content-center"><a asp-controller="" asp-action="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Email / Pec:</strong> <i>@Model.EmailAzienda - @Model.PecAzienda</i></td>
+                            <td><strong>Email / Pec:</strong> @Model.EmailAzienda - @Model.PecAzienda</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="" asp-action="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr><td></td><td></td></tr>

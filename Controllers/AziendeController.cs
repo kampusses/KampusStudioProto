@@ -107,5 +107,32 @@ namespace KampusStudioProto.Controllers
             }
             return View(inputModel);
         }
+
+        public async Task<IActionResult> ModifyCfPivaAzienda()
+        {
+            ViewBag.Title = "Azienda condessionaria";
+            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
+            if(azienda!=null) 
+            {
+                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+                var inputModel = new AziendaModifyCfPivaAziendaInputModel();
+                inputModel.CodiceFiscaleAzienda = aziendaViewModel.CodiceFiscaleAzienda;
+                inputModel.PartitaIvaAzienda = aziendaViewModel.PartitaIvaAzienda;
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ModifyCfPivaAzienda(AziendaModifyCfPivaAziendaInputModel inputModel)
+        {
+            ViewBag.Title = "Azienda concessionaria";
+            if (ModelState.IsValid)
+            {
+                AziendaViewModel azienda = await aziendaService.ModifyCfPivaAziendaAsync(inputModel);
+                return RedirectToAction("Dettaglio", new {card="Zero"});
+            }
+            return View(inputModel);
+        }
     }
 }
