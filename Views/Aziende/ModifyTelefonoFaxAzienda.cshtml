@@ -1,0 +1,33 @@
+@model AziendaModifyTelefonoFaxAziendaInputModel
+<h1>Azienda concessionaria</h1>
+<div class="row">
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="TelefonoAzienda"></label>
+                            <input type="text" asp-for="TelefonoAzienda" class="form-control form-control-lg" placeholder="Telefono">
+                            <span asp-validation-for="TelefonoAzienda"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="FaxAzienda"></label>
+                            <input type="text" asp-for="FaxAzienda" class="form-control form-control-lg" placeholder="Fax">
+                            <span asp-validation-for="FaxAzienda"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!--div class="form-group col-md-4"></div-->
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Modifica telefono e fax</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
