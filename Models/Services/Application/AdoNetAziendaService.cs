@@ -86,5 +86,12 @@ namespace KampusStudioProto.Models.Services.Application
             AziendaViewModel azienda = await GetAziendaAsync();
             return azienda;
         }
+
+        public async Task<AziendaViewModel> ModifyTelefonoFaxAgenziaAsync(AziendaModifyTelefonoFaxAgenziaInputModel inputModel)
+        {
+            DataSet dataSet = await db.QueryAsync($"UPDATE Azienda SET telefonoAgenzia={inputModel.TelefonoAgenzia}, faxAgenzia={inputModel.FaxAgenzia}");
+            AziendaViewModel azienda = await GetAziendaAsync();
+            return azienda;
+        }
     }
 }

@@ -218,5 +218,32 @@ namespace KampusStudioProto.Controllers
             }
             return View(inputModel);
         }
+
+        public async Task<IActionResult> ModifyTelefonoFaxAgenzia()
+        {
+            ViewBag.Title = "Azienda condessionaria - Agenzia locale";
+            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
+            if(azienda!=null) 
+            {
+                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+                var inputModel = new AziendaModifyTelefonoFaxAgenziaInputModel();
+                inputModel.TelefonoAgenzia = aziendaViewModel.TelefonoAgenzia;
+                inputModel.FaxAgenzia = aziendaViewModel.FaxAgenzia;
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ModifyTelefonoFaxAgenzia(AziendaModifyTelefonoFaxAgenziaInputModel inputModel)
+        {
+            ViewBag.Title = "Azienda concessionaria - Agenzia locale";
+            if (ModelState.IsValid)
+            {
+                AziendaViewModel azienda = await aziendaService.ModifyTelefonoFaxAgenziaAsync(inputModel);
+                return RedirectToAction("Dettaglio", new {card="One"});
+            }
+            return View(inputModel);
+        }
     }
 }
