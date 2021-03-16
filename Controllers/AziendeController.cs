@@ -245,5 +245,32 @@ namespace KampusStudioProto.Controllers
             }
             return View(inputModel);
         }
+
+        public async Task<IActionResult> ModifyEmailPecAgenzia()
+        {
+            ViewBag.Title = "Azienda condessionaria - Agenzia locale";
+            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
+            if(azienda!=null) 
+            {
+                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+                var inputModel = new AziendaModifyEmailPecAgenziaInputModel();
+                inputModel.EmailAgenzia = aziendaViewModel.EmailAgenzia;
+                inputModel.PecAgenzia = aziendaViewModel.PecAgenzia;
+                return View(inputModel);
+            }
+            else return RedirectToAction(nameof(Dettaglio));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ModifyemailPecAgenzia(AziendaModifyEmailPecAgenziaInputModel inputModel)
+        {
+            ViewBag.Title = "Azienda concessionaria - Agenzia locale";
+            if (ModelState.IsValid)
+            {
+                AziendaViewModel azienda = await aziendaService.ModifyEmailPecAgenziaAsync(inputModel);
+                return RedirectToAction("Dettaglio", new {card="One"});
+            }
+            return View(inputModel);
+        }
     }
 }

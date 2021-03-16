@@ -1,0 +1,34 @@
+@model AziendaModifyEmailPecAgenziaInputModel
+<h1>Azienda concessionaria - Agenzia locale</h1>
+<div class="row">
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label asp-for="EmailAgenzia"></label>
+                            <input type="text" asp-for="EmailAgenzia" class="form-control form-control-lg" placeholder="Email">
+                            <span asp-validation-for="EmailAgenzia"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label asp-for="PecAgenzia"></label>
+                            <input type="text" asp-for="PecAgenzia" class="form-control form-control-lg" placeholder="Pec">
+                            <span asp-validation-for="PecAgenzia"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Modifica email e pec</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
