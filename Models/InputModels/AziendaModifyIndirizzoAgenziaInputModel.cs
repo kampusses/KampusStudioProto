@@ -14,5 +14,7 @@ namespace KampusStudioProto.Models.InputModels
         public string LetteraAgenzia {get; set;}
         [Display(Name="Località")]
         public string LocalitaAgenzia {get; set;}
+        [Display(Name="Città"), Required(ErrorMessage="Inserire la città")]
+        public string CittaAgenzia {get; set;}
     }
 }

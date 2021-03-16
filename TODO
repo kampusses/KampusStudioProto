@@ -14,6 +14,7 @@ In EntiController e AziendeController eliminare codice non necessario (AziendaVi
 Negli indirizzi dell'azienda concessionaria e dell'agenzia locale, se il civico non è stato impostato, evitare di visualizzare lo 0
 Nei form di modifica/inserimento del civico (ovunque appaia) al momento è necessario inserire 0 se non settato. Fare in modo che si possa anche avere campo vuoto
 Nel form di modifica/inserimento dell'azienda concessionaria e dell'agenzia locale, inserire campo per il comune in cui esse sono ubicate
+Migliorare grafica ed usabilità (bottoni di navigazione) per le pagine relative all'azienda concessionaria
 
 FATTO
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
