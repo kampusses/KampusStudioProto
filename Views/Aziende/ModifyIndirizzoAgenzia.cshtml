@@ -1,0 +1,44 @@
+@model AziendaModifyIndirizzoAgenziaInputModel
+<h1>Azienda concessionaria - Agenzia locale</h1>
+<div class="row">
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card-body">                
+                <form method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label asp-for="ToponimoAgenzia"></label>
+                            <input type="text" asp-for="ToponimoAgenzia" class="form-control form-control-lg" placeholder="Toponimo">
+                            <span asp-validation-for="ToponimoAgenzia"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="IndirizzoAgenzia"></label>
+                            <input type="text" asp-for="IndirizzoAgenzia" class="form-control form-control-lg" placeholder="Indirizzo">
+                            <span asp-validation-for="IndirizzoAgenzia"></span>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label asp-for="CivicoAgenzia"></label>
+                            <input type="text" asp-for="CivicoAgenzia" class="form-control form-control-lg">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label asp-for="LetteraAgenzia"></label>
+                            <input type="text" asp-for="LetteraAgenzia" class="form-control form-control-lg" placeholder="Lettera">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="LocalitaAgenzia"></label>
+                            <input type="text" asp-for="LocalitaAgenzia" class="form-control form-control-lg" placeholder="Località">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!--div class="form-group col-md-8"></div-->
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Modifica sede agenzia</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
