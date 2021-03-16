@@ -163,6 +163,13 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
+                entity.Property(e => e.CittaAzienda)
+                    .HasColumnType("varchar(4)")
+                    .HasColumnName("cittaAzienda")
+                    .HasComment("Città azienda")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
                 entity.Property(e => e.PartitaIvaAzienda)
                     .HasColumnType("varchar(11)")
                     .HasColumnName("partitaIvaAzienda")

@@ -13,6 +13,7 @@ namespace KampusStudioProto.Models.Entities
         public int CivicoAzienda { get; private set; }
         public string LetteraAzienda { get; private set; }
         public string LocalitaAzienda { get; private set; }
+        public string CittaAzienda { get; private set; }
         public string PartitaIvaAzienda { get; private set; }
         public string CodiceFiscaleAzienda { get; private set; }
         public string TelefonoAzienda { get; private set; }
