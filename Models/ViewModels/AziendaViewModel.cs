@@ -11,6 +11,7 @@ namespace KampusStudioProto.Models.ViewModels
         public int CivicoAzienda { get; set; }
         public string LetteraAzienda { get; set; }
         public string LocalitaAzienda { get; set; }
+        public string CittaAzienda { get; set; }
         public string PartitaIvaAzienda { get; set; }
         public string CodiceFiscaleAzienda { get; set; }
         public string TelefonoAzienda { get; set; }
@@ -37,6 +38,7 @@ namespace KampusStudioProto.Models.ViewModels
                 CivicoAzienda = Convert.ToInt16(aziendaRow["civicoAzienda"]),
                 LetteraAzienda = Convert.ToString(aziendaRow["letteraAzienda"]),
                 LocalitaAzienda = Convert.ToString(aziendaRow["localitaAzienda"]),
+                CittaAzienda = Convert.ToString(aziendaRow["cittaAzienda"]),
                 PartitaIvaAzienda = Convert.ToString(aziendaRow["partitaIvaAzienda"]),
                 CodiceFiscaleAzienda = Convert.ToString(aziendaRow["codiceFiscaleAzienda"]),
                 TelefonoAzienda = Convert.ToString(aziendaRow["telefonoAzienda"]),

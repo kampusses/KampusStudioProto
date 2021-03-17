@@ -25,7 +25,7 @@
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyNomeAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Indirizzo:</strong> @Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - 76016 Margherita di Savoia (BT) <--- questi dati devo recuperarli nel DB</td>
+                            <td><strong>Indirizzo:</strong> @Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - @Model.CittaAzienda</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyIndirizzoAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>

@@ -13,9 +13,11 @@ namespace KampusStudioProto.Models.Services.Application
     public class AdoNetAziendaService : IAziendaService
     {
         private readonly IDatabaseAccessor db;
-        public AdoNetAziendaService(IDatabaseAccessor db)
+        private readonly IComuneService comuneService;
+        public AdoNetAziendaService(IDatabaseAccessor db, IComuneService comuneService)
         {
             this.db = db;
+            this.comuneService = comuneService;
         }
     
         public async Task<AziendaViewModel> GetAziendaAsync()
@@ -54,7 +56,8 @@ namespace KampusStudioProto.Models.Services.Application
 
         public async Task<AziendaViewModel> ModifyIndirizzoAziendaAsync(AziendaModifyIndirizzoAziendaInputModel inputModel)
         {
-            DataSet dataSet = await db.QueryAsync($"UPDATE Azienda SET toponimoAzienda={inputModel.ToponimoAzienda}, indirizzoAzienda={inputModel.IndirizzoAzienda}, civicoAzienda={inputModel.CivicoAzienda}, letteraAzienda={inputModel.LetteraAzienda}, localitaAzienda={inputModel.LocalitaAzienda}");
+            ComuneViewModel comune = await comuneService.GetNomeComuneAsync(inputModel.CittaAzienda);
+            DataSet dataSet = await db.QueryAsync($"UPDATE Azienda SET toponimoAzienda={inputModel.ToponimoAzienda}, indirizzoAzienda={inputModel.IndirizzoAzienda}, civicoAzienda={inputModel.CivicoAzienda}, letteraAzienda={inputModel.LetteraAzienda}, localitaAzienda={inputModel.LocalitaAzienda}, cittaAzienda={comune.CodiceCatastale}");
             AziendaViewModel azienda = await GetAziendaAsync();
             return azienda;
         }

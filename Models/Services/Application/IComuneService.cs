@@ -10,5 +10,6 @@ namespace KampusStudioProto.Models.Services.Application
          Task<ListViewModel<ComuneViewModel>> GetComuniAsync(ComuneListInputModel model);
          Task<ComuneViewModel> GetComuneAsync(string id);
          Task<ComuneViewModel> GetNomeComuneAsync(string nomeComune);
+         Task<ComuneViewModel> GetCodiceCatastaleComuneAsync(string codiceCatastaleComune);
     }
 }

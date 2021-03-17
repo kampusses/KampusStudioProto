@@ -11,9 +11,11 @@ namespace KampusStudioProto.Controllers
     public class AziendeController : Controller
     {
         private readonly IAziendaService aziendaService;
-        public AziendeController(IAziendaService aziendaService)
+        private readonly IComuneService comuneService;
+        public AziendeController(IAziendaService aziendaService, IComuneService comuneService)
         {
             this.aziendaService = aziendaService;
+            this.comuneService = comuneService;
         }
         
         public async Task<IActionResult> Dettaglio(string card)
@@ -91,6 +93,8 @@ namespace KampusStudioProto.Controllers
                 inputModel.CivicoAzienda = aziendaViewModel.CivicoAzienda;
                 inputModel.LetteraAzienda = aziendaViewModel.LetteraAzienda;
                 inputModel.LocalitaAzienda = aziendaViewModel.LocalitaAzienda;
+                ComuneViewModel comune = await comuneService.GetCodiceCatastaleComuneAsync(aziendaViewModel.CittaAzienda);
+                inputModel.CittaAzienda = comune.NomeComune;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
