@@ -24,6 +24,9 @@ namespace KampusStudioProto.Controllers
             ViewBag.Title = "Azienda concessionaria";
             if(azienda != null)
             {
+                string codiceCatastale = azienda.CittaAzienda.CodiceCatastale;
+                ComuneViewModel cittaAzienda = await comuneService.GetCodiceCatastaleComuneAsync(codiceCatastale);
+                azienda.CittaAzienda = cittaAzienda;
                 azienda.Card = card;
                 return View(azienda);
             }
@@ -93,7 +96,7 @@ namespace KampusStudioProto.Controllers
                 inputModel.CivicoAzienda = aziendaViewModel.CivicoAzienda;
                 inputModel.LetteraAzienda = aziendaViewModel.LetteraAzienda;
                 inputModel.LocalitaAzienda = aziendaViewModel.LocalitaAzienda;
-                ComuneViewModel comune = await comuneService.GetCodiceCatastaleComuneAsync(aziendaViewModel.CittaAzienda);
+                ComuneViewModel comune = await comuneService.GetCodiceCatastaleComuneAsync(aziendaViewModel.CittaAzienda.CodiceCatastale);
                 inputModel.CittaAzienda = comune.NomeComune;
                 return View(inputModel);
             }

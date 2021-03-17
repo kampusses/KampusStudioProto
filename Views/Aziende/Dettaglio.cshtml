@@ -25,7 +25,7 @@
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyNomeAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Indirizzo:</strong> @Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - @Model.CittaAzienda</td>
+                            <td><strong>Indirizzo:</strong> @Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - @Model.CittaAzienda.Cap @Model.CittaAzienda.NomeComune @Model.CittaAzienda.Provincia.SiglaProvincia</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyIndirizzoAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>

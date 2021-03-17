@@ -30,6 +30,8 @@ namespace KampusStudioProto.Models.Services.Application
             {
                 var aziendaRow = aziendaTable.Rows[0];
                 aziendaViewModel = AziendaViewModel.FromDataRow(aziendaRow);
+                ComuneViewModel comuneViewModel = await comuneService.GetCodiceCatastaleComuneAsync(aziendaViewModel.CodiceCatastaleCittaAzienda);
+                aziendaViewModel.CittaAzienda = comuneViewModel;
             }
             else aziendaViewModel = null;
             return aziendaViewModel;
