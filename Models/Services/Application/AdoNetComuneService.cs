@@ -130,8 +130,18 @@ namespace KampusStudioProto.Models.Services.Application
                 comuneViewModel.Provincia = (ProvinciaViewModel) provinciaViewModel;
                 return comuneViewModel;
             }
-            else {
-                ComuneViewModel comuneViewModel = new ComuneViewModel();
+            else
+            {
+                var comuneViewModel = new ComuneViewModel
+                {
+                    CodiceCatastale = "",
+                    NomeComune = "",
+                    Cap = "",
+                    Provincia = new ProvinciaViewModel
+                    {
+                        SiglaProvincia = ""
+                    }
+                };
                 return comuneViewModel;
             }
         }
