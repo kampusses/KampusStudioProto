@@ -25,7 +25,7 @@
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyNomeAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Indirizzo:</strong> @Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda - @Model.CittaAzienda.Cap @Model.CittaAzienda.NomeComune @Model.CittaAzienda.Provincia.SiglaProvincia</td>
+                            <td><strong>Indirizzo:</strong> @Model.ToponimoAzienda @Model.IndirizzoAzienda @Model.CivicoAzienda.ToString("#####") @Model.LetteraAzienda - @Model.CittaAzienda.Cap @Model.CittaAzienda.NomeComune @Model.CittaAzienda.Provincia.SiglaProvincia</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyIndirizzoAzienda" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
@@ -67,7 +67,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Indirizzo:</strong> @Model.ToponimoAgenzia @Model.IndirizzoAgenzia @Model.CivicoAgenzia - @Model.CittaAgenzia.Cap @Model.CittaAgenzia.NomeComune @Model.CittaAgenzia.Provincia.SiglaProvincia</td>
+                            <td><strong>Indirizzo:</strong> @Model.ToponimoAgenzia @Model.IndirizzoAgenzia @Model.CivicoAgenzia.ToString("#####") @Model.LetteraAgenzia - @Model.CittaAgenzia.Cap @Model.CittaAgenzia.NomeComune @Model.CittaAgenzia.Provincia.SiglaProvincia</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyIndirizzoAgenzia" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>

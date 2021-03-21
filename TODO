@@ -12,7 +12,6 @@ Migliorare risoluzione bug ricerca comune dopo aver cercato per provincia o regi
 Eliminare passaggi superflui al logout e alla registrazione/login tramite accessi esterni
 In EntiController e AziendeController eliminare codice non necessario (AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();)
 Aggiungere il suffisso "async" a tutti i metodi asincroni
-Negli indirizzi dell'azienda concessionaria e dell'agenzia locale, se il civico non è stato impostato, evitare di visualizzare lo 0
 Nei form di modifica/inserimento del civico (ovunque appaia) al momento è necessario inserire 0 se non settato. Fare in modo che si possa anche avere campo vuoto
 Migliorare grafica ed usabilità (bottoni di navigazione) per le pagine relative all'azienda concessionaria
 
@@ -30,3 +29,4 @@ Per il form di modifica Ente, creare input model diversificati per ciascuna sezi
 Fare validazione sui vari form di modifica Ente
 Uniformare stili dei link del menù relativa alla parte Identity
 Nel form di modifica/inserimento dell'azienda concessionaria e dell'agenzia locale, inserire campo per il comune in cui esse sono ubicate
+Negli indirizzi dell'azienda concessionaria e dell'agenzia locale, se il civico non è stato impostato, evitare di visualizzare lo 0
