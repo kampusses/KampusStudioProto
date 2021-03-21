@@ -24,6 +24,8 @@ namespace KampusStudioProto.Models.ViewModels
         public int CivicoAgenzia { get; set; }
         public string LetteraAgenzia { get; set; }
         public string LocalitaAgenzia { get; set; }
+        public string CodiceCatastaleCittaAgenzia { get; set; }
+        public ComuneViewModel CittaAgenzia { get; set; }
         public string TelefonoAgenzia { get; set; }
         public string FaxAgenzia { get; set; }
         public string EmailAgenzia { get; set; }
@@ -52,6 +54,8 @@ namespace KampusStudioProto.Models.ViewModels
                 CivicoAgenzia = Convert.ToInt16(aziendaRow["civicoAgenzia"]),
                 LetteraAgenzia = Convert.ToString(aziendaRow["letteraAgenzia"]),
                 LocalitaAgenzia = Convert.ToString(aziendaRow["localitaAgenzia"]),
+                CodiceCatastaleCittaAgenzia = Convert.ToString(aziendaRow["cittaAgenzia"]),
+                CittaAgenzia = new ComuneViewModel(),
                 TelefonoAgenzia = Convert.ToString(aziendaRow["telefonoAgenzia"]),
                 FaxAgenzia = Convert.ToString(aziendaRow["faxAgenzia"]),
                 EmailAgenzia = Convert.ToString(aziendaRow["emailAgenzia"]),

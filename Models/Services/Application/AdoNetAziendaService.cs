@@ -32,6 +32,8 @@ namespace KampusStudioProto.Models.Services.Application
                 aziendaViewModel = AziendaViewModel.FromDataRow(aziendaRow);
                 ComuneViewModel comuneViewModel = await comuneService.GetCodiceCatastaleComuneAsync(aziendaViewModel.CodiceCatastaleCittaAzienda);
                 aziendaViewModel.CittaAzienda = comuneViewModel;
+                comuneViewModel = await comuneService.GetCodiceCatastaleComuneAsync(aziendaViewModel.CodiceCatastaleCittaAgenzia);
+                aziendaViewModel.CittaAgenzia = comuneViewModel;
             }
             else aziendaViewModel = null;
             return aziendaViewModel;
@@ -87,7 +89,8 @@ namespace KampusStudioProto.Models.Services.Application
 
         public async Task<AziendaViewModel> ModifyIndirizzoAgenziaAsync(AziendaModifyIndirizzoAgenziaInputModel inputModel)
         {
-            DataSet dataSet = await db.QueryAsync($"UPDATE Azienda SET toponimoAgenzia={inputModel.ToponimoAgenzia}, indirizzoAgenzia={inputModel.IndirizzoAgenzia}, civicoAgenzia={inputModel.CivicoAgenzia}, letteraAgenzia={inputModel.LetteraAgenzia}, localitaAgenzia={inputModel.LocalitaAgenzia}");
+            ComuneViewModel comune = await comuneService.GetNomeComuneAsync(inputModel.CittaAgenzia);
+            DataSet dataSet = await db.QueryAsync($"UPDATE Azienda SET toponimoAgenzia={inputModel.ToponimoAgenzia}, indirizzoAgenzia={inputModel.IndirizzoAgenzia}, civicoAgenzia={inputModel.CivicoAgenzia}, letteraAgenzia={inputModel.LetteraAgenzia}, localitaAgenzia={inputModel.LocalitaAgenzia}, cittaAgenzia={comune.CodiceCatastale}");
             AziendaViewModel azienda = await GetAziendaAsync();
             return azienda;
         }

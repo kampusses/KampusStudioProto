@@ -67,15 +67,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Indirizzo:</strong> <i>@Model.ToponimoAgenzia @Model.IndirizzoAgenzia @Model.CivicoAgenzia - 76016 Margherita di Savoia (BT) <--- questi dati devo recuperarli nel DB</i></td>
+                            <td><strong>Indirizzo:</strong> @Model.ToponimoAgenzia @Model.IndirizzoAgenzia @Model.CivicoAgenzia - @Model.CittaAgenzia.Cap @Model.CittaAgenzia.NomeComune @Model.CittaAgenzia.Provincia.SiglaProvincia</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyIndirizzoAgenzia" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Telefono / Fax:</strong> <i>@Model.TelefonoAgenzia - @Model.FaxAgenzia</i></td>
+                            <td><strong>Telefono / Fax:</strong> @Model.TelefonoAgenzia - @Model.FaxAgenzia</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyTelefonoFaxAgenzia" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr>
-                            <td><strong>Email / Pec:</strong> <i>@Model.EmailAgenzia - @Model.PecAgenzia</i></td>
+                            <td><strong>Email / Pec:</strong> @Model.EmailAgenzia - @Model.PecAgenzia</td>
                             <td><div class="d-flex justify-content-center"><a asp-controller="Aziende" asp-action="ModifyEmailPecAgenzia" asp-route-id="" class="btn btn-primary"><i class="fas fa-edit"></i></a></div></td>
                         </tr>
                         <tr><td></td><td></td></tr>

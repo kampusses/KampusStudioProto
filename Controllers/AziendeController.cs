@@ -27,6 +27,9 @@ namespace KampusStudioProto.Controllers
                 string codiceCatastale = azienda.CittaAzienda.CodiceCatastale;
                 ComuneViewModel cittaAzienda = await comuneService.GetCodiceCatastaleComuneAsync(codiceCatastale);
                 azienda.CittaAzienda = cittaAzienda;
+                codiceCatastale = azienda.CittaAgenzia.CodiceCatastale;
+                ComuneViewModel cittaAgenzia = await comuneService.GetCodiceCatastaleComuneAsync(codiceCatastale);
+                azienda.CittaAgenzia = cittaAgenzia;
                 azienda.Card = card;
                 return View(azienda);
             }
@@ -209,6 +212,8 @@ namespace KampusStudioProto.Controllers
                 inputModel.CivicoAgenzia = aziendaViewModel.CivicoAgenzia;
                 inputModel.LetteraAgenzia = aziendaViewModel.LetteraAgenzia;
                 inputModel.LocalitaAgenzia = aziendaViewModel.LocalitaAgenzia;
+                ComuneViewModel comune = await comuneService.GetCodiceCatastaleComuneAsync(aziendaViewModel.CittaAgenzia.CodiceCatastale);
+                inputModel.CittaAgenzia = comune.NomeComune;
                 return View(inputModel);
             }
             else return RedirectToAction(nameof(Dettaglio));
