@@ -25,6 +25,7 @@ namespace KampusStudioProto.Models.Entities
         public int CivicoAgenzia { get; private set; }
         public string LetteraAgenzia { get; private set; }
         public string LocalitaAgenzia { get; private set; }
+        public string CittaAgenzia { get; private set; }
         public string TelefonoAgenzia { get; private set; }
         public string FaxAgenzia { get; private set; }
         public string EmailAgenzia { get; private set; }

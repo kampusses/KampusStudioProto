@@ -244,6 +244,13 @@ namespace KampusStudioProto.Models.Services.Infrastructure
                     .HasComment("Località agenzia")
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
+                
+                entity.Property(e => e.CittaAgenzia)
+                    .HasColumnType("varchar(4)")
+                    .HasColumnName("cittaAgenzia")
+                    .HasComment("Città agenzia")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
 
                 entity.Property(e => e.TelefonoAgenzia)
                     .HasColumnType("varchar(15)")
