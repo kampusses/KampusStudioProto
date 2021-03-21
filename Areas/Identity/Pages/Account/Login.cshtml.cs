@@ -43,11 +43,11 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage="L'Email è obbligatoria.")]
+            [EmailAddress(ErrorMessage="Il campo Email non è un indirizzo valido.")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage="La password è obbligatoria.")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 

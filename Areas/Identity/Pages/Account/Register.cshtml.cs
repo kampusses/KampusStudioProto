@@ -19,7 +19,7 @@ using Microsoft.Extensions.Logging;
 namespace KampusStudioProto.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
-    [ValidateReCaptcha]
+    [ValidateReCaptcha(ErrorMessage="Non hai dimostrato di non essere un robot.")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -59,7 +59,7 @@ namespace KampusStudioProto.Areas.Identity.Pages.Account
             public string Nome { get; set; }
 
             [Required(ErrorMessage="L'email è obbligatoria")]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage="Il campo Email non è un indirizzo valido.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
