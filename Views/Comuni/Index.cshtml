@@ -18,14 +18,14 @@
             <div class="input-group">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle piatto-dx" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span id="searchType">@{if (Model.Input.SearchType == "Provincia" || Model.Input.SearchType == "Regione") {<visualizza>Nome comune</visualizza>}else {@Model.Input.SearchType}}</span>
+                        <span id="searchType">@{if (Model.Input.SearchType == "Provincia" || Model.Input.SearchType == "Regione") {<text>Nome comune</text>}else {@Model.Input.SearchType}}</span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Nome comune'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Nome comune';">Nome comune</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'CAP'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'CAP';">CAP</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Prefisso'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Prefisso';">Prefisso</button>
                         <button class="dropdown-item" type="button" onclick="var c1 = document.getElementById('searchTypeValue'); c1.value = 'Belfiore'; var b1 = document.getElementById('searchType'); b1.innerHTML = 'Belfiore';">Belfiore</button>
-                        <input id="searchTypeValue" type="hidden" name="searchtype" value="Nome comune" value="@Model.Input.SearchType"></input>
+                        <input id="searchTypeValue" type="hidden" name="searchtype" value="@{if (Model.Input.SearchType == "Provincia" || Model.Input.SearchType == "Regione") {<text>Nome comune</text>} else {@Model.Input.SearchType}}"></input>
                     </div>
                 </div>
                 <input type="text" name="search" placeholder="Cerca" id="ricerca" value="@if (Model.Input.SearchType != "Provincia" && Model.Input.SearchType != "Regione") @Model.Input.Search">
