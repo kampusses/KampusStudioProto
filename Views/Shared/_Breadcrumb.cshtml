@@ -1,0 +1,10 @@
+@inject SignInManager<ApplicationUser> signInManager
+@if (signInManager.IsSignedIn(User))
+{
+    <nav aria-label="Page breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page"><a asp-controller="Aziende" asp-Action="Dettaglio">Kampus Software Spa</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Enti" asp-Action="Dettaglio">Comune di Barletta</a></li>
+        </ol>
+    </nav>
+}
