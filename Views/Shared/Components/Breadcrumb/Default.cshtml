@@ -1,0 +1,11 @@
+@model HomeViewModel
+@inject SignInManager<ApplicationUser> signInManager
+@if (signInManager.IsSignedIn(User))
+{
+    <nav aria-label="Page breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page"><a asp-controller="Aziende" asp-Action="Dettaglio">@{if (Model.Azienda == null) {<text>Impostare azienda concessionaria</text>} else {@Model.Azienda.NomeAzienda}} </a></li>
+            <li class="breadcrumb-item"><a asp-controller="Enti" asp-Action="Dettaglio">@{if (Model.Ente == null) {<text>Impostare Ente in gestione</text>} else {<text>Comune di </text>@Model.Ente.Comune.NomeComune}} </a></li>
+        </ol>
+    </nav>
+}
