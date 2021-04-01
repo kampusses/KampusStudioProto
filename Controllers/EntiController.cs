@@ -55,10 +55,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifySedeLegale()
         {
             ViewBag.Title = "Configurazione sede legale";
-            EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente!=null) 
+            EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+            if(enteViewModel!=null) 
             {
-                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifySedeLegaleInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
                 inputModel.Toponimo = enteViewModel.Toponimo;
@@ -86,10 +85,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyDatiFiscali()
         {
             ViewBag.Title = "Configurazione dati fiscali";
-            EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente!=null) 
+            EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+            if(enteViewModel!=null) 
             {
-                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifyDatiFiscaliInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
                 inputModel.PartitaIva = enteViewModel.PartitaIva;
@@ -114,10 +112,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyContatti()
         {
             ViewBag.Title = "Configurazione contatti ente";
-            EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente!=null) 
+            EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+            if(enteViewModel!=null) 
             {
-                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifyContattiInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
                 inputModel.Telefono = enteViewModel.Telefono;
@@ -144,10 +141,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyResponsabile()
         {
             ViewBag.Title = "Configurazione funzionario responsabile";
-            EnteViewModel ente = await enteService.GetEnteAsync();
-            if(ente!=null) 
+            EnteViewModel enteViewModel = await enteService.GetEnteAsync();
+            if(enteViewModel!=null) 
             {
-                EnteViewModel enteViewModel = await enteService.GetEnteAsync();
                 var inputModel = new EnteModifyResponsabileInputModel();
                 inputModel.CodiceCatastale = enteViewModel.CodiceCatastale;
                 inputModel.TitoloResponsabile = enteViewModel.TitoloResponsabile;

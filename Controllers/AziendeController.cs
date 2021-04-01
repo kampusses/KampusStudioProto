@@ -63,10 +63,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyNomeAzienda()
         {
             ViewBag.Title = "Azienda condessionaria";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyNomeAziendaInputModel();
                 inputModel.NomeAzienda = aziendaViewModel.NomeAzienda;
                 return View(inputModel);
@@ -89,10 +88,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyIndirizzoAzienda()
         {
             ViewBag.Title = "Azienda condessionaria";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyIndirizzoAziendaInputModel();
                 inputModel.ToponimoAzienda = aziendaViewModel.ToponimoAzienda;
                 inputModel.IndirizzoAzienda = aziendaViewModel.IndirizzoAzienda;
@@ -121,10 +119,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyCfPivaAzienda()
         {
             ViewBag.Title = "Azienda condessionaria";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyCfPivaAziendaInputModel();
                 inputModel.CodiceFiscaleAzienda = aziendaViewModel.CodiceFiscaleAzienda;
                 inputModel.PartitaIvaAzienda = aziendaViewModel.PartitaIvaAzienda;
@@ -148,10 +145,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyTelefonoFaxAzienda()
         {
             ViewBag.Title = "Azienda condessionaria";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyTelefonoFaxAziendaInputModel();
                 inputModel.TelefonoAzienda = aziendaViewModel.TelefonoAzienda;
                 inputModel.FaxAzienda = aziendaViewModel.FaxAzienda;
@@ -175,10 +171,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyEmailPecAzienda()
         {
             ViewBag.Title = "Azienda condessionaria";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyEmailPecAziendaInputModel();
                 inputModel.EmailAzienda = aziendaViewModel.EmailAzienda;
                 inputModel.PecAzienda = aziendaViewModel.PecAzienda;
@@ -202,10 +197,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyIndirizzoAgenzia()
         {
             ViewBag.Title = "Azienda condessionaria - Agenzia locale";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyIndirizzoAgenziaInputModel();
                 inputModel.ToponimoAgenzia = aziendaViewModel.ToponimoAgenzia;
                 inputModel.IndirizzoAgenzia = aziendaViewModel.IndirizzoAgenzia;
@@ -234,10 +228,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyTelefonoFaxAgenzia()
         {
             ViewBag.Title = "Azienda condessionaria - Agenzia locale";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyTelefonoFaxAgenziaInputModel();
                 inputModel.TelefonoAgenzia = aziendaViewModel.TelefonoAgenzia;
                 inputModel.FaxAgenzia = aziendaViewModel.FaxAgenzia;
@@ -261,10 +254,9 @@ namespace KampusStudioProto.Controllers
         public async Task<IActionResult> ModifyEmailPecAgenzia()
         {
             ViewBag.Title = "Azienda condessionaria - Agenzia locale";
-            AziendaViewModel azienda = await aziendaService.GetAziendaAsync();
-            if(azienda!=null) 
+            AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
+            if(aziendaViewModel!=null) 
             {
-                AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();
                 var inputModel = new AziendaModifyEmailPecAgenziaInputModel();
                 inputModel.EmailAgenzia = aziendaViewModel.EmailAgenzia;
                 inputModel.PecAgenzia = aziendaViewModel.PecAgenzia;
