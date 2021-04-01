@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using kampus.Models.ValueTypes;
 using KampusStudioProto.Models.InputModels;
 using KampusStudioProto.Models.Services.Infrastructure;
 using KampusStudioProto.Models.ViewModels;
@@ -31,7 +32,8 @@ namespace KampusStudioProto.Models.Services.Application
 
         public async Task<ListViewModel<NazioneViewModel>> GetNazioniAsync(NazioneListInputModel model)
         {
-            FormattableString query = $@"SELECT * FROM Nazioni ORDER BY denominazioneIT LIMIT {model.Limit} OFFSET {model.Offset};
+            string direction = model.Ascending ? "ASC" : "DESC";
+            FormattableString query = $@"SELECT * FROM Nazioni ORDER BY {(Sql) model.OrderBy} {(Sql) direction} LIMIT {model.Limit} OFFSET {model.Offset};
             SELECT COUNT(*) FROM Nazioni";
             DataSet dataSet = await db.QueryAsync(query);
             var dataTable = dataSet.Tables[0];

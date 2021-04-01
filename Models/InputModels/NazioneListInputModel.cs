@@ -21,7 +21,7 @@ namespace KampusStudioProto.Models.InputModels
             Limit = configuration.GetSection("Nazioni").GetValue<int>("PerPage");
             Offset = (Page - 1) * Limit;
             IConfigurationSection parametriOrdinamento = configuration.GetSection("Nazioni").GetSection("Order");
-            if (orderby.ToLower() != "nomenazione")
+            if (orderby.ToLower() != "denominazioneit")
             {
                 orderby = parametriOrdinamento.GetValue<string>("By");
                 ascending = parametriOrdinamento.GetValue<bool>("Ascending");

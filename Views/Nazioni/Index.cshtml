@@ -8,6 +8,10 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-2"><a asp-controller="Nazioni" asp-action="Index" asp-route-search="@Model.Input.Search" asp-route-searchtype="@Model.Input.SearchType" asp-route-orderby="denominazioneIT" asp-route-ascending="@(Model.Input.OrderBy == "denominazioneIT" ? !Model.Input.Ascending : true)">Nazione</a> @if(Model.Input.OrderBy == "denominazioneIT") {<i class="fas fa-caret-@(Model.Input.Ascending ? "up" : "down")"></i>}</div>
+</div>
+
 <hr />
 
 @foreach(NazioneViewModel nazione in Model.Nazioni.Results)
