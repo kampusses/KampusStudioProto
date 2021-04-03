@@ -38,6 +38,27 @@
        	                <li><a class="dropdown-item" asp-controller="Cap" asp-action="Index">CAP</a></li>
                     </ul>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gestioni </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Imposta Unica Comunale (IUC) <i class="fas fa-caret-right"></i></a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="" asp-action="">Tassa Rifiuti (TARI)</a></li>
+	                            <li><a class="dropdown-item" asp-controller="" asp-action="">Imposta Municipale Propria (IMU)</a></li>
+                                <li><a class="dropdown-item" asp-controller="" asp-action="">Tassa sui Servizi Indivisibili (TASI)</a></li>
+	                        </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Canone Unico Patrimoniale (CUP) <i class="fas fa-caret-right"></i></a>
+                            <ul class="submenu dropdown-menu">
+	                            <li><a class="dropdown-item" asp-controller="" asp-action="">Componente Occupazione Suolo</a></li>
+       		                    <li><a class="dropdown-item" asp-controller="" asp-action="">Componente Pubblicità</a></li>
+                                <li><a class="dropdown-item" asp-controller="" asp-action="">Componente Affissioni</a></li>
+	                        </ul>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item"> <a class="nav-link" href="/privacy">Privacy</a> </li>
             </ul>
             <partial name="_LoginPartial"></partial>
