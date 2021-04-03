@@ -43,6 +43,13 @@ namespace KampusStudioProto
                 facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                 facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                IConfigurationSection googleAuthNSection =
+                    Configuration.GetSection("Authentication:Google");
+                options.ClientId = googleAuthNSection["ClientId"];
+                options.ClientSecret = googleAuthNSection["ClientSecret"];
+            });
             services.AddMvc(options => {
                 AuthorizationPolicyBuilder policyBuilder = new();
                 AuthorizationPolicy policy = policyBuilder.RequireAuthenticatedUser().Build();

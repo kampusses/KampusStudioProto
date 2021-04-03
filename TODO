@@ -4,7 +4,6 @@ Nella pagina di elemco Province, implementare ordinamento alfabetico, per numero
 Nella pagina di elemco Regioni, implementare ordinamento alfabetico, per numero abitanti e per numero comuni
 Nella pagina di elenco Nazioni, implementare barra di ricerca per nome nazione codice belfiore, per continente e stato padre
 Implementare tutta la gestione cap
-Implementare accesso utente tramite servizio esterno di Google
 Creare un view component per tutte le barre di ricerca e tutte le barre di ordinamento da inserire nelle pagine di elenco (comuni, province, regioni, nazioni e altre nuove)
 Eliminare passaggi superflui al logout e alla registrazione/login tramite accessi esterni
 Nei form di modifica/inserimento del civico (ovunque appaia) al momento è necessario inserire 0 se non settato. Fare in modo che si possa anche avere campo vuoto
@@ -30,3 +29,4 @@ Migliorare risoluzione bug ricerca comune dopo aver cercato per provincia o regi
     Sotto-bug: fai due ricerche consecutive di comuni diversi tramite il loro cap, senza più toccare il tasto del tipo ricerca blu
 In EntiController e AziendeController eliminare codice non necessario (AziendaViewModel aziendaViewModel = await aziendaService.GetAziendaAsync();)
 Nella pagina di elenco Nazioni, implementare l'ordinamento per nome nazione
+Implementare accesso utente tramite servizio esterno di Google
