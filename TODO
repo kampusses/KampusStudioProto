@@ -8,6 +8,8 @@ Creare un view component per tutte le barre di ricerca e tutte le barre di ordin
 Eliminare passaggi superflui al logout e alla registrazione/login tramite accessi esterni
 Nei form di modifica/inserimento del civico (ovunque appaia) al momento è necessario inserire 0 se non settato. Fare in modo che si possa anche avere campo vuoto
 Migliorare grafica ed usabilità (bottoni di navigazione) per le pagine relative all'azienda concessionaria
+Aggiungere caricamento logo Ente
+Aggiungere caricamento logo Azienda
 
 FATTO
 Nella visualizzazione di dettaglio della provincia, inserire il link al relativo comune capoluogo (aggiornare DB con codice catastale capoluogo)
